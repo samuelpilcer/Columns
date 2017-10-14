@@ -4,4 +4,5 @@ from . import views
 urlpatterns = [
     url(r'^accueil$', views.home),
     url(r'^article/(\d+)$', views.lire, name='lire'),
+    url(r'^article/new$', views.new, name='new'),
 ]
