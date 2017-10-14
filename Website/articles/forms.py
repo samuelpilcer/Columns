@@ -19,4 +19,3 @@ class ArticleForm(forms.ModelForm):
         model = Article
         fields=('titre','contenu','categorie',)
         #fields = '__all__'
-

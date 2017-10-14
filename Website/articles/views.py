@@ -33,8 +33,12 @@ def new(request):
     # dans le formulaire ou qu'il contient des erreurs.
     if form.is_valid(): 
         # Ici nous pouvons traiter les données du formulaire
-        form.auteur=request.user.username
-        form.save()
+        new_article=Article()
+        new_article.auteur=request.user
+        new_article.titre = form.cleaned_data.get('titre')
+        new_article.contenu = form.cleaned_data.get('contenu')
+        new_article.categorie = form.cleaned_data.get('categorie')
+        new_article.save()
 
         # Nous pourrions ici envoyer l'e-mail grâce aux données 
         # que nous venons de récupérer
