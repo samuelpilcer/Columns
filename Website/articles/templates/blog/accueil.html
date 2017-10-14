@@ -1,0 +1,11 @@
+<h1>Bienvenue sur le blog des crêpes bretonnes !</h1>
+
+{% for article in derniers_articles %}
+    <div class="article">
+        <h3>{{ article.titre }}</h3>
+        <p>{{ article.contenu|truncatewords_html:80 }}</p>
+        <p><a href="{% url 'lire' article.id %}">Lire la suite</a>
+    </div>
+{% empty %}
+    <p>Aucun article.</p>
+{% endfor %}
