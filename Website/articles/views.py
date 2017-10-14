@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, Http404
 from django.shortcuts import redirect
 from .forms import ArticleForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -21,6 +22,7 @@ def lire(request, id):
 
     return render(request, 'blog/lire.html', {'article': article})
 
+@login_required
 def new(request):
     # Construire le formulaire, soit avec les données postées,
     # soit vide si l'utilisateur accède pour la première fois
@@ -31,6 +33,7 @@ def new(request):
     # dans le formulaire ou qu'il contient des erreurs.
     if form.is_valid(): 
         # Ici nous pouvons traiter les données du formulaire
+        form.auteur=request.user.username
         form.save()
 
         # Nous pourrions ici envoyer l'e-mail grâce aux données 

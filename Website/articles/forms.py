@@ -17,4 +17,6 @@ class ContactForm(forms.Form):
 class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
-        fields = '__all__'
+        fields=('titre','contenu','categorie',)
+        #fields = '__all__'
+
