@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block userview %}
+{% if user.is_authenticated %}
+<div class="col-sm-8 blog-main">
+	<section class="blog-post">
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    <div class="blog-post-content">
+                      <h2 class="blog-post-title">{{ user.username }}</h2>
+                  	</br>
+                    
+                    <a href="/authenticate/deconnexion" type="button" class="btn btn-secondary">Déconnexion</a>
+                    
+                    </div>
+                  </div>
+                </div>
+              </section>
+</div>
+
+{% endif %}
+
+{% endblock %}

@@ -29,7 +29,7 @@ def connexion(request):
 
 def inscription(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = InscriptionForm(request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
@@ -38,9 +38,13 @@ def inscription(request):
             login(request, user)
             return redirect('connexion')
     else:
-        form = UserCreationForm()
+        form = InscriptionForm()
     return render(request, 'inscription.html', {'form': form})
 
 def deconnexion(request):
     logout(request)
     return redirect(reverse(connexion))
+
+
+def userview(request):
+    return render(request, 'user.html')

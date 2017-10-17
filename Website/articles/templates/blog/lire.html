@@ -1,3 +1,41 @@
-<h1>{{ article.titre }} <span class="small">dans {{ article.categorie.nom }}</span></h1>
-<p class="infos">Rédigé par {{ article.auteur }}, le {{ article.date|date:"DATE_FORMAT" }}</p>
-<div class="contenu">{{ article.contenu|linebreaks }}</div>
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block article %}
+
+<div class="col-sm-8 blog-main">
+
+          <section class="blog-post">
+            <div class="panel panel-default">
+              <img src="img/technology/unsplash-2.jpg" class="img-responsive" />
+              <div class="panel-body">
+                <div class="blog-post-meta">
+                  <span class="label label-light label-warning">Apps</span>
+                  <p class="blog-post-date pull-right">{{ article.date|date:"DATE_FORMAT" }}</p>
+                </div>
+                <div class="blog-post-content">
+                  <h2 class="blog-post-title">{{ article.titre }}</h2>
+                  
+                  <p>{{ article.contenu|linebreaks }}</p>
+
+                  <p> <strong> {{ article.auteur }} </strong> </p>
+                </div>
+              </div>
+            </div>
+          </section><!-- /.blog-post -->
+
+          <section class="blog-comments">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <h2 class="blog-post-title">Comments</h2>
+                <div id="disqus_thread"></div>
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+{% endblock %}
+

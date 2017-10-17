@@ -1,11 +1,72 @@
-<h1>Bienvenue sur le blog des crêpes bretonnes !</h1>
+{% extends 'base.html' %}
 
-{% for article in derniers_articles %}
-    <div class="article">
-        <h3>{{ article.titre }}</h3>
-        <p>{{ article.contenu|truncatewords_html:80 }}</p>
-        <p><a href="{% url 'lire' article.id %}">Lire la suite</a>
+
+{% block articles %}
+<div class="col-sm-8 blog-main">
+          
+          <div class="row">
+            <div class="col-sm-6">
+				{% for article in derniers_articles_1 %}
+				<section class="blog-post">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div class="blog-post-meta">
+								<span class="label label-light label-warning">{{ article.categorie }}</span> <!-- primary, warning, info, ...-->
+				                <p class="blog-post-date pull-right">{{ article.date|date:"DATE_FORMAT" }}</p>
+				            </div>
+				            <div class="blog-post-content">
+				                <a href="post-image.html">
+				                	<h2 class="blog-post-title">{{ article.titre }}</h2>
+				                </a>
+				              	<p>{{ article.contenu|truncatewords_html:80 }}</p>
+				                <a class="btn btn-info" href="{% url 'lire' article.id %}">Lire</a>
+				                <a class="blog-post-share pull-right" href="#">
+				                	<i class="material-icons">&#xE80D;</i>
+				                </a>
+				            </div>
+				        </div>
+				    </div>
+				</section>
+				{% empty %}
+    			<p>Aucun article.</p>
+{% endfor %}
+</div>
+
+
+<div class="col-sm-6">
+{% for article in derniers_articles_2 %}
+<section class="blog-post">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div class="blog-post-meta">
+				<span class="label label-light label-info">{{ article.categorie }}</span>
+                <p class="blog-post-date pull-right">{{ article.date|date:"DATE_FORMAT" }}</p>
+            </div>
+            <div class="blog-post-content">
+                <a href="post-image.html">
+                	<h2 class="blog-post-title">{{ article.titre }}</h2>
+                </a>
+              	<p>{{ article.contenu|truncatewords_html:80 }}</p>
+                <a class="btn btn-info" href="{% url 'lire' article.id %}">Lire</a>
+                <a class="blog-post-share pull-right" href="#">
+                	<i class="material-icons">&#xE80D;</i>
+                </a>
+            </div>
+        </div>
     </div>
+</section>
 {% empty %}
     <p>Aucun article.</p>
 {% endfor %}
+            </div>
+          </div>
+
+          <nav>
+            <ul class="pager">
+              <li><a class="withripple" href="#">Précédent</a></li>
+              <li><a class="withripple" href="#">Suivant</a></li>
+            </ul>
+          </nav>
+
+        </div>
+{% endblock %}

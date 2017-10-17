@@ -1,15 +1,37 @@
-<h1>Se connecter</h1>
+{% extends 'base.html' %}
 
-{% if error %}
-<p><strong>Utilisateur inconnu ou mauvais de mot de passe.</strong></p>
-{% endif %}
+{% load static %}
 
-{% if user.is_authenticated %}
-Vous êtes connecté, {{ user.username }} !
-{% else %}
-<form method="post" action="">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Se connecter" />
-</form>
-{% endif %}
+
+{% block connexion %}
+
+<div class="col-sm-8 blog-main">
+	<section class="blog-post">
+                <div class="panel panel-default">
+                  <div class="panel-body">
+
+
+					<div class="blog-post-content">
+                      <h2 class="blog-post-title">Se connecter</h2>
+                  	</br>
+                  	{% if error %}
+					<p><strong>Utilisateur inconnu ou mauvais de mot de passe.</strong></p>
+					{% endif %}
+					{% if user.is_authenticated %}
+					Vous êtes connecté (<strong>{{ user.username }}</strong>).
+					{% else %}
+                      <form class="form-horizontal style-form" method="post">
+
+                      	{% csrf_token %}
+    					{{ form.as_p }}
+    					<input type="submit" class="btn btn-theme" value="Connexion" />
+                      </form>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </section>
+</div>
+
+
+{% endblock %}

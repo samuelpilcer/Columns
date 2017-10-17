@@ -11,7 +11,22 @@ from articles.models import Article, Categorie
 def home(request):
     """ Exemple de page HTML, non valide pour que l'exemple soit concis """
     articles = Article.objects.all() # Nous sélectionnons tous nos articles
-    return render(request, 'blog/accueil.html', {'derniers_articles': articles})
+
+    if len(articles)>10:
+        n=5
+    else:
+        n=int(len(articles)/2)
+
+    articles1=[]
+    articles2=[]
+    for i in range(n):
+        articles1.append(articles[2*i])
+        articles2.append(articles[2*i+1])
+
+    if len(articles)<10 and 2*int(len(articles)/2) != len(articles):
+        articles1.append(articles[len(articles)-1])
+    
+    return render(request, 'blog/accueil.html', {'derniers_articles_1': articles1,'derniers_articles_2': articles2})
 
 
 def lire(request, id):
