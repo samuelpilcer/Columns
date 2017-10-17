@@ -1,3 +1,4 @@
+# coding: utf-8
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from .forms import ConnexionForm, InscriptionForm

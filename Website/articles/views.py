@@ -1,3 +1,4 @@
+# coding: utf-8
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
 from django.shortcuts import redirect
@@ -7,6 +8,9 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 from articles.models import Article, Categorie
+
+def homepage(request):
+    return redirect('/accueil')
 
 def home(request):
     """ Exemple de page HTML, non valide pour que l'exemple soit concis """
