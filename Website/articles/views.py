@@ -30,7 +30,35 @@ def home(request):
     if len(articles)<10 and 2*int(len(articles)/2) != len(articles):
         articles1.append(articles[len(articles)-1])
     
-    return render(request, 'blog/accueil.html', {'derniers_articles_1': articles1,'derniers_articles_2': articles2})
+    return render(request, 'blog/accueil.html', {'derniers_articles_1': articles1,'derniers_articles_2': articles2, 'page_suiv':1, 'page_prec':0})
+
+def read_page(request, nb):
+    """ Exemple de page HTML, non valide pour que l'exemple soit concis """
+    articles = Article.objects.all() # Nous sélectionnons tous nos articles
+    nb=int(nb)
+    if len(articles)>10+10*nb:
+        n=5
+    elif (len(articles)<=10+10*nb) and (len(articles)>10*nb):
+        n=int((len(articles)-10*nb)/2)
+    else:
+        return redirect('/accueil')
+
+    articles1=[]
+    articles2=[]
+    for i in range(n):
+        articles1.append(articles[2*i+10*nb])
+        articles2.append(articles[2*i+1+10*nb])
+
+    if len(articles)<10 and 2*int((len(articles)-10*nb)/2)+10*nb != len(articles):
+        articles1.append(articles[len(articles)-1])
+
+    if nb>0:
+        page_prec=nb-1
+    else:
+        page_prec=0
+    page_suiv=nb+1
+    
+    return render(request, 'blog/accueil.html', {'derniers_articles_1': articles1,'derniers_articles_2': articles2, 'page_suiv':page_suiv, 'page_prec':page_prec})
 
 
 def lire(request, id):
