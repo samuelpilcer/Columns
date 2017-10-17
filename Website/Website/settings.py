@@ -28,7 +28,7 @@ SECRET_KEY = '5*671yd@lqqaw0%(9we^p6h%9g712j9n4%te#e1*tfu&kw8p08'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 LOGIN_URL = '/authenticate/connexion'
 
