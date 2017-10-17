@@ -5,6 +5,16 @@
 {% block articles %}
 <div class="col-sm-8 blog-main">
 	<section class="blog-post">
+    {% if envoi %}
+        <div class="panel panel-default">
+                  <div class="panel-body">
+                    <div class="blog-post-content">
+                      <h2 class="blog-post-title">Votre article a bien été envoyé !</h2>
+                    </div>
+                  </div>
+                </div>
+{% else %}
+
                 <div class="panel panel-default">
                   <div class="panel-body">
                     <div class="blog-post-content">
@@ -19,14 +29,7 @@
                     </div>
                   </div>
                 </div>
-{% if envoi %}
-				<div class="panel panel-default">
-                  <div class="panel-body">
-                    <div class="blog-post-content">
-                      <h2 class="blog-post-title">Votre article a bien été envoyé !</h2>
-                    </div>
-                  </div>
-                </div>
+
 {% endif %}
               </section>
 </div>
