@@ -55,7 +55,7 @@
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
                 <li class="active dropdown">
-                  <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" type="btn" data-toggle="dropdown">Articles<b class="caret"></b></a>
+                  <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Articles<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li><a href="home-fashion.html">Derniers articles</a></li>
                     <li><a href="home-food.html">Articles de mes amis</a></li>
@@ -64,7 +64,7 @@
             </li>
             <li class="dropdown">
                   <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Catégories <b class="caret"></b></a>
-                  <ul class="dropdown-menu">
+                  <ul class="dropdown-menu" >
                     <li><a href="filter-category.html">Politique</a></li>
                       <li><a href="filter-author.html">Economie</a></li>
                       <li><a href="filter-author.html">Culture</a></li>
@@ -74,7 +74,7 @@
                   </ul>
               </li>
               <li><a href="/article/new">Post</a></li>
-              <li><a href="page-contact.html">Contact</a></li>
+              
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <!-- http://fontawesome.io/icons/#accessibility Brand icons -->
@@ -230,12 +230,12 @@
 
     <button class="material-scrolltop primary" type="button"></button>
 
-    <script src="js/jquery-1.11.3.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/ripples.min.js"></script>
-    <script src="js/material.min.js"></script>
-    <script src="js/material-scrolltop.js"></script>
-    <script src="js/main.js"></script>
+    <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/ripples.min.js' %}"></script>
+    <script src="{% static 'js/material.min.js' %}"></script>
+    <script src="{% static 'js/material-scrolltop.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
 
     <script>
       $.material.init();
