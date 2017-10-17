@@ -38,7 +38,7 @@ def read_page(request, nb):
     nb=int(nb)
     if len(articles)>10+10*nb:
         n=5
-    elif (len(articles)<=10+10*nb) and (len(articles)>10*nb):
+    elif (len(articles)<=10+10*nb) and (len(articles)>=10*nb):
         n=int((len(articles)-10*nb)/2)
     else:
         return redirect('/accueil')
@@ -49,7 +49,7 @@ def read_page(request, nb):
         articles1.append(articles[2*i+10*nb])
         articles2.append(articles[2*i+1+10*nb])
 
-    if len(articles)<10 and 2*int((len(articles)-10*nb)/2)+10*nb != len(articles):
+    if len(articles)<=10+10*nb and 2*int((len(articles)-10*nb)/2)+10*nb != len(articles):
         articles1.append(articles[len(articles)-1])
 
     if nb>0:
