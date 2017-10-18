@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-from articles.models import Article, Categorie, Comment, Like
+from articles.models import Article, Categorie, Comment, Like, Save
 
 def homepage(request):
     return redirect('/accueil')
@@ -195,6 +195,26 @@ def like(request, id):
         like_from_user[0].delete()
     else:
         new_like=Like()
+        new_like.auteur=request.user
+        new_like.article = article
+        new_like.save()
+    return redirect('/article/'+id)
+
+def save(request, id):
+    article=Article.objects.get(id=id)
+    try:
+        like_from_user = Save.objects.all().filter(article=article).filter(auteur=request.user)
+        if len(like_from_user)>0:
+            user_liked=True
+        else:
+            user_liked=False
+    except:
+        user_liked=False
+
+    if user_liked:
+        like_from_user[0].delete()
+    else:
+        new_like=Save()
         new_like.auteur=request.user
         new_like.article = article
         new_like.save()

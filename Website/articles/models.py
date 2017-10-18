@@ -49,3 +49,15 @@ class Like(models.Model):
         nous traiterons plus tard et dans l'administration
         """
         return self.auteur
+
+class Save(models.Model):
+    auteur = models.ForeignKey(User)
+    date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date de parution")
+    article = models.ForeignKey('Article')
+    def __str__(self):
+        """ 
+        Cette méthode que nous définirons dans tous les modèles
+        nous permettra de reconnaître facilement les différents objets que 
+        nous traiterons plus tard et dans l'administration
+        """
+        return self.auteur
