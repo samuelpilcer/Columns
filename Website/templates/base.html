@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<meta charset="utf-8" />
 <html lang="fr">
 {% load static %}
   <head>
@@ -83,11 +84,12 @@
                 <!-- http://fontawesome.io/icons/#accessibility Brand icons -->
                 {% if user.is_authenticated %}
                 
-                <li><a href="/authenticate/user"><strong>{{ user.username }}</strong>  <span class="badge badge-default"></span></a></li>
+                <li><a href="/authenticate/user"><strong>{{ user.username }}</strong> - <i class="glyphicon glyphicon-user"></i>  <span class="badge badge-default"></span></a></li>
                 <!--<span class="label label-light label-default pull-right">5</span>-->
                 {% else %}
                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="/authenticate/connexion"><i class="fa fa-black-tie"></i></a></li>
+                <!--<li><a href="/authenticate/connexion"><i class="fa fa-black-tie"></i></a></li>-->
+                <li><a href="/authenticate/connexion"><i class="glyphicon glyphicon-user"></i></a></li>
                 {% endif %}
             </ul>
             </div>
