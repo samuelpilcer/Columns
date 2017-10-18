@@ -54,26 +54,29 @@
         
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
-                <li class="active dropdown">
-                  <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Articles<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li><a href="home-fashion.html">Derniers articles</a></li>
-                    <li><a href="home-food.html">Articles de mes amis</a></li>
-                    <li><a href="home-music.html">Articles enregistrés</a></li>
-                </ul>
-            </li>
+
+              <!--
+                      <li class="active dropdown">
+                        <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Articles<b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                          <li><a href="/accueil">Derniers articles</a></li>
+                          <li><a href="/accueil">Articles de mes amis</a></li>
+                          <li><a href="/accueil">Articles enregistrés</a></li>
+                      </ul>
+                  </li> -->
+              <li><a href="/accueil">Articles</a></li>
             <li class="dropdown">
-                  <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Catégories <b class="caret"></b></a>
+                  <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Channels <b class="caret"></b></a>
                   <ul class="dropdown-menu" >
-                    <li><a href="filter-category.html">Politique</a></li>
-                      <li><a href="filter-author.html">Economie</a></li>
-                      <li><a href="filter-author.html">Culture</a></li>
-                      <li><a href="filter-author.html">International</a></li>
-                      <li><a href="filter-author.html">Société</a></li>
-                      <li><a href="filter-author.html">Idées</a></li>
+                    <li><a href="/article/tag/3">Politique</a></li>
+                      <li><a href="/article/tag/2">Economie</a></li>
+                      <li><a href="/article/tag/5">Culture</a></li>
+                      <li><a href="/article/tag/6">International</a></li>
+                      <li><a href="/article/tag/7">Société</a></li>
+                      <li><a href="/article/tag/8">Idées</a></li>
                   </ul>
               </li>
-              <li><a href="/article/new">Post</a></li>
+              <li><a href="/article/new">Publier un article</a></li>
               
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -113,7 +116,7 @@
             <div class="panel panel-default">
               <div class="panel-body">
                 <h4>Tribe</h4>
-                <p>Tribe est une nouvelle forme de média collaboratif. Nous vous permettons de publier du contenu et de le promouvoir. Nous vous proposons une liste de courts articles écrits par vos amis et par des experts reconnus, sur vos centres d'intérêt.</p>
+                <p>Tribe est une nouvelle forme de média collaboratif. Nous vous permettons de publier du contenu et de le promouvoir. Nous vous proposons une liste de courts articles écrits par vos amis et par des experts, sur vos centres d'intérêt.</p>
               </div>
             </div>
           </div><!-- /.sidebar-module -->
@@ -124,57 +127,22 @@
                 <h4>Tags</h4>
                 <ol class="categories list-unstyled">
                   <li>
-                    <a class="label label-light label-primary" href="filter-category.html">News</a>
+                    <a class="label label-light label-primary" href="/article/tag/3">Politique</a>
                     <span class="label label-light label-default pull-right">8</span>
                   </li>
                   <li>
-                    <a class="label label-light label-warning" href="filter-category.html">Apps</a>
+                    <a class="label label-light label-warning" href="/article/tag/2">Economie</a>
                     <span class="label label-light label-default pull-right">5</span>
                   </li>
                   <li>
-                    <a class="label label-light label-info" href="filter-category.html">Branding</a>
+                    <a class="label label-light label-info" href="/article/tag/4">Société</a>
                     <span class="label label-light label-default pull-right">9</span>
                   </li>
+                  <li>
+                    <a class="label label-light label-default" href="/article/tag/1">Autres</a>
+                    <span class="label label-light label-default pull-right">2</span>
+                  </li>
                 </ol>
-              </div>
-            </div>
-          </div><!-- /.sidebar-module -->
-
-          <div class="sidebar-module">
-            <div class="panel panel-default">
-              <div class="panel-body">
-                <h4>Par date</h4>
-                <ol class="list-unstyled">
-                  <li><a href="filter-date.html">February 2016</a></li>
-                  <li><a href="filter-date.html">January 2016</a></li>
-                  <li><a href="filter-date.html">December 2015</a></li>
-                  <li><a href="filter-date.html">November 2015</a></li>
-                  <li><a href="filter-date.html">October 2015</a></li>
-                  <li><a href="filter-date.html">September 2015</a></li>
-                  <li><a href="filter-date.html">August 2015</a></li>
-                  <li><a href="filter-date.html">July 2015</a></li>
-                  <li><a href="filter-date.html">June 2015</a></li>
-                  <li><a href="filter-date.html">May 2015</a></li>
-                  <li><a href="filter-date.html">April 2015</a></li>
-                  <li><a href="filter-date.html">March 2015</a></li>
-                </ol>
-              </div>
-            </div>
-          </div><!-- /.sidebar-module -->
-
-          <div class="sidebar-module">
-            <div class="panel panel-default">
-              <div class="panel-body">
-                <h4>Newsletter</h4>
-                <div class="form-group label-floating">
-                  <label class="control-label" for="name">Name</label>
-                  <input type="text" id="name" class="form-control input-sm">
-                </div>
-                <div class="form-group label-floating">
-                  <label class="control-label" for="email">E-mail</label>
-                  <input type="text" id="email" class="form-control input-sm">
-                </div>
-                <a href="#" class="btn btn-default btn-raised btn-sm btn-block">Subscribe</a>
               </div>
             </div>
           </div><!-- /.sidebar-module -->
@@ -208,10 +176,9 @@
 
             <div class="col-sm-8 text-center offset">
               <ul class="list-inline">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="page-about.html">About</a></li>
-                <li><a href="doc-buttons.html">Documentation</a></li>
-                <li><a href="page-contact.html">Contact</a></li>
+                <li><a href="/accueil">Accueil</a></li>
+                <li><a href="/accueil">About</a></li>
+                <li><a href="/accueil">Contact</a></li>
               </ul>
             </div>
 
