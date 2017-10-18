@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-from articles.models import Article, Categorie, Comment
+from articles.models import Article, Categorie, Comment, Like
 
 def homepage(request):
     return redirect('/accueil')
@@ -117,6 +117,19 @@ def lire(request, id):
         article = Article.objects.get(id=id)
     except Article.DoesNotExist:
         raise Http404
+    try:
+        likes = Like.objects.all().filter(article=article)
+        number_of_likes=len(likes)
+    except:
+        number_of_likes=0
+    try:
+        like_from_user = Like.objects.all().filter(article=article).filter(auteur=request.user)
+        if len(like_from_user)>0:
+            has_liked=True
+        else:
+            has_liked=False
+    except:
+        has_liked=False
 
     form = CommentForm(request.POST or None)
     # Nous vérifions que les données envoyées sont valides
@@ -139,7 +152,7 @@ def lire(request, id):
     except:
         comments=[]
 
-    return render(request, 'blog/lire.html', {'article': article, 'form':form, 'comments': comments})
+    return render(request, 'blog/lire.html', {'article': article, 'form':form, 'comments': comments, 'has_liked':has_liked, 'number_of_likes':number_of_likes})
 
 @login_required
 def new(request):
@@ -168,4 +181,21 @@ def new(request):
 
 
 def like(request, id):
-    return redirect(reverse(connexion))
+    article=Article.objects.get(id=id)
+    try:
+        like_from_user = Like.objects.all().filter(article=article).filter(auteur=request.user)
+        if len(like_from_user)>0:
+            user_liked=True
+        else:
+            user_liked=False
+    except:
+        user_liked=False
+
+    if user_liked:
+        like_from_user[0].delete()
+    else:
+        new_like=Like()
+        new_like.auteur=request.user
+        new_like.article = article
+        new_like.save()
+    return redirect('/article/'+id)

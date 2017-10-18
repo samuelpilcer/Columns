@@ -23,12 +23,12 @@
                   <p> <strong> {{ article.auteur }} </strong> </p>
                 </div>
                 <div class="blog-post-meta">
-                <button class="btn btn-primary" type="button">
-                  Like <span class="badge">4</span>
-                </button>
-                <button class="btn btn-primary" type="button">
+                <a class="btn btn-primary" type="button" href="{% url 'like' article.id %}">
+                  Like <span class="badge">{{number_of_likes}}</span>
+                </a>
+                <a class="btn btn-primary" type="button">
                   Save
-                </button>
+                </a>
               </div>
               </div>
             </div>
