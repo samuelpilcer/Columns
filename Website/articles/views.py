@@ -30,7 +30,10 @@ def home(request):
     if len(articles)<10 and 2*int(len(articles)/2) != len(articles):
         articles1.append(articles[len(articles)-1])
     
-    return render(request, 'blog/accueil.html', {'derniers_articles_1': articles1,'derniers_articles_2': articles2, 'page_suiv':1, 'page_prec':0})
+    bool_prec=False
+    bool_suiv=True
+
+    return render(request, 'blog/accueil.html', {'derniers_articles_1': articles1,'derniers_articles_2': articles2, 'page_suiv':1, 'page_prec':0,'bool_suiv': bool_suiv, 'bool_prec': bool_prec})
 
 def read_page(request, nb):
     """ Exemple de page HTML, non valide pour que l'exemple soit concis """
@@ -38,8 +41,10 @@ def read_page(request, nb):
     nb=int(nb)
     if len(articles)>10+10*nb:
         n=5
+        bool_suiv=True
     elif (len(articles)<=10+10*nb) and (len(articles)>=10*nb):
         n=int((len(articles)-10*nb)/2)
+        bool_suiv=False
     else:
         return redirect('/accueil')
 
@@ -54,11 +59,14 @@ def read_page(request, nb):
 
     if nb>0:
         page_prec=nb-1
+        bool_prec=True
     else:
         page_prec=0
+        bool_prec=False
     page_suiv=nb+1
     
-    return render(request, 'blog/accueil.html', {'derniers_articles_1': articles1,'derniers_articles_2': articles2, 'page_suiv':page_suiv, 'page_prec':page_prec})
+
+    return render(request, 'blog/accueil.html', {'derniers_articles_1': articles1,'derniers_articles_2': articles2, 'page_suiv':page_suiv, 'page_prec':page_prec, 'bool_suiv': bool_suiv, 'bool_prec': bool_prec})
 
 
 def lire(request, id):
