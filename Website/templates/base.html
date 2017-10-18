@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 {% load static %}
   <head>
     <meta charset="utf-8">
@@ -83,7 +83,7 @@
                 <!-- http://fontawesome.io/icons/#accessibility Brand icons -->
                 {% if user.is_authenticated %}
                 
-                <li><a href="/authenticate/user"><strong>{{ user.username }}</strong>  <span class="badge badge-default">5</span></a></li>
+                <li><a href="/authenticate/user"><strong>{{ user.username }}</strong>  <span class="badge badge-default"></span></a></li>
                 <!--<span class="label label-light label-default pull-right">5</span>-->
                 {% else %}
                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -128,19 +128,19 @@
                 <ol class="categories list-unstyled">
                   <li>
                     <a class="label label-light label-primary" href="/article/tag/3">Politique</a>
-                    <span class="label label-light label-default pull-right">8</span>
+                    <span class="label label-light label-default pull-right"></span>
                   </li>
                   <li>
                     <a class="label label-light label-warning" href="/article/tag/2">Economie</a>
-                    <span class="label label-light label-default pull-right">5</span>
+                    <span class="label label-light label-default pull-right"></span>
                   </li>
                   <li>
                     <a class="label label-light label-info" href="/article/tag/4">Société</a>
-                    <span class="label label-light label-default pull-right">9</span>
+                    <span class="label label-light label-default pull-right"></span>
                   </li>
                   <li>
                     <a class="label label-light label-default" href="/article/tag/1">Autres</a>
-                    <span class="label label-light label-default pull-right">2</span>
+                    <span class="label label-light label-default pull-right"></span>
                   </li>
                 </ol>
               </div>
