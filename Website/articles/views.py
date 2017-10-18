@@ -165,3 +165,7 @@ def new(request):
     
     # Quoiqu'il arrive, on affiche la page du formulaire.
     return render(request, 'blog/new.html', locals())
+
+
+def like(request, id):
+    return redirect(reverse(connexion))
