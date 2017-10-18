@@ -22,6 +22,7 @@
 
                   <p> <strong> {{ article.auteur }} </strong> </p>
                 </div>
+                <a class="btn btn-default glyphicon glyphicon-hand-up"></a>
               </div>
             </div>
           </section><!-- /.blog-post -->
@@ -47,13 +48,15 @@
                 {% empty %}
           <div>Aucun commentaire.</div>
           {% endfor %}
+          
           </div>
+          {% if user.is_authenticated %}
                 <form class="form-horizontal style-form" action="{% url 'lire' article.id %}" method="post">
-
                         {% csrf_token %}
                         {{ form.as_p }}
                       <input type="submit" class="btn btn-theme" value="Publier" />
                 </form>
+          {% endif %}
               </div>
             </div>
           </section>
