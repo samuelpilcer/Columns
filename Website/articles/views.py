@@ -2,12 +2,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
 from django.shortcuts import redirect
-from .forms import ArticleForm
+from .forms import ArticleForm, CommentForm
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-from articles.models import Article, Categorie
+from articles.models import Article, Categorie, Comment
 
 def homepage(request):
     return redirect('/accueil')
@@ -118,7 +118,28 @@ def lire(request, id):
     except Article.DoesNotExist:
         raise Http404
 
-    return render(request, 'blog/lire.html', {'article': article})
+    form = CommentForm(request.POST or None)
+    # Nous vérifions que les données envoyées sont valides
+    # Cette méthode renvoie False s'il n'y a pas de données 
+    # dans le formulaire ou qu'il contient des erreurs.
+    if form.is_valid(): 
+        # Ici nous pouvons traiter les données du formulaire
+        new_comment=Comment()
+        new_comment.auteur=request.user
+        new_comment.contenu = form.cleaned_data.get('contenu')
+        new_comment.article = article
+        new_comment.save()
+
+        # Nous pourrions ici envoyer l'e-mail grâce aux données 
+        # que nous venons de récupérer
+        envoi = True
+
+    try:
+        comments=Comment.objects.all().filter(article=article)
+    except:
+        comments=[]
+
+    return render(request, 'blog/lire.html', {'article': article, 'form':form, 'comments': comments})
 
 @login_required
 def new(request):

@@ -1,6 +1,6 @@
 # coding: utf-8
 from django import forms
-from .models import Article
+from .models import Article, Comment
 
 class ContactForm(forms.Form):
     sujet = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class' : 'form-control'}))
@@ -22,5 +22,14 @@ class ArticleForm(forms.ModelForm):
         widgets = {
             'titre': forms.TextInput(attrs={'class': 'form-control'}),
             'contenu': forms.Textarea(attrs={'class': 'form-control', 'rows': '20'}),
+        }
+        #fields = '__all__'
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields=('contenu',)
+        widgets = {
+            'contenu': forms.Textarea(attrs={'class': 'form-control', 'rows': '5'}),
         }
         #fields = '__all__'

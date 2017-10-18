@@ -24,3 +24,16 @@ class Categorie(models.Model):
 
     def __str__(self):
         return self.nom
+
+class Comment(models.Model):
+    auteur = models.ForeignKey(User)
+    contenu = models.TextField(null=True)
+    date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date de parution")
+    article = models.ForeignKey('Article')
+    def __str__(self):
+        """ 
+        Cette méthode que nous définirons dans tous les modèles
+        nous permettra de reconnaître facilement les différents objets que 
+        nous traiterons plus tard et dans l'administration
+        """
+        return self.auteur

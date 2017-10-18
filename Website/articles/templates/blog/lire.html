@@ -12,7 +12,7 @@
               <img src="img/technology/unsplash-2.jpg" class="img-responsive" />
               <div class="panel-body">
                 <div class="blog-post-meta">
-                  <span class="label label-light label-warning">Apps</span>
+                  <span class="label label-light label-warning">{{ article.categorie|linebreaks }}</span>
                   <p class="blog-post-date pull-right">{{ article.date|date:"DATE_FORMAT" }}</p>
                 </div>
                 <div class="blog-post-content">
@@ -26,11 +26,33 @@
             </div>
           </section><!-- /.blog-post -->
 
+
           <section class="blog-comments">
+            
+
             <div class="panel panel-default">
               <div class="panel-body">
                 <h2 class="blog-post-title">Comments</h2>
-                <div id="disqus_thread"></div>
+                <div id="disqus_thread">
+
+                {% for comment in comments %}
+                <div>
+                <div><strong>{{ comment.auteur }}</strong></span> <!-- primary, warning, info, ...-->
+                        <p class="blog-post-date pull-right">{{ comment.date|date:"DATE_FORMAT" }}</p>
+                    
+                        <p>{{ comment.contenu }}</p>
+                        </br></br>
+                    </div>
+                {% empty %}
+          <div>Aucun commentaire.</div>
+          {% endfor %}
+          </div>
+                <form class="form-horizontal style-form" action="{% url 'lire' article.id %}" method="post">
+
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                      <input type="submit" class="btn btn-theme" value="Publier" />
+                </form>
               </div>
             </div>
           </section>
