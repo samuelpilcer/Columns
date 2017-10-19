@@ -7,6 +7,7 @@ from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth import logout
 from articles.models import Article, Save
+from social_django.models import UserSocialAuth
 
 def connexion(request):
     error = False
