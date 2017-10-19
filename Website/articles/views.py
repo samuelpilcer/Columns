@@ -178,7 +178,7 @@ def new(request):
     # Quoiqu'il arrive, on affiche la page du formulaire.
     return render(request, 'blog/new.html', locals())
 
-
+@login_required
 def like(request, id):
     article=Article.objects.get(id=id)
     try:
@@ -199,6 +199,7 @@ def like(request, id):
         new_like.save()
     return redirect('/article/'+id)
 
+@login_required
 def save(request, id):
     article=Article.objects.get(id=id)
     try:
