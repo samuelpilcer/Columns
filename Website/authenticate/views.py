@@ -7,7 +7,6 @@ from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth import logout
 from articles.models import Article, Save
-from social_django.models import UserSocialAuth
 
 def connexion(request):
     error = False
@@ -50,13 +49,7 @@ def deconnexion(request):
 
 
 def userview(request):
-    try:
-        facebook_login = user.social_auth.get(provider='facebook')
-    except UserSocialAuth.DoesNotExist:
-        facebook_login = None
-    return render(request, 'user.html', {
-        'facebook_login': facebook_login
-    })
+    return render(request, 'user.html')
 
 def userarticles(request, nb):
 
