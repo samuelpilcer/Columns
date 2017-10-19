@@ -73,7 +73,6 @@ def read_by_tag(request, id, nb):
     """ Exemple de page HTML, non valide pour que l'exemple soit concis """
     try:
         categorie = Categorie.objects.get(id=id)
-        print(categorie)
         articles = Article.objects.all().filter(categorie=categorie) # Nous sélectionnons tous nos articles
     except:
         articles=[]

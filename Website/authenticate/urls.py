@@ -6,4 +6,6 @@ urlpatterns = [
     url(r'^/inscription$', views.inscription, name='inscription'),
     url(r'^/deconnexion$', views.deconnexion, name='deconnexion'),
     url(r'^/user$', views.userview, name='user'),
+    url(r'^/user/mycolumns/(\d+)$', views.userarticles, name='mycolumns'),
+    url(r'^/user/savedcolumns/(\d+)$', views.savedarticles, name='mycolumns'),
 ]

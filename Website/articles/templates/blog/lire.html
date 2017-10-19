@@ -25,10 +25,10 @@
                 {% if user.is_authenticated %}
                 <div class="blog-post-meta">
                 <a class="btn btn-primary" type="button" href="{% url 'like' article.id %}">
-                  Like <span class="badge">{{number_of_likes}}</span>
+                  J'aime <span class="badge">{{number_of_likes}}</span>
                 </a>
                 <a class="btn btn-primary" type="button" href="{% url 'save' article.id %}">
-                  Save
+                  Sauvegarder
                 </a>
               </div>
               {% endif %}
