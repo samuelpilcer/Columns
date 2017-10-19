@@ -89,7 +89,8 @@
                 <li><a href="/authenticate/user"><strong>{{ user.username }}</strong> - <i class="glyphicon glyphicon-user"></i>  <span class="badge badge-default"></span></a></li>
                 <!--<span class="label label-light label-default pull-right">5</span>-->
                 {% else %}
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="{% url 'social:begin' 'facebook' %}"><i class="fa fa-facebook"></i></a></li>
+                
                 <!--<li><a href="/authenticate/connexion"><i class="fa fa-black-tie"></i></a></li>-->
                 <li><a href="/authenticate/connexion"><i class="glyphicon glyphicon-user"></i></a></li>
                 {% endif %}
