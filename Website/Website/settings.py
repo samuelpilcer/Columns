@@ -49,7 +49,7 @@ INSTALLED_APPS = [
 ]
 
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
-    'fields': 'id,name,email', 
+    'fields': 'id,name,email,gender,about,birthday,first_name,last_name,hometown,education,interested_in,political,sports,context,age_range,about', 
 }
 
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
