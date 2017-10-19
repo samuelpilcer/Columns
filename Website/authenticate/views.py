@@ -49,7 +49,13 @@ def deconnexion(request):
 
 
 def userview(request):
-    return render(request, 'user.html')
+    try:
+        facebook_login = user.social_auth.get(provider='facebook')
+    except UserSocialAuth.DoesNotExist:
+        facebook_login = None
+    return render(request, 'user.html', {
+        'facebook_login': facebook_login
+    })
 
 def userarticles(request, nb):
 
