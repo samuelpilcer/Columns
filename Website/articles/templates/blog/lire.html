@@ -23,14 +23,12 @@
                   <p> <strong> {{ article.auteur }} </strong> </p>
                 </div>
                 {% if user.is_authenticated %}
-                <div class="blog-post-meta">
                 <a class="btn btn-primary" type="button" href="{% url 'like' article.id %}">
                   J'aime <span class="badge">{{number_of_likes}}</span>
                 </a>
                 <a class="btn btn-primary" type="button" href="{% url 'save' article.id %}">
                   Sauvegarder
                 </a>
-              </div>
               {% endif %}
                 <div id="shareBtn" class="btn btn-primary">Share</div>
 
