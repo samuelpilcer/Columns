@@ -21,7 +21,7 @@ class Article(models.Model):
 
 class Categorie(models.Model):
     nom = models.CharField(max_length=30)
-
+    colour = models.CharField(max_length=30)
     def __str__(self):
         return self.nom
 
