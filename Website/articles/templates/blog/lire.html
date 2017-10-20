@@ -32,6 +32,17 @@
                 </a>
               </div>
               {% endif %}
+                <div id="shareBtn" class="btn btn-success clearfix">Share</div>
+
+                <script>
+                document.getElementById('shareBtn').onclick = function() {
+                  FB.ui({
+                    method: 'share',
+                    display: 'popup',
+                    href: 'https://developers.facebook.com/docs/',
+                  }, function(response){});
+                }
+                </script>
               </div>
             </div>
           </section><!-- /.blog-post -->
