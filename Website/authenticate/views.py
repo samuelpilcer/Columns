@@ -94,7 +94,7 @@ def userarticles(request, nb):
 def profil(request):
     if request.method == "POST":
         signature_form = SignatureForm(request.POST)
-        if form.is_valid():
+        if signature_form.is_valid():
             try:
                 signature=Signature.objects.get(user=request.user)
                 signature.signature=signature_form.cleaned_data.get('signature')
