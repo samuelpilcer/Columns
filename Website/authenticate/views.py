@@ -6,7 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth import logout
-from articles.models import Article, Save
+from articles.models import Article, Save, Signature
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
