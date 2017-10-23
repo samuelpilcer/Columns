@@ -87,6 +87,19 @@ def userarticles(request, nb):
 
     return render(request, 'mycolumns.html', {'derniers_articles_1': articles1,'derniers_articles_2': articles2, 'page_suiv':page_suiv, 'page_prec':page_prec, 'bool_suiv': bool_suiv, 'bool_prec': bool_prec})
 
+def profil(request):
+    if request.method == 'POST':
+        form = InscriptionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('connexion')
+    else:
+        form = InscriptionForm()
+    return render(request, 'inscription.html', {'form': form})
 
 def savedarticles(request, nb):
 
