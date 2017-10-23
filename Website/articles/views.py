@@ -153,9 +153,9 @@ def lire(request, id):
     try:
         signature = Signature.objects.get(user=article.auteur).signature
     except:
-        signature = article.auteur.first_name+" "+article.auteur.last_name
+        signature = article.auteur
 
-    return render(request, 'blog/lire.html', {'article': article, 'form':form, 'comments': comments, 'has_liked':has_liked, 'number_of_likes':number_of_likes, 'signature':signature})
+    return render(request, 'blog/lire.html', {'article': article, 'form':form, 'comments': comments, 'has_liked':has_liked, 'number_of_likes':number_of_likes,'signature':signature})
 
 @login_required
 def new(request):
