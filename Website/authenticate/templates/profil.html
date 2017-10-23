@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+% load static %}
+
+
+{% block inscription %}
+
+<div class="col-sm-8 blog-main">
+  <section class="blog-post">
+                <div class="panel panel-default">
+                  <div class="panel-body">
+
+
+          <div class="blog-post-content">
+            <h2 class="blog-post-title">Mon profil</h2>
+                    </br>
+          
+                      <form class="form-horizontal style-form" method="post">
+
+                        {% csrf_token %}
+              {{ form.as_p }}
+              <input type="submit" class="btn btn-theme" value="Inscription" />
+                      </form>
+                <a href="/authenticate/connexion" type="button" class="btn btn-secondary">Retour</a>
+                    </div>
+                  </div>
+                </div>
+              </br>
+              </section>
+</div>
+
+
+
+{% endblock %}

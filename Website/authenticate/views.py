@@ -103,7 +103,7 @@ def profil(request):
                 signature_form.save()
     else:
         signature_form = SignatureForm()
-    return render(request, 'inscription.html', {'form': signature_form})
+    return render(request, 'profil.html', {'form': signature_form})
 
 @login_required
 def savedarticles(request, nb):
