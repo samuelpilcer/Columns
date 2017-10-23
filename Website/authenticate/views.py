@@ -95,7 +95,7 @@ def profil(request):
     if request.method == "POST":
         signature_form = SignatureForm(request.POST)
         if signature_form.is_valid():
-           signature=Signature.objects.update_or_create(user=request.user, signature=signature_form.cleaned_data.get('signature'), defaults=updated_values)
+           signature=Signature.objects.update_or_create(user=request.user, signature=signature_form.cleaned_data.get('signature'))
                 
     else:
         signature_form = SignatureForm()
