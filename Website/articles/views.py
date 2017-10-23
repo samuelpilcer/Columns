@@ -152,6 +152,8 @@ def lire(request, id):
 
     try:
         signature = Signature.objects.get(user=article.auteur).signature
+        if len(signature)==0:
+            signature = article.auteur
     except:
         signature = article.auteur
 
