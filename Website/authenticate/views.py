@@ -99,7 +99,7 @@ def profil(request):
                 obj = Signature.objects.get(user=request.user)
                 obj.signature = signature_form.cleaned_data.get('signature')
                 obj.save()
-            except Model.DoesNotExist:
+            except Signature.DoesNotExist:
                 obj=Signature()
                 obj.user=request.user
                 obj.signature = signature_form.cleaned_data.get('signature')
