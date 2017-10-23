@@ -93,11 +93,10 @@ def userarticles(request, nb):
 @login_required
 def profil(request):
     if request.method == "POST":
-        user = User.objects.get(id=id)
         signature_form = SignatureForm(request.POST)
         if form.is_valid():
             try:
-                signature=Signature.objects.get(user=user)
+                signature=Signature.objects.get(user=request.user)
                 signature.signature=signature_form.cleaned_data.get('signature')
             except:
                 signature_form.user=request.user
