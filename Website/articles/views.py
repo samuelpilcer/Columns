@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-from articles.models import Article, Categorie, Comment, Like, Save
+from articles.models import Article, Categorie, Comment, Like, Save, Signature
 
 def homepage(request):
     return redirect('/accueil')
@@ -64,7 +64,6 @@ def read_page(request, nb):
         page_prec=0
         bool_prec=False
     page_suiv=nb+1
-    
 
     return render(request, 'blog/accueil.html', {'derniers_articles_1': articles1,'derniers_articles_2': articles2, 'page_suiv':page_suiv, 'page_prec':page_prec, 'bool_suiv': bool_suiv, 'bool_prec': bool_prec})
 
@@ -151,7 +150,12 @@ def lire(request, id):
     except:
         comments=[]
 
-    return render(request, 'blog/lire.html', {'article': article, 'form':form, 'comments': comments, 'has_liked':has_liked, 'number_of_likes':number_of_likes})
+    try:
+        signature = Signature.objects.get(user=article.auteur)
+    except:
+        signature = article.auteur
+
+    return render(request, 'blog/lire.html', {'article': article, 'form':form, 'comments': comments, 'has_liked':has_liked, 'number_of_likes':number_of_likes, 'signature':signature})
 
 @login_required
 def new(request):

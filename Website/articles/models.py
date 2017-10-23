@@ -62,7 +62,7 @@ class Save(models.Model):
         """
         return self.auteur
 
-class Signatures(models.Model):
+class Signature(models.Model):
     user = models.ForeignKey(User)
     signature = models.CharField(max_length=50)
     def __str__(self):
