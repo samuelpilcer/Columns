@@ -1,12 +1,13 @@
 # coding: utf-8
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
-from .forms import ConnexionForm, InscriptionForm
+from .forms import ConnexionForm, InscriptionForm, SignatureForm
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth import logout
 from articles.models import Article, Save
+from django.contrib.auth.decorators import login_required
 
 def connexion(request):
     error = False
@@ -51,6 +52,7 @@ def deconnexion(request):
 def userview(request):
     return render(request, 'user.html')
 
+@login_required
 def userarticles(request, nb):
 
     try:
@@ -87,20 +89,23 @@ def userarticles(request, nb):
 
     return render(request, 'mycolumns.html', {'derniers_articles_1': articles1,'derniers_articles_2': articles2, 'page_suiv':page_suiv, 'page_prec':page_prec, 'bool_suiv': bool_suiv, 'bool_prec': bool_prec})
 
+@login_required
 def profil(request):
-    if request.method == 'POST':
-        form = InscriptionForm(request.POST)
+    if request.method == "POST":
+        user = User.objects.get(id=id)
+        signature_form = SignatureForm(request.POST)
         if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
-            return redirect('connexion')
+            try:
+                signature=Signature.objects.get(user=user)
+                signature.signature=signature_form.cleaned_data.get('signature')
+            except:
+                signature_form.user=request.user
+                signature_form.save()
     else:
-        form = InscriptionForm()
-    return render(request, 'inscription.html', {'form': form})
+        signature_form = SignatureForm()
+    return render(request, 'inscription.html', {'form': signature_form})
 
+@login_required
 def savedarticles(request, nb):
 
     try:
