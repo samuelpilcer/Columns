@@ -8,6 +8,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth import logout
 from articles.models import Article, Save
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 def connexion(request):
     error = False
