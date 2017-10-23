@@ -20,7 +20,7 @@
                   
                   <p>{{ article.contenu|linebreaks }}</p>
 
-                  <p> <strong> {{ article.auteur }} </strong> </p>
+                  <p> <strong> {{ signature }} </strong> </p>
                 </div>
                 {% if user.is_authenticated %}
                 <a class="btn btn-primary" type="button" href="{% url 'like' article.id %}">
