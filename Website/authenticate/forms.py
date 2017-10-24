@@ -26,4 +26,8 @@ class InscriptionForm(UserCreationForm):
 class SignatureForm(forms.ModelForm):
     class Meta:
         model = Signature
-        fields = ['signature']
+        fields = ['signature', 'bio']
+        widgets = {
+            'signature': forms.TextInput(attrs={'class': 'form-control'}),
+            'bio': forms.Textarea(attrs={'class': 'form-control', 'rows': '5'}),
+        }
