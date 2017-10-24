@@ -108,6 +108,12 @@ def read_by_tag(request, id, nb):
 def search(request, phrase):
     return search_page(request, phrase, 0)
 
+def search_form(request):
+    if request.method == 'POST':
+        name = request.POST.get('search')
+        return search(request, name)
+    else:
+        return redirect('/accueil')
 
 def search_page(request, phrase, nb):
     """ Exemple de page HTML, non valide pour que l'exemple soit concis """

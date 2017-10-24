@@ -112,9 +112,10 @@
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
 
           <div class="sidebar-module">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
-            </div>
+            <form class="form-group" action="/articles/search_by_form">
+              <input type="text" class="form-control" name='search' placeholder="Rechercher">
+              <input type="submit" class="btn btn-theme" value="Publier" />
+            </form>
           </div><!-- /.sidebar-module -->
 
           <div class="sidebar-module">
