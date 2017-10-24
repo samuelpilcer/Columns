@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+
+{% block articles %}
+<div class="col-sm-8 blog-main">
+          
+          <div class="row">
+            <div class="col-sm-6">
+				{% for article in derniers_articles_1 %}
+				<section class="blog-post">
+					<div class="panel panel-default">
+						<div class="panel-body">
+              <img src="http://paullaros.nl/material-blog-1-1/img/technology/unsplash-2.jpg" class="img-responsive" />
+							<div class="blog-post-meta">
+								<span class="label label-light label-{{ article.categorie.colour }}">{{ article.categorie }}</span> <!-- primary, warning, info, ...-->
+				                <p class="blog-post-date pull-right">{{ article.date|date:"DATE_FORMAT" }}</p>
+				            </div>
+				            <div class="blog-post-content">
+				                <a href="{% url 'lire' article.id %}">
+				                	<h2 class="blog-post-title">{{ article.titre }}</h2>
+				                </a>
+				              	<p>{{ article.contenu|truncatewords_html:80 }}</p>
+				                <a class="btn btn-info" href="{% url 'lire' article.id %}">Lire</a>
+				                <a class="blog-post-share pull-right" href="#">
+				                	<i class="material-icons">&#xE80D;</i>
+				                </a>
+				            </div>
+				        </div>
+				    </div>
+				</section>
+				{% empty %}
+    			<p>Aucun article.</p>
+{% endfor %}
+</div>
+
+
+<div class="col-sm-6">
+{% for article in derniers_articles_2 %}
+<section class="blog-post">
+	<div class="panel panel-default">
+		<div class="panel-body">
+      <img src="http://paullaros.nl/material-blog-1-1/img/technology/unsplash-2.jpg" class="img-responsive" />
+			<div class="blog-post-meta">
+				<span class="label label-light label-{{ article.categorie.colour }}">{{ article.categorie }}</span>
+                <p class="blog-post-date pull-right">{{ article.date|date:"DATE_FORMAT" }}</p>
+            </div>
+            <div class="blog-post-content">
+                <a href="{% url 'lire' article.id %}">
+                	<h2 class="blog-post-title">{{ article.titre }}</h2>
+                </a>
+              	<p>{{ article.contenu|truncatewords_html:80 }}</p>
+                <a class="btn btn-info" href="{% url 'lire' article.id %}">Lire</a>
+                <a class="blog-post-share pull-right" href="#">
+                	<i class="material-icons">&#xE80D;</i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% empty %}
+{% endfor %}
+            </div>
+          </div>
+
+          <nav>
+            <ul class="pager">
+              {% if bool_prec %}
+              <li><a class="withripple" href="{% url 'search' id=phrase page=page_prec %}">Précédent</a></li>
+              {% else %}
+              <li><a class="withripple active" href="#">Précédent</a></li>
+              {% endif %}
+
+              {% if bool_suiv %}
+              <li><a class="withripple" href="{% url 'search' id=phrase page=page_suiv %}">Suivant</a></li>
+              {% else %}
+              <li><a class="withripple active" href="#">Suivant</a></li>
+              {% endif %}
+            </ul>
+          </nav>
+
+        </div>
+{% endblock %}

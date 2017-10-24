@@ -103,7 +103,47 @@ def read_by_tag(request, id, nb):
         bool_prec=False
     page_suiv=nb+1
 
-    return render(request, 'blog/accueil.html', {'derniers_articles_1': articles1,'derniers_articles_2': articles2, 'page_suiv':page_suiv, 'page_prec':page_prec, 'bool_suiv': bool_suiv, 'bool_prec': bool_prec})
+    return render(request, 'blog/accueil.html', {'tag': id, 'derniers_articles_1': articles1,'derniers_articles_2': articles2, 'page_suiv':page_suiv, 'page_prec':page_prec, 'bool_suiv': bool_suiv, 'bool_prec': bool_prec})
+
+def search(request, phrase):
+    return search_page(request, phrase, 0)
+
+
+def search_page(request, phrase, nb):
+    """ Exemple de page HTML, non valide pour que l'exemple soit concis """
+    try:
+        articles = Article.objects.filter(body_text__search=phrase) # Nous sélectionnons tous nos articles
+    except:
+        articles=[]
+
+    nb=int(nb)
+    if len(articles)>10+10*nb:
+        n=5
+        bool_suiv=True
+    elif (len(articles)<=10+10*nb) and (len(articles)>=10*nb):
+        n=int((len(articles)-10*nb)/2)
+        bool_suiv=False
+    else:
+        return redirect('/accueil')
+
+    articles1=[]
+    articles2=[]
+    for i in range(n):
+        articles1.append(articles[2*i+10*nb])
+        articles2.append(articles[2*i+1+10*nb])
+
+    if len(articles)<=10+10*nb and 2*int((len(articles)-10*nb)/2)+10*nb != len(articles):
+        articles1.append(articles[len(articles)-1])
+
+    if nb>0:
+        page_prec=nb-1
+        bool_prec=True
+    else:
+        page_prec=0
+        bool_prec=False
+    page_suiv=nb+1
+
+    return render(request, 'blog/articles_by_tag.html', {'search': phrase, 'derniers_articles_1': articles1,'derniers_articles_2': articles2, 'page_suiv':page_suiv, 'page_prec':page_prec, 'bool_suiv': bool_suiv, 'bool_prec': bool_prec})
 
 
 def read_by_tag_p0(request, id):
