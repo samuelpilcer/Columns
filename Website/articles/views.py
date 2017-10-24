@@ -221,13 +221,14 @@ def lire(request, id):
             has_bio=False
         if len(signature)==0:
             signature = article.auteur.first_name+" "+article.auteur.last_name
-        if len(signature)==0:
-            signature = article.auteur
-        print("Signature : " +signature)
     except:
         signature = article.auteur.first_name+" "+article.auteur.last_name
         has_bio=False
         bio=''
+
+    if len(signature)==0:
+        signature = article.auteur
+        
 
     return render(request, 'blog/lire.html', {'article': article, 'form':form, 'comments': comments, 'has_liked':has_liked, 'number_of_likes':number_of_likes,'signature':signature, 'has_bio':has_bio, 'bio':bio})
 
