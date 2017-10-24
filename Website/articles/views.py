@@ -132,7 +132,7 @@ def search_page(request, phrase, nb):
         articles=[]
         for i in articles_id:
             print(i)
-            art=Article.objects.get(id=i)
+            art=Article.objects.get(id=i[0])
             articles.append(art)
     except:
         articles=[]
