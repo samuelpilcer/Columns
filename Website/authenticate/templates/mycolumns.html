@@ -32,6 +32,7 @@
                           <h2 class="blog-post-title">{{ article.titre }}</h2>
                         </a>
                         <p>{{ article.contenu|truncatewords_html:80 }}</p>
+                        <a class="btn btn-info" href="{% url 'lire' article.id %}">Lire</a>
                         <a class="btn btn-info" href="{% url 'lire' article.id %}">Modifier</a>
                 
                         <a class="btn btn-info" href="{% url 'lire' article.id %}"><i class="fa fa-times" aria-hidden="true"></i></a>
@@ -64,6 +65,7 @@
                 </a>
                 <p>{{ article.contenu|truncatewords_html:80 }}</p>
                 <a class="btn btn-info" href="{% url 'lire' article.id %}">Modifier</a>
+                        <a class="btn btn-info" href="{% url 'lire' article.id %}">Lire</a>
 
                 <a class="btn btn-info" href="{% url 'lire' article.id %}"><i class="fa fa-times" aria-hidden="true"></i></a>
 
