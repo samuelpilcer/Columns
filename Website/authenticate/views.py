@@ -110,7 +110,7 @@ def profil(request):
         try:
             obj = Signature.objects.get(user=request.user)
             signature_form = SignatureForm(instance=obj)
-        else:
+        except Signature.DoesNotExist:
             signature_form = SignatureForm()
     return render(request, 'profil.html', {'form': signature_form})
 
