@@ -111,8 +111,8 @@ def search(request, phrase):
 
 def search_form(request):
     if request.method == 'POST':
-        search = request.POST.get('search')
-        return search(request, search)
+        search_arg = request.POST.get('search')
+        return search(request, search_arg)
     else:
         return redirect('/accueil')
 
