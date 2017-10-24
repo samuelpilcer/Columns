@@ -110,15 +110,15 @@ def search(request, phrase):
 
 def search_form(request):
     if request.method == 'POST':
-        name = request.POST.get('search')
-        return search(request, name)
+        search = request.POST.get('search')
+        return search(request, search)
     else:
         return redirect('/accueil')
 
 def search_page(request, phrase, nb):
     """ Exemple de page HTML, non valide pour que l'exemple soit concis """
     try:
-        articles = Article.objects.filter(body_text__search=phrase) # Nous sélectionnons tous nos articles
+        articles = Article.objects.annotate(search=SearchVector('contenu', 'titre')).filter(search=phrase) # Nous sélectionnons tous nos articles
     except:
         articles=[]
 
