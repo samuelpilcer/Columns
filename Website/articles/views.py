@@ -228,7 +228,6 @@ def lire(request, id):
 
     if len(signature)<=5:
         signature = article.auteur.username
-    print("Signature : " +signature+". Len : "+str(len(signature)))
 
 
     return render(request, 'blog/lire.html', {'article': article, 'form':form, 'comments': comments, 'has_liked':has_liked, 'number_of_likes':number_of_likes,'signature':signature, 'has_bio':has_bio, 'bio':bio})
