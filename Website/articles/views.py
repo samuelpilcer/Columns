@@ -124,7 +124,7 @@ def search_page(request, phrase, nb):
         print(words)
         sql="SELECT id FROM articles_article WHERE "
         for i in words:
-            sql=sql+"'"+str(i)+"' LIKE contenu OR '"+str(i)+"' LIKE titre OR "
+            sql=sql+"'%"+str(i)+"%' LIKE contenu OR '%"+str(i)+"%' LIKE titre OR "
         sql=sql[:-4]
         print(sql)
         cursor.execute(sql)
