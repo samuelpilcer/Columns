@@ -121,12 +121,14 @@ def search_page(request, phrase, nb):
     try:
         cursor = connection.cursor()
         words=phrase.split(" ")
+        print(words)
         sql="SELECT id FROM articles_article WHERE "
         for i in words:
             sql=sql+"'"+str(i)+"' LIKE contenu OR '"+str(i)+"' LIKE titre OR "
         sql=sql[:-4]
         cursor.execute(sql)
         articles_id = cursor.fetchall() # Nous sélectionnons tous nos articles
+        print(articles_id)
         articles=[]
         for i in articles_id:
             articles.append(Article.objects.get(id=i))
