@@ -219,14 +219,14 @@ def lire(request, id):
         has_bio=True
         if len(bio)==0:
             has_bio=False
-        if len(signature)==0:
+        if len(signature)<=5:
             signature = article.auteur.first_name+" "+article.auteur.last_name
     except:
         signature = article.auteur.first_name+" "+article.auteur.last_name
         has_bio=False
         bio=''
 
-    if len(signature)==0:
+    if len(signature)<=5:
         signature = article.auteur
     print("Signature : " +signature+". Len : "+str(len(signature)))
 
