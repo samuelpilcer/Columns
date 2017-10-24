@@ -221,6 +221,8 @@ def lire(request, id):
             has_bio=False
         if len(signature)==0:
             signature = article.auteur.first_name+" "+article.auteur.last_name
+        if len(signature)==0:
+            signature = article.auteur
     except:
         signature = article.auteur.first_name+" "+article.auteur.last_name
         has_bio=False
