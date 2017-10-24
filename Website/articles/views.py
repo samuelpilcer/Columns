@@ -4,7 +4,7 @@ from django.http import HttpResponse, Http404
 from django.shortcuts import redirect
 from .forms import ArticleForm, CommentForm
 from django.contrib.auth.decorators import login_required
-from django.contrib.postgres.search import SearchVector
+from django.db import connection, transaction
 
 # Create your views here.
 
@@ -119,7 +119,14 @@ def search_form(request):
 def search_page(request, phrase, nb):
     """ Exemple de page HTML, non valide pour que l'exemple soit concis """
     try:
-        articles = Article.objects.annotate(search=SearchVector('contenu', 'titre')).filter(search=phrase) # Nous sélectionnons tous nos articles
+        cursor = connection.cursor()
+        words=phrase.split(" ")
+        sql="SELECT id FROM articles_article WHERE "
+        for i in words:
+            sql=sql+"'"+str(i)+"' LIKE contenu OR '"+str(i)+"' LIKE titre OR "
+        sql=sql[:-4]
+        cursor.execute(sql)
+        articles = cursor.fetchall() # Nous sélectionnons tous nos articles
     except:
         articles=[]
 
