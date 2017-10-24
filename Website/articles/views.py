@@ -161,6 +161,7 @@ def lire(request, id):
             signature = article.auteur.first_name+" "+article.auteur.last_name
     except:
         signature = article.auteur.first_name+" "+article.auteur.last_name
+        has_bio=False
 
     return render(request, 'blog/lire.html', {'article': article, 'form':form, 'comments': comments, 'has_liked':has_liked, 'number_of_likes':number_of_likes,'signature':signature, 'has_bio':has_bio, 'bio':bio})
 
