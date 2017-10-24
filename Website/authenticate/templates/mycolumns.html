@@ -34,9 +34,12 @@
                         <p>{{ article.contenu|truncatewords_html:80 }}</p>
                         <a class="btn btn-info" href="{% url 'lire' article.id %}">Lire</a>
                         
-                <a class="blog-post-share pull-right" href="#">
-                  <i class="fa fa-paragraph">&#xE80D;</i>
-                        </a>
+                        <a class="blog-post-share pull-right" href="#">
+                          <i class="glyphicon glyphicon-edit">&#xE80D;</i>
+                                </a>
+                        <a class="blog-post-share pull-right" href="#">
+                          <i class="glyphicon glyphicon-remove-sign">&#xE80D;</i>
+                                </a>
                     </div>
                 </div>
             </div>
@@ -63,7 +66,7 @@
                 </a>
                 <p>{{ article.contenu|truncatewords_html:80 }}</p>
                 <a class="btn btn-info" href="{% url 'lire' article.id %}">Lire</a>
-                
+
                 <a class="blog-post-share pull-right" href="#">
                   <i class="fa fa-paragraph">&#xE80D;</i>
                 </a>
