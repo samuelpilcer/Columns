@@ -227,7 +227,7 @@ def lire(request, id):
         bio=''
 
     if len(signature)<=5:
-        signature = article.auteur
+        signature = article.auteur.username
     print("Signature : " +signature+". Len : "+str(len(signature)))
 
 
