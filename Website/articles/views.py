@@ -223,6 +223,7 @@ def lire(request, id):
             signature = article.auteur.first_name+" "+article.auteur.last_name
         if len(signature)==0:
             signature = article.auteur
+        print("Signature : " +signature)
     except:
         signature = article.auteur.first_name+" "+article.auteur.last_name
         has_bio=False
