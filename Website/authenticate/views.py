@@ -98,14 +98,20 @@ def profil(request):
             try:
                 obj = Signature.objects.get(user=request.user)
                 obj.signature = signature_form.cleaned_data.get('signature')
+                obj.bio=signature_form.cleaned_data.get('bio')
                 obj.save()
             except Signature.DoesNotExist:
                 obj=Signature()
                 obj.user=request.user
+                obj.bio=signature_form.cleaned_data.get('bio')
                 obj.signature = signature_form.cleaned_data.get('signature')
                 obj.save()
     else:
-        signature_form = SignatureForm()
+        try:
+            obj = Signature.objects.get(user=request.user)
+            signature_form = SignatureForm(instance=obj)
+        else:
+            signature_form = SignatureForm()
     return render(request, 'profil.html', {'form': signature_form})
 
 @login_required
