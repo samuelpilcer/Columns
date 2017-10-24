@@ -4,6 +4,7 @@ from django.http import HttpResponse, Http404
 from django.shortcuts import redirect
 from .forms import ArticleForm, CommentForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.postgres.search import SearchVector
 
 # Create your views here.
 
