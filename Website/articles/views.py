@@ -289,7 +289,7 @@ def delete(request, id):
     if article.auteur==request.user:
         article.delete()
 
-    return redirect("/authenticate/user/mycolumns")
+    return redirect("mycolumns")
 
 @login_required
 def save(request, id):
