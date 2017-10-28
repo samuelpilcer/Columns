@@ -115,6 +115,18 @@ def profil(request):
     return render(request, 'profil.html', {'form': signature_form})
 
 @login_required
+def delete(request, id):
+    try:
+        article=Article.objects.get(id=id)
+    except Article.DoesNotExist:
+        raise Http404
+
+    if article.auteur==request.user:
+        article.delete()
+
+    return redirect("accueil")
+
+@login_required
 def savedarticles(request, nb):
 
     try:

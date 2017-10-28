@@ -280,18 +280,6 @@ def like(request, id):
     return redirect('/article/'+id)
 
 @login_required
-def delete(request, id):
-    try:
-        article=Article.objects.get(id=id)
-    except Article.DoesNotExist:
-        raise Http404
-
-    if article.auteur==request.user:
-        article.delete()
-
-    return redirect("mycolumns")
-
-@login_required
 def save(request, id):
     article=Article.objects.get(id=id)
     try:
