@@ -124,7 +124,7 @@ def delete(request, id):
     if article.auteur==request.user:
         article.delete()
 
-    return redirect("accueil")
+    return redirect(reverse(userarticles))
 
 @login_required
 def savedarticles(request, nb):
