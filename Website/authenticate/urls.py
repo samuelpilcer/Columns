@@ -7,6 +7,7 @@ urlpatterns = [
     url(r'^/deconnexion$', views.deconnexion, name='deconnexion'),
     url(r'^/user$', views.userview, name='user'),
     url(r'^/user/mycolumns/(\d+)$', views.userarticles, name='mycolumns'),
+    url(r'^/user/mycolumns/', views.userarticles_p0, name='mycolumns_p0'),
     url(r'^/user/savedcolumns/(\d+)$', views.savedarticles, name='savedcolumns'),
     url(r'^/user/profil$', views.profil, name='profil'),
     url(r'^article/delete/(\d+)$', views.delete, name='delete'),
