@@ -5,6 +5,7 @@ from django.shortcuts import redirect
 from .forms import ArticleForm, CommentForm
 from django.contrib.auth.decorators import login_required
 from django.db import connection, transaction
+from django.core.urlresolvers import reverse
 
 # Create your views here.
 
@@ -277,6 +278,18 @@ def like(request, id):
         new_like.article = article
         new_like.save()
     return redirect('/article/'+id)
+
+@login_required
+def delete(request, id):
+    try:
+        article=Article.objects.get(id=id)
+    except Article.DoesNotExist:
+        raise Http404
+
+    if article.auteur==request.user:
+        article.delete()
+
+    return redirect(reverse(connexion))
 
 @login_required
 def save(request, id):
