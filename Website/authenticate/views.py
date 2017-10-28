@@ -54,6 +54,10 @@ def userview(request):
     return render(request, 'user.html')
 
 @login_required
+def userarticles_p0(request):
+    return userarticles(request,0)
+
+@login_required
 def userarticles(request, nb):
 
     try:
@@ -124,7 +128,7 @@ def delete(request, id):
     if article.auteur==request.user:
         article.delete()
 
-    return redirect(reverse(userarticles))
+    return redirect(reverse(userarticles_p0))
 
 @login_required
 def savedarticles(request, nb):
