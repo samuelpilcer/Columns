@@ -273,12 +273,14 @@ def like(request, id):
     if user_liked:
         like_from_user[0].delete()
         article.likes=article.likes-1
+        article.save()
     else:
         new_like=Like()
         new_like.auteur=request.user
         new_like.article = article
         new_like.save()
-        article.likes=articles.likes+1
+        article.likes=article.likes+1
+        article.save()
     return redirect('/article/'+id)
 
 @login_required
