@@ -272,7 +272,7 @@ def like(request, id):
 
     if user_liked:
         like_from_user[0].delete()
-        article.likes=articles.likes-1
+        article.likes=article.likes-1
     else:
         new_like=Like()
         new_like.auteur=request.user
