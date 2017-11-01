@@ -79,7 +79,9 @@
                       <li><a href="/article/tag/7">Idées</a></li>
                   </ul>
               </li>
+              {% if user.is_authenticated %}
               <li><a href="/article/new">Publier un article</a></li>
+              {% endif %}
               
             </ul>
             <ul class="nav navbar-nav navbar-right">
