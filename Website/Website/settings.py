@@ -69,6 +69,34 @@ MIDDLEWARE_CLASSES = [
 
 ROOT_URLCONF = 'Website.urls'
 
+MEDIUM_EDITOR_THEME = 'bootstrap'
+MEDIUM_EDITOR_OPTIONS = {
+    'toolbar': {
+        'static': True,
+        'buttons': [
+            'bold',
+            'italic',
+            'underline',
+            'strikethrough',
+            'subscript',
+            'superscript',
+            'h1',
+            'h2',
+            'h3',
+            'h4',
+            'h5',
+            'h6',
+        ]
+    },
+    'paste': {
+        'forcePlainText': True,
+        'cleanPastedHTML': False,
+        'cleanReplacements': [],
+        'cleanAttrs': ['class', 'style', 'dir'],
+        'cleanTags': ['meta']
+    }
+}
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
