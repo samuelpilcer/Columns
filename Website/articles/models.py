@@ -12,7 +12,7 @@ class Article(models.Model):
                                 verbose_name="Date de parution")
     categorie = models.ForeignKey('Categorie')
     likes = models.IntegerField(default=0)
-    ranking = models.IntegerField(default=0)
+    ranking = models.FloatField(default=0)
     def __str__(self):
         """ 
         Cette méthode que nous définirons dans tous les modèles
