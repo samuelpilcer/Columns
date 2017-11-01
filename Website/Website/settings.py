@@ -80,6 +80,7 @@ MEDIUM_EDITOR_OPTIONS = {
             'h1',
             'h2',
             'quote',
+            'anchor',
         ]
     },
     'paste': {
