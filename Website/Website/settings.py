@@ -90,9 +90,9 @@ MEDIUM_EDITOR_OPTIONS = {
         'cleanTags': ['meta']
     }
     'anchor': {
-        customClassOption: 'btn',
-        customClassOptionText: 'Link',
-        placeholderText: 'Paste or type a link',
+        'customClassOption': 'btn',
+        'customClassOptionText': 'Link',
+        'placeholderText': 'Paste or type a link',
     }
 }
 
