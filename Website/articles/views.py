@@ -6,6 +6,7 @@ from .forms import ArticleForm, CommentForm
 from django.contrib.auth.decorators import login_required
 from django.db import connection, transaction
 from django.core.urlresolvers import reverse
+from process_ranking import *
 
 # Create your views here.
 
@@ -282,6 +283,11 @@ def like(request, id):
         article.likes=article.likes+1
         article.save()
     return redirect('/article/'+id)
+
+@login_required
+def actualize_rank(request):
+    process_ranking_all()
+    return redirect('/accueil')
 
 @login_required
 def save(request, id):

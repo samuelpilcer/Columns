@@ -14,4 +14,5 @@ urlpatterns = [
     url(r'^article/like/(\d+)$', views.like, name='like'),
     url(r'^article/save/(\d+)$', views.save, name='save'),
     url(r'^article/new$', views.new, name='new'),
+    url(r'^article/actualize_rank$', views.actualize_rank, name='actualize_rank'),
 ]
