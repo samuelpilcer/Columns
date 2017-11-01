@@ -1,5 +1,6 @@
 # coding: utf-8
 from django import forms
+from mediumeditor.widgets import MediumEditorTextarea
 from .models import Article, Comment
 
 class ContactForm(forms.Form):
@@ -21,7 +22,9 @@ class ArticleForm(forms.ModelForm):
         fields=('titre','contenu','categorie',)
         widgets = {
             'titre': forms.TextInput(attrs={'class': 'form-control'}),
-            'contenu': forms.Textarea(attrs={'class': 'form-control', 'rows': '20'}),
+            'contenu':  MediumEditorTextarea(),
+            #'contenu': forms.Textarea(attrs={'class': 'form-control', 'rows': '20'}),
+
         }
         #fields = '__all__'
 

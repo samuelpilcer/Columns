@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'articles',
     'authenticate',
     'social_django',
+    'mediumeditor',
 ]
 
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
