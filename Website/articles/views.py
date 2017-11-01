@@ -127,7 +127,7 @@ def search_page(request, phrase, nb):
         sql="SELECT id FROM articles_article WHERE "
         for i in words:
             sql=sql+"contenu LIKE '%"+str(i)+"%' OR titre LIKE '%"+str(i)+"%' AND "
-        sql=sql[:-5]
+        sql=sql[:-5]+" ORDER BY ranking DESC"
         print(sql)
         cursor.execute(sql)
         articles_id = cursor.fetchall() # Nous sélectionnons tous nos articles
