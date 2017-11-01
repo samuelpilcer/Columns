@@ -17,7 +17,7 @@ def homepage(request):
 
 def home(request):
     """ Exemple de page HTML, non valide pour que l'exemple soit concis """
-    articles = Article.objects.all() # Nous sélectionnons tous nos articles
+    articles = Article.objects.order_by('-ranking') # Nous sélectionnons tous nos articles
 
     if len(articles)>10:
         n=5
@@ -40,7 +40,7 @@ def home(request):
 
 def read_page(request, nb):
     """ Exemple de page HTML, non valide pour que l'exemple soit concis """
-    articles = Article.objects.all() # Nous sélectionnons tous nos articles
+    articles = Article.objects.order_by('-ranking') # Nous sélectionnons tous nos articles
     nb=int(nb)
     if len(articles)>10+10*nb:
         n=5
@@ -75,7 +75,7 @@ def read_by_tag(request, id, nb):
     """ Exemple de page HTML, non valide pour que l'exemple soit concis """
     try:
         categorie = Categorie.objects.get(id=id)
-        articles = Article.objects.all().filter(categorie=categorie) # Nous sélectionnons tous nos articles
+        articles = Article.objects.order_by('-ranking').filter(categorie=categorie) # Nous sélectionnons tous nos articles
     except:
         articles=[]
 
