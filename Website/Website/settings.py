@@ -73,6 +73,7 @@ MEDIUM_EDITOR_THEME = 'bootstrap'
 MEDIUM_EDITOR_OPTIONS = {
     'toolbar': {
         'static': True,
+        'align':'center',
         'buttons': [
             'bold',
             'italic',
@@ -88,7 +89,6 @@ MEDIUM_EDITOR_OPTIONS = {
             'h6',
         ]
     },
-    'mode': 'Medium.richMode',
     'paste': {
         'forcePlainText': True,
         'cleanPastedHTML': False,
