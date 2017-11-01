@@ -23,7 +23,15 @@
                       <form class="form-horizontal style-form" action="{% url "new" %}" method="post">
 
                       	{% csrf_token %}
-    					{{ form.as_p }}
+                        {% for field in form.visible_fields %}
+                          {{ field.errors }}
+                          
+                          <p>{{ field.help_text }}</p>
+                        </br>
+
+                          <p>{{ field }}</p>
+                          {% endfor %}
+    					
     					<input type="submit" class="btn btn-theme" value="Publier" />
                       </form>
                     </div>
