@@ -89,6 +89,11 @@ MEDIUM_EDITOR_OPTIONS = {
         'cleanAttrs': ['class', 'style', 'dir'],
         'cleanTags': ['meta']
     }
+    'anchor': {
+        customClassOption: 'btn',
+        customClassOptionText: 'Link',
+        placeholderText: 'Paste or type a link',
+    }
 }
 
 TEMPLATES = [
