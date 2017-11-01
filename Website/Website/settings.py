@@ -88,7 +88,7 @@ MEDIUM_EDITOR_OPTIONS = {
         'cleanReplacements': [],
         'cleanAttrs': ['class', 'style', 'dir'],
         'cleanTags': ['meta']
-    }
+    },
     'anchor': {
         'customClassOption': 'btn',
         'customClassOptionText': 'Link',
