@@ -88,6 +88,7 @@ MEDIUM_EDITOR_OPTIONS = {
             'h6',
         ]
     },
+    'mode': 'Medium.richMode',
     'paste': {
         'forcePlainText': True,
         'cleanPastedHTML': False,
