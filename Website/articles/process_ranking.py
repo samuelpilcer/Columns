@@ -4,7 +4,7 @@ from numpy import exp
 
 def process_ranking_all():
 	articles = Article.objects.all()
-	for i in range(articles):
+	for i in range(len(articles)):
 		article=articles[i]
 		publication=article.date
 		now = datetime.now()
