@@ -79,6 +79,7 @@ MEDIUM_EDITOR_OPTIONS = {
             'underline',
             'h1',
             'h2',
+            'quote',
         ]
     },
     'paste': {
