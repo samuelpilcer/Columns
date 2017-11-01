@@ -126,8 +126,8 @@ def search_page(request, phrase, nb):
         print(words)
         sql="SELECT id FROM articles_article WHERE "
         for i in words:
-            sql=sql+"contenu LIKE '%"+str(i)+"%' OR titre LIKE '%"+str(i)+"%' OR "
-        sql=sql[:-4]
+            sql=sql+"contenu LIKE '%"+str(i)+"%' OR titre LIKE '%"+str(i)+"%' AND "
+        sql=sql[:-5]
         print(sql)
         cursor.execute(sql)
         articles_id = cursor.fetchall() # Nous sélectionnons tous nos articles
@@ -255,6 +255,7 @@ def new(request):
         # Nous pourrions ici envoyer l'e-mail grâce aux données 
         # que nous venons de récupérer
         envoi = True
+        process_ranking_all()
     
     # Quoiqu'il arrive, on affiche la page du formulaire.
     return render(request, 'blog/new.html', locals())
@@ -275,6 +276,7 @@ def like(request, id):
         like_from_user[0].delete()
         article.likes=article.likes-1
         article.save()
+        process_ranking(id)
     else:
         new_like=Like()
         new_like.auteur=request.user
@@ -282,6 +284,7 @@ def like(request, id):
         new_like.save()
         article.likes=article.likes+1
         article.save()
+        process_ranking(id)
     return redirect('/article/'+id)
 
 @login_required
