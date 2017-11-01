@@ -73,7 +73,7 @@ MEDIUM_EDITOR_THEME = 'bootstrap'
 MEDIUM_EDITOR_OPTIONS = {
     'toolbar': {
         'static': True,
-        'align':'center',
+        'align':'right',
         'buttons': [
             'bold',
             'italic',
