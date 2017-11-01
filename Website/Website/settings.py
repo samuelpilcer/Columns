@@ -72,8 +72,7 @@ ROOT_URLCONF = 'Website.urls'
 MEDIUM_EDITOR_THEME = 'bootstrap'
 MEDIUM_EDITOR_OPTIONS = {
     'toolbar': {
-        'static': True,
-        'align':'right',
+        'static': False,
         'buttons': [
             'bold',
             'italic',
