@@ -26,10 +26,10 @@
                         {% for field in form.visible_fields %}
                           {{ field.errors }}
                           
-                          <p>{{ field.help_text }}</p>
+                          <p>{{ field.label }}</p>
                         </br>
 
-                          <p>{{ field }}</p>
+                          <div>{{ field }}</div>
                           {% endfor %}
     					
     					<input type="submit" class="btn btn-theme" value="Publier" />
