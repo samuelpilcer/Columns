@@ -20,7 +20,7 @@ class ContactForm(forms.Form):
 class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
-        fields=('titre','sous_titre','photo','contenu','categorie',)
+        fields=('photo','titre','sous_titre','contenu','categorie',)
         widgets = {
             'titre': forms.TextInput(attrs={'placeholder':'Titre','class': 'form-control'}),
             'sous_titre': forms.TextInput(attrs={'placeholder':"Phrase d'accroche",'class': 'form-control'}),
