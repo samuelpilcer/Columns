@@ -19,9 +19,10 @@ class ContactForm(forms.Form):
 class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
-        fields=('titre','contenu','categorie',)
+        fields=('titre','contenu','categorie','sous_titre',)
         widgets = {
             'titre': forms.TextInput(attrs={'placeholder':'Titre','class': 'form-control'}),
+            'sous_titre': forms.TextInput(attrs={'placeholder':"Phrase d'accroche",'class': 'form-control'}),
             'contenu':  MediumEditorTextarea(),
             #'contenu': forms.Textarea(attrs={'class': 'form-control', 'rows': '20'}),
             'categorie': forms.Select(attrs={'class': 'form-control'}),

@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 
 class Article(models.Model):
     titre = models.CharField(max_length=100)
+    sous_titre = models.CharField(max_length=400)
     auteur = models.ForeignKey(User)
     contenu = models.TextField(null=True)
     date = models.DateTimeField(auto_now_add=True, auto_now=False, 
