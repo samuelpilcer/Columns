@@ -258,7 +258,8 @@ def new(request):
             # que nous venons de récupérer
             envoi = True
             process_ranking_all()
-    
+    else:
+        form = ArticleForm(None)
     # Quoiqu'il arrive, on affiche la page du formulaire.
     return render(request, 'blog/new.html', locals())
 
