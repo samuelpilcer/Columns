@@ -17,7 +17,11 @@
                 </div>
                 <div class="blog-post-content">
                   <h1 class="blog-post-title">{{ article.titre }}</h1>
-                  
+                  photo url {{ article.photo.url }}
+                  {{ article.photo }}
+                  <img src="{{ article.photo.url }}" />
+                  <img src="{{ article.photo }}" />
+
                   {{ article.contenu|safe|linebreaks }}
 
                   <p> <strong> {{ signature }} </strong> </p>
