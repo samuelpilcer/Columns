@@ -26,6 +26,7 @@ class ArticleForm(forms.ModelForm):
             'contenu':  MediumEditorTextarea(),
             #'contenu': forms.Textarea(attrs={'class': 'form-control', 'rows': '20'}),
             'categorie': forms.Select(attrs={'class': 'form-control'}),
+            'photo':forms.FileInput(attrs={"class":"btn btn-primary btn-file"}),
 
         }
         #fields = '__all__'
