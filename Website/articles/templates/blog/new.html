@@ -30,19 +30,8 @@
                           
                            <!-- <h3>{{ field.label }}</h3> -->
                          </br>
-                         {% if field.label == "Contenu" %}
-                         </br>
 
-                        <div><textarea name="contenu" id="id_contenu" class="django-mediumeditor-input" rows="10" cols="40" required=""></textarea>
-            <p data-mediumeditor-textarea="id_contenu" class="django-mediumeditor-editable medium-editor-element medium-editor-placeholder" id="id_contenu_editable" contenteditable="true" spellcheck="true" data-medium-editor-element="true" role="textbox" aria-multiline="true" data-medium-editor-editor-index="1" medium-editor-index="81f434a1-4d84-f0ff-810b-66b1834f434b" data-placeholder="Contenu de votre article"></p>
-            <script type="text/javascript">
-                MediumEditorOptions={"placeholder": {"text": "Contenu de votre article", "hideOnClick": true}, "paste": {"cleanPastedHTML": false, "cleanReplacements": [], "forcePlainText": true, "cleanTags": ["meta"], "cleanAttrs": ["class", "style", "dir"]}, "anchor": {"customClassOptionText": "Lien", "customClassOption": "null", "placeholderText": "Rentrez un lien"}, "toolbar": {"buttons": ["bold", "italic", "underline", "justifyCenter", "justifyLeft", "justifyRight", "justifyFull", "h4", "h5", "quote", "anchor"], "static": false}};
-            </script></div>
-                          
-                          {% else %}
                           <div>{{ field }}</div>
-                          
-                          {% endif %}
                           {% endfor %}
     					
     					           <input type="submit" class="btn btn-theme" value="Publier" />
@@ -51,6 +40,7 @@
                   </div>
                 </div>
 
+          
 {% endif %}
               </section>
             
