@@ -24,7 +24,7 @@ class ArticleForm(forms.ModelForm):
             'titre': forms.TextInput(attrs={'placeholder':'Titre','class': 'form-control'}),
             'contenu':  MediumEditorTextarea(),
             #'contenu': forms.Textarea(attrs={'class': 'form-control', 'rows': '20'}),
-            'titre': forms.Select(attrs={'class': 'form-control'}),
+            'categorie': forms.Select(attrs={'class': 'form-control'}),
 
         }
         #fields = '__all__'
