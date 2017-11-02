@@ -6,7 +6,7 @@ from floppyforms import ClearableFileInput
  
  
 class ImageThumbnailFileInput(ClearableFileInput):
-    template_name = 'blog/new.html'
+    template_name = 'blog/upload.html'
 
 class ContactForm(forms.Form):
     sujet = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class' : 'form-control'}))
