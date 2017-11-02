@@ -40,15 +40,16 @@
                   </div>
                 </div>
 
-{% endif %}
-              </section>
-            {% for field in form.visible_fields %}
+                        {% for field in form.visible_fields %}
                           {% if field.label == "Contenu" %}
                          </br>
 
-                          {{ field }}
+                          <div class="blog-post-title">{{ field }}</div>
                           {% endif %}
                           {% endfor %}
+{% endif %}
+              </section>
+            
 </div>
 {% endblock %}
 
