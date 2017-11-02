@@ -18,7 +18,7 @@
                 <div class="blog-post-content">
                   <h1 class="blog-post-title">{{ article.titre }}</h1>
                   
-                  <p>{{ article.contenu|safe|linebreaks }}</p>
+                  {{ article.contenu|safe|linebreaks }}
 
                   <p> <strong> {{ signature }} </strong> </p>
                   {% if has_bio %}
