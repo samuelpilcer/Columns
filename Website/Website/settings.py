@@ -69,7 +69,7 @@ MIDDLEWARE_CLASSES = [
 
 ROOT_URLCONF = 'Website.urls'
 
-MEDIUM_EDITOR_THEME = 'bootstrap'
+MEDIUM_EDITOR_THEME = 'roman'
 MEDIUM_EDITOR_OPTIONS = {
     'toolbar': {
         'static': False,
