@@ -2,6 +2,11 @@
 from django import forms
 from mediumeditor.widgets import MediumEditorTextarea
 from .models import Article, Comment
+from floppyforms import ClearableFileInput
+ 
+ 
+class ImageThumbnailFileInput(ClearableFileInput):
+    template_name = 'floppyforms/image_thumbnail.html'
 
 class ContactForm(forms.Form):
     sujet = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class' : 'form-control'}))
@@ -26,7 +31,7 @@ class ArticleForm(forms.ModelForm):
             'contenu':  MediumEditorTextarea(),
             #'contenu': forms.Textarea(attrs={'class': 'form-control', 'rows': '20'}),
             'categorie': forms.Select(attrs={'class': 'form-control'}),
-            'photo':forms.FileInput(attrs={"class":"btn btn-primary btn-file"}),
+            'photo': ImageThumbnailFileInput,
 
         }
         #fields = '__all__'
