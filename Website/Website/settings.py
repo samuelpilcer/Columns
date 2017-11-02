@@ -81,6 +81,10 @@ MEDIUM_EDITOR_OPTIONS = {
             'h2',
             'quote',
             'anchor',
+            'justifyCenter',
+            'justifyLeft',
+            'justifyRight',
+            'justifyFull',
         ]
     },
     'paste': {
@@ -92,8 +96,8 @@ MEDIUM_EDITOR_OPTIONS = {
     },
     'anchor': {
         'customClassOption': 'null',
-        'customClassOptionText': 'Link',
-        'placeholderText': 'Paste or type a link',
+        'customClassOptionText': 'Lien',
+        'placeholderText': 'Rentrez un lien',
     }
 }
 
