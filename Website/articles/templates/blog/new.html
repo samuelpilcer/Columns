@@ -39,7 +39,15 @@
                    </div> 
                   </div>
                 </div>
+% csrf_token %}
+                        {% for field in form.visible_fields %}
+                          {{ field.errors }}
+                          
+                           <!-- <h3>{{ field.label }}</h3> -->
+                         </br>
 
+                          <div>{{ field }}</div>
+                          {% endfor %}
 {% endif %}
               </section>
             
