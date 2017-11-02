@@ -24,7 +24,7 @@ class ArticleForm(forms.ModelForm):
         widgets = {
             'titre': forms.TextInput(attrs={'placeholder':'Titre','class': 'form-control'}),
             'sous_titre': forms.TextInput(attrs={'placeholder':"Phrase d'accroche",'class': 'form-control'}),
-            'contenu':  MediumEditorTextarea(),
+            'contenu':  MediumEditorTextarea(attrs={'width':100%}),
             #'contenu': forms.Textarea(attrs={'class': 'form-control', 'rows': '20'}),
             'categorie': forms.Select(attrs={'class': 'form-control'}),
             'photo': forms.FileInput(attrs={"class":"btn btn-primary btn-file"}),
