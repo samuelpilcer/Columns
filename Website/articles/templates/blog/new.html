@@ -19,7 +19,7 @@
 
                 <div class="panel panel-default">
                   <div class="panel-body">
-                    <!-- <div class="blog-post-content"> -->
+                    <div class="blog-post-content">
                       <h2 class="blog-post-title">Publier un article sur Tribe</h2>
                   	</br>
                       <form class="form-horizontal style-form" action="{% url "new" %}" method="post">
@@ -31,12 +31,12 @@
                            <!-- <h3>{{ field.label }}</h3> -->
                          <!-- </br> -->
 
-                          <div style="width:100%;">{{ field }}</div>
+                          <div>{{ field }}</div>
                           {% endfor %}
     					
     					<input type="submit" class="btn btn-theme" value="Publier" />
                       </form>
-                     <!-- </div> -->
+                   </div> 
                   </div>
                 </div>
 
