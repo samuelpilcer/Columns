@@ -69,6 +69,9 @@ MIDDLEWARE_CLASSES = [
 
 ROOT_URLCONF = 'Website.urls'
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 MEDIUM_EDITOR_THEME = 'bootstrap'
 MEDIUM_EDITOR_OPTIONS = {
     'toolbar': {
