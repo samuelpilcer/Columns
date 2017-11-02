@@ -22,7 +22,7 @@ class ArticleForm(forms.ModelForm):
         fields=('titre','contenu','categorie',)
         widgets = {
             'titre': forms.TextInput(attrs={'placeholder':'Titre','class': 'form-control'}),
-            'contenu':  MediumEditorTextarea(),
+            'contenu':  MediumEditorTextarea(attrs={'class': 'form-control', 'rows': '20'})),
             #'contenu': forms.Textarea(attrs={'class': 'form-control', 'rows': '20'}),
             'categorie': forms.Select(attrs={'class': 'form-control'}),
 
