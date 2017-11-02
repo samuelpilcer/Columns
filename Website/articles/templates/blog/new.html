@@ -22,7 +22,7 @@
                     <div class="blog-post-content">
                       <h2 class="blog-post-title">Publier un article sur Tribe</h2>
                   	</br>
-                      <form class="form-horizontal style-form" action="{% url "new" %}" method="post">
+                      <form class="form-horizontal style-form" enctype="multipart/form-data" action="{% url "new" %}" method="post">
 
                       	{% csrf_token %}
                         {% for field in form.visible_fields %}
@@ -34,7 +34,7 @@
                           <div>{{ field }}</div>
                           {% endfor %}
     					
-    					<input type="submit" class="btn btn-theme" value="Publier" />
+    					           <input type="submit" class="btn btn-theme" value="Publier" />
                       </form>
                    </div> 
                   </div>
