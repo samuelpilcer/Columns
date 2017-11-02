@@ -47,8 +47,6 @@ INSTALLED_APPS = [
     'authenticate',
     'social_django',
     'mediumeditor',
-    'easy_thumbnails',
-    'crispy_forms',
 ]
 
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
