@@ -21,7 +21,7 @@ class ArticleForm(forms.ModelForm):
         model = Article
         fields=('titre','contenu','categorie',)
         widgets = {
-            'titre': forms.TextInput(attrs={'class': 'form-control'}),
+            'titre': forms.TextInput(attrs={'placeholder':'Titre','class': 'form-control'}),
             'contenu':  MediumEditorTextarea(),
             #'contenu': forms.Textarea(attrs={'class': 'form-control', 'rows': '20'}),
 
