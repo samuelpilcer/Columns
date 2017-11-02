@@ -77,14 +77,14 @@ MEDIUM_EDITOR_OPTIONS = {
             'bold',
             'italic',
             'underline',
-            'h1',
-            'h2',
-            'quote',
-            'anchor',
             'justifyCenter',
             'justifyLeft',
             'justifyRight',
             'justifyFull',
+            'h4',
+            'h5',
+            'quote',
+            'anchor',
         ]
     },
     'paste': {
@@ -98,6 +98,10 @@ MEDIUM_EDITOR_OPTIONS = {
         'customClassOption': 'null',
         'customClassOptionText': 'Lien',
         'placeholderText': 'Rentrez un lien',
+    },
+    'placeholder': {
+        'text': 'Contenu de votre article',
+        'hideOnClick': True,
     }
 }
 
