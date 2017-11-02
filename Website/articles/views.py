@@ -239,24 +239,25 @@ def new(request):
     # Construire le formulaire, soit avec les données postées,
     # soit vide si l'utilisateur accède pour la première fois
     # à la page.
-    form = ArticleForm(request.POST or None)
-    # Nous vérifions que les données envoyées sont valides
-    # Cette méthode renvoie False s'il n'y a pas de données 
-    # dans le formulaire ou qu'il contient des erreurs.
-    if form.is_valid(): 
-        # Ici nous pouvons traiter les données du formulaire
-        new_article=Article()
-        new_article.auteur=request.user
-        new_article.titre = form.cleaned_data.get('titre')
-        new_article.contenu = form.cleaned_data.get('contenu')
-        new_article.categorie = form.cleaned_data.get('categorie')
-        new_article.photo = form.cleaned_data.get('photo')
-        new_article.save()
+    if request.method=="POST":
+        form = ArticleForm(request.POST, request.FILES)
+        # Nous vérifions que les données envoyées sont valides
+        # Cette méthode renvoie False s'il n'y a pas de données 
+        # dans le formulaire ou qu'il contient des erreurs.
+        if form.is_valid(): 
+            # Ici nous pouvons traiter les données du formulaire
+            new_article=Article()
+            new_article.auteur=request.user
+            new_article.titre = form.cleaned_data.get('titre')
+            new_article.contenu = form.cleaned_data.get('contenu')
+            new_article.categorie = form.cleaned_data.get('categorie')
+            new_article.photo = form.cleaned_data.get('photo')
+            new_article.save()
 
-        # Nous pourrions ici envoyer l'e-mail grâce aux données 
-        # que nous venons de récupérer
-        envoi = True
-        process_ranking_all()
+            # Nous pourrions ici envoyer l'e-mail grâce aux données 
+            # que nous venons de récupérer
+            envoi = True
+            process_ranking_all()
     
     # Quoiqu'il arrive, on affiche la page du formulaire.
     return render(request, 'blog/new.html', locals())
