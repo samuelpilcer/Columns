@@ -250,6 +250,7 @@ def new(request):
         new_article.titre = form.cleaned_data.get('titre')
         new_article.contenu = form.cleaned_data.get('contenu')
         new_article.categorie = form.cleaned_data.get('categorie')
+        new_article.photo = form.cleaned_data.get('photo')
         new_article.save()
 
         # Nous pourrions ici envoyer l'e-mail grâce aux données 
