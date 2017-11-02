@@ -72,7 +72,7 @@ ROOT_URLCONF = 'Website.urls'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-MEDIUM_EDITOR_THEME = 'beagle'
+MEDIUM_EDITOR_THEME = 'roman'
 MEDIUM_EDITOR_OPTIONS = {
     'toolbar': {
         'static': False,
