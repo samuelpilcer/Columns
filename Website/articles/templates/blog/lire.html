@@ -4,9 +4,7 @@
 
 
 {% block article %}
-<head>
-  <title>Columns - {{ article.titre }}</title>
-</head>
+
 <div class="col-sm-8 blog-main">
 
           <section class="blog-post">
@@ -39,7 +37,23 @@
               {% endif %}
                 <div id="shareBtn" class="btn btn-primary">Partager</div>
 
-                <script>
+                 <script type="text/javascript">
+                 $(document).ready(function () {
+                 $('#shareBtn').click(function (e) {
+                 alert('hello11');
+                 var textToTweet = "Hi I am tweeting from here";
+                 if (textToTweet.length > 140) {
+                 alert('Tweet should be less than 140 Chars');
+                 }
+                 else {
+                 var twtLink = 'http://twitter.com/home?status=' + encodeURIComponent(textToTweet);
+                 window.open(twtLink,'_blank');
+                 }
+                 });
+                 });
+                </script>
+
+                <!--<script>
                 window.fbAsyncInit = function() {
                   FB.init({
                     appId            : '160658967855882',
@@ -64,7 +78,7 @@
                     href: 'http://test.columns.fr/article/{{ article.id }}',
                   }, function(response){});
                 }
-                </script>
+                </script> -->
               </div>
             </div>
           </section><!-- /.blog-post -->
