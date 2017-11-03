@@ -64,7 +64,7 @@ def userarticles_p0(request):
 def userarticles(request, nb):
 
     try:
-        articles = Article.objects.all().filter(auteur=request.user) # Nous sélectionnons tous nos articles
+        articles = Article.objects.all().filter(auteur=request.user).order_by('-date') # Nous sélectionnons tous nos articles
     except:
         articles=[]
 
@@ -155,7 +155,7 @@ def change_password(request):
 def savedarticles(request, nb):
 
     try:
-        saved = Save.objects.all().filter(auteur=request.user) # Nous sélectionnons tous nos articles
+        saved = Save.objects.all().filter(auteur=request.user).order_by('-date') # Nous sélectionnons tous nos articles
     except:
         saved = []
 
