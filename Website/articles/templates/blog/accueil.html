@@ -21,8 +21,14 @@
 				                </a>
 				              	<p>{{ article.sous_titre|safe|truncatewords_html:80 }}</p>
 				                <a class="btn btn-info" href="{% url 'lire' article.id %}">Lire</a>
-				                <a class="blog-post-share pull-right" id="share_{{ article.id }}" href="#">
-				                	<i class="material-icons" >&#xE80D;</i>
+				                <a class="blog-post-share " id="share_fb_{{ article.id }}" href="#">
+                          <i class="fa fa-facebook"></i>
+                          <!--<i class="material-icons">&#xE80D;</i>-->
+                        </a>
+                        <a class="blog-post-share " style="padding-left: 10px;" id="share_twitter_{{ article.id }}" href="#">
+                          <i class="fa fa-twitter"></i>
+                          <!--<i class="material-icons">&#xE80D;</i>-->
+                        </a>
                           <script>
                           window.fbAsyncInit = function() {
                             FB.init({
@@ -41,7 +47,7 @@
                              js.src = "//connect.facebook.net/en_US/sdk.js";
                              fjs.parentNode.insertBefore(js, fjs);
                            }(document, 'script', 'facebook-jssdk'));
-                          document.getElementById("share_{{ article.id }}").onclick = function() {
+                          document.getElementById("share_fb_{{ article.id }}").onclick = function() {
                             FB.ui({
                               method: 'share',
                               display: 'popup',
@@ -76,7 +82,7 @@
                 </a>
               	<p>{{ article.sous_titre|safe|truncatewords_html:80 }}</p>
                 <a class="btn btn-info" href="{% url 'lire' article.id %}">Lire</a>
-                <a class="blog-post-share " id="share_{{ article.id }}" href="#">
+                <a class="blog-post-share " id="share_fb_{{ article.id }}" href="#">
                   <i class="fa fa-facebook"></i>
                 	<!--<i class="material-icons">&#xE80D;</i>-->
                 </a>
@@ -102,7 +108,7 @@
                              js.src = "//connect.facebook.net/en_US/sdk.js";
                              fjs.parentNode.insertBefore(js, fjs);
                            }(document, 'script', 'facebook-jssdk'));
-                          document.getElementById("share_{{ article.id }}").onclick = function() {
+                          document.getElementById("share_fb_{{ article.id }}").onclick = function() {
                             FB.ui({
                               method: 'share',
                               display: 'popup',
