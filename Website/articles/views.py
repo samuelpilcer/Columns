@@ -250,6 +250,7 @@ def new(request):
             new_article.auteur=request.user
             new_article.titre = form.cleaned_data.get('titre')
             new_article.contenu = form.cleaned_data.get('contenu')
+            new_article.sous_titre = form.cleaned_data.get('sous_titre')
             new_article.categorie = form.cleaned_data.get('categorie')
             new_article.photo = form.cleaned_data['photo']
             new_article.save()
