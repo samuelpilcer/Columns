@@ -82,7 +82,6 @@ MEDIUM_EDITOR_OPTIONS = {
             'underline',
             'justifyCenter',
             'justifyLeft',
-            'justifyRight',
             'justifyFull',
             'h1',
             'h2',
