@@ -10,5 +10,6 @@ urlpatterns = [
     url(r'^/user/mycolumns/', views.userarticles_p0, name='mycolumns_p0'),
     url(r'^/user/savedcolumns/(\d+)$', views.savedarticles, name='savedcolumns'),
     url(r'^/user/profil$', views.profil, name='profil'),
+    url(r'^/user/pwd$', views.change_password, name='change_password'),
     url(r'^article/delete/(\d+)$', views.delete, name='delete'),
 ]
