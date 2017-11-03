@@ -86,9 +86,6 @@ MEDIUM_EDITOR_OPTIONS = {
             'justifyFull',
             'h1',
             'h2',
-            'h3',
-            'h4',
-            'h5',
             'quote',
             'anchor',
         ]
