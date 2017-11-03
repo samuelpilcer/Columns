@@ -27,7 +27,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '5*671yd@lqqaw0%(9we^p6h%9g712j9n4%te#e1*tfu&kw8p08'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -50,7 +50,7 @@ INSTALLED_APPS = [
 ]
 
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
-    'fields': 'id,name,email,user_friends,friends_location', 
+    'fields': 'id,name,email', 
 }
 
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
