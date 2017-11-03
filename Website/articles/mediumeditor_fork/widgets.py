@@ -24,7 +24,7 @@ class MediumEditorTextarea(forms.Textarea):
         html = super(MediumEditorTextarea, self).render(name, value, attrs)
         options = json.dumps(settings.MEDIUM_EDITOR_OPTIONS)
         html = mark_safe(u'''{}
-            <p {}></p>
+            <p {}></br></br></br></p>
             <script type="text/javascript">
                 MediumEditorOptions={};
             </script>'''.format(html, param_str, options))
