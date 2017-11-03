@@ -103,11 +103,7 @@ MEDIUM_EDITOR_OPTIONS = {
         'placeholderText': 'Rentrez un lien',
     },
     'placeholder': {
-        'text': 'Contenu de votre article 
-
-
-
-        ',
+        'text': 'Contenu de votre article',
         'hideOnClick': True,
     }
 }
