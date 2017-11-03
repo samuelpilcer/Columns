@@ -41,7 +41,7 @@
                              js.src = "//connect.facebook.net/en_US/sdk.js";
                              fjs.parentNode.insertBefore(js, fjs);
                            }(document, 'script', 'facebook-jssdk'));
-                          document.getElementById('shareBtn').onclick = function() {
+                          document.getElementById("share_{{ article.id }}").onclick = function() {
                             FB.ui({
                               method: 'share',
                               display: 'popup',
