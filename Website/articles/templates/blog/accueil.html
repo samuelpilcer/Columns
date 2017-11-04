@@ -25,12 +25,22 @@
                           <i class="fa fa-facebook"></i>
                           <!--<i class="material-icons">&#xE80D;</i>-->
                         </a>
-                        <a class="blog-post-share twitter-share-button" style="padding-left: 10px;"  href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-text="{{ article.sous_titre }} #Columns" data-url="http://www.url.com" data-hashtags="Columns" class="twitter-share-button" data-show-count="false">
+                        <a class="blog-post-share " id="share_fb_{{ article.id }}" style="padding-left: 10px;"  href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-text="{{ article.sous_titre }} #Columns" data-url="http://www.url.com" data-hashtags="Columns" data-show-count="false">
                           <i class="fa fa-twitter"></i>
                           <!--<i class="material-icons">&#xE80D;</i>-->
                         </a>
-                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                           <script>
+                            twttr.widgets.createShareButton(
+                                "https:\/\/dev.twitter.com\/web\/tweet-button",
+                                document.getElementById("tweet-container"),
+                                {
+                                  size: "large",
+                                  text: "custom share text",
+                                  hashtags: "example,demo",
+                                  via: "twitterdev",
+                                  related: "twitterapi,twitter"
+                                }
+                              );
                           window.fbAsyncInit = function() {
                             FB.init({
                               appId            : '160658967855882',
