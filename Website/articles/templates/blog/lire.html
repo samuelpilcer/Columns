@@ -112,7 +112,7 @@
           
           </div>
           {% if user.is_authenticated %}
-                <form class="form-horizontal style-form" action="{% url 'lire' article.id %}" method="post">
+                <form class="form-horizontal style-form" action="#" method="post">
                         {% csrf_token %}
                         {{ form.as_p }}
                       <input type="submit" class="btn btn-theme" value="Publier" />
