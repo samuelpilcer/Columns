@@ -17,7 +17,7 @@ def get_id(url):
     return url.split('-')[-1]
 
 def get_url(article):
-    url=''
+    url='user/'
     url=url+article.auteur.username+'/'
     url=url+article.titre.lower().replace(' ','-')+'-'
     url=url+str(article.id)
