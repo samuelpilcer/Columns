@@ -190,7 +190,7 @@ def get_article(request, user, article):
         article = Article.objects.get(id=id)
     except Article.DoesNotExist:
         raise Http404
-    if article.auteur!=user:
+    if article.auteur.username!=user:
         raise Http404
     else:
         return lire(request,id)
