@@ -266,6 +266,7 @@ def new(request):
             new_article.photo = form.cleaned_data['photo']
             new_article.save()
             new_article.url = get_url(new_article)
+            new_article.save()
 
                 # Nous pourrions ici envoyer l'e-mail grâce aux données 
                 # que nous venons de récupérer
