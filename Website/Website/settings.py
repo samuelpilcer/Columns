@@ -28,7 +28,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['.columns.fr']
 
 LOGIN_URL = '/authenticate/connexion'
 SECURE_SSL_REDIRECT=True
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'authenticate',
     'social_django',
     'mediumeditor',
+    'djangosecure',
 ]
 
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
