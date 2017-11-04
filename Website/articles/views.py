@@ -12,6 +12,17 @@ from process_ranking import *
 
 from articles.models import Article, Categorie, Comment, Like, Save, Signature
 
+
+def get_id(url):
+    return url.split('-')[-1]
+
+def get_url(article):
+    url='/'
+    url=url+article.auteur+'/'
+    url=url+article.titre.replace(' ','-')+'-'
+    url=url+article.id
+    return url
+
 def homepage(request):
     return redirect('/accueil')
 
