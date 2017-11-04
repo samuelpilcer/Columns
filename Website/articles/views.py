@@ -18,7 +18,7 @@ def get_id(url):
 
 def get_url(article):
     url='/'
-    url=url+article.auteur+'/'
+    url=url+article.auteur.username+'/'
     url=url+article.titre.replace(' ','-')+'-'
     url=url+article.id
     return url
@@ -265,6 +265,7 @@ def new(request):
             new_article.categorie = form.cleaned_data.get('categorie')
             new_article.photo = form.cleaned_data['photo']
             new_article.save()
+            new_article.url = form.cleaned_data.get('titre')
 
                 # Nous pourrions ici envoyer l'e-mail grâce aux données 
                 # que nous venons de récupérer

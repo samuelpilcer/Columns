@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 class Article(models.Model):
     titre = models.CharField(max_length=100)
     sous_titre = models.CharField(max_length=400)
-    photo = models.ImageField(upload_to='photos_articles',default = 'photos_articles/default.jpg')
+    photo = models.ImageField(upload_to='photos_articles', default = 'photos_articles/default.jpg')
     auteur = models.ForeignKey(User)
     contenu = models.TextField(null=True)
     date = models.DateTimeField(auto_now_add=True, auto_now=False, 
@@ -15,6 +15,7 @@ class Article(models.Model):
     categorie = models.ForeignKey('Categorie')
     likes = models.IntegerField(default=0)
     ranking = models.FloatField(default=0)
+    url = models.CharField(max_length=500, default = '/')
     def __str__(self):
         """ 
         Cette méthode que nous définirons dans tous les modèles
