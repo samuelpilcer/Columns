@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 import os
 from unipath import Path
 from config import *
+from django_param import SECRET_KEY
 
 PROJECT_DIR = Path(__file__).parent.parent
 
@@ -23,13 +24,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '5*671yd@lqqaw0%(9we^p6h%9g712j9n4%te#e1*tfu&kw8p08'
-
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['.columns.fr']
+
+SECURE_SSL_REDIRECT=True
 
 LOGIN_URL = '/authenticate/connexion'
 
