@@ -16,7 +16,7 @@
 				                <p class="blog-post-date pull-right">{{ article.date|date:"DATE_FORMAT" }}</p>
 				            </div>
 				            <div class="blog-post-content">
-				                <a href="{% url 'lire' article.id %}">
+				                <a href="{{ article.url }}">
 				                	<h2 class="blog-post-title">{{ article.titre }}</h2>
 				                </a>
 				              	<p>{{ article.sous_titre|safe|truncatewords_html:80 }}</p>
@@ -78,7 +78,7 @@
                 <p class="blog-post-date pull-right">{{ article.date|date:"DATE_FORMAT" }}</p>
             </div>
             <div class="blog-post-content">
-                <a href="{% url 'lire' article.id %}">
+                <a href="{{ article.url }}">
                 	<h2 class="blog-post-title">{{ article.titre }}</h2>
                 </a>
               	<p>{{ article.sous_titre|safe|truncatewords_html:80 }}</p>
@@ -88,7 +88,7 @@
                           <!--<i class="material-icons">&#xE80D;</i>-->
                         </a>
 
-                        <a class="blog-post-share " style="padding-left: 10px;"  href="https://twitter.com/share?url=https%3A%2F%2Ftest.columns.fr%2Farticle%2F{{ article.id }}&via=twitterdev&related=twitterapi%2Ctwitter&hashtags=columns%2Cdemo&text={{ article.titre }}">
+                        <a class="blog-post-share " style="padding-left: 10px;"  href="https://twitter.com/share?url=https%3A%2F%2Ftest.columns.fr%2F{{ article.url }}&related=twitterapi%2Ctwitter&hashtags=columns&text={{ article.titre }}">
                           <i class="fa fa-twitter"></i>
                           <!--<i class="material-icons">&#xE80D;</i>-->
                         </a>

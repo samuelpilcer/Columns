@@ -28,18 +28,18 @@
                         <p class="blog-post-date pull-right">{{ article.date|date:"DATE_FORMAT" }}</p>
                     </div>
                     <div class="blog-post-content">
-                        <a href="{% url 'lire' article.id %}">
+                        <a href="{{ article.url }}">
                           <h2 class="blog-post-title">{{ article.titre }}</h2>
                         </a>
                         <p>{{ article.sous_titre|safe|truncatewords_html:80 }}</p>
-                        <a class="btn btn-info" href="{% url 'lire' article.id %}">Lire</a>
+                        <a class="btn btn-info" href="{{ article.url }}">Lire</a>
                           
                         <a class="blog-post-share " id="share_fb_{{ article.id }}" href="#">
                           <i class="fa fa-facebook"></i>
                           <!--<i class="material-icons">&#xE80D;</i>-->
                         </a>
 
-                        <a class="blog-post-share " style="padding-left: 10px;"  href="https://twitter.com/share?url=https%3A%2F%2Ftest.columns.fr%2Farticle%2F{{ article.id }}&related=twitterapi%2Ctwitter&hashtags=columns&text={{ article.titre }}">
+                        <a class="blog-post-share " style="padding-left: 10px;"  href="https://twitter.com/share?url=https%3A%2F%2Ftest.columns.fr%2F{{ article.url }}&related=twitterapi%2Ctwitter&hashtags=columns&text={{ article.titre }}">
                           <i class="fa fa-twitter"></i>
                           <!--<i class="material-icons">&#xE80D;</i>-->
                         </a>
@@ -65,7 +65,7 @@
                             FB.ui({
                               method: 'share',
                               display: 'popup',
-                              href: 'http://test.columns.fr/article/{{ article.id }}',
+                              href: 'http://test.columns.fr/{{ article.url }}',
                             }, function(response){});
                           }
                           </script>
@@ -94,17 +94,17 @@
                 <p class="blog-post-date pull-right">{{ article.date|date:"DATE_FORMAT" }}</p>
             </div>
             <div class="blog-post-content">
-                <a href="{% url 'lire' article.id %}">
+                <a href="{{ article.url }}">
                   <h2 class="blog-post-title">{{ article.titre }}</h2>
                 </a>
                 <p>{{ article.sous_titre|safe|truncatewords_html:80 }}</p>
-                        <a class="btn btn-info" href="{% url 'lire' article.id %}">Lire</a>
+                        <a class="btn btn-info" href="{{ article.url }}">Lire</a>
                 <a class="blog-post-share " id="share_fb_{{ article.id }}" href="#">
                           <i class="fa fa-facebook"></i>
                           <!--<i class="material-icons">&#xE80D;</i>-->
                         </a>
 
-                        <a class="blog-post-share " style="padding-left: 10px;"  href="https://twitter.com/share?url=https%3A%2F%2Ftest.columns.fr%2Farticle%2F{{ article.id }}&related=twitterapi%2Ctwitter&hashtags=columns&text={{ article.titre }}">
+                        <a class="blog-post-share " style="padding-left: 10px;"  href="https://twitter.com/share?url=https%3A%2F%2Ftest.columns.fr%2F{{ article.url }}&related=twitterapi%2Ctwitter&hashtags=columns&text={{ article.titre }}">
                           <i class="fa fa-twitter"></i>
                           <!--<i class="material-icons">&#xE80D;</i>-->
                         </a>
@@ -130,10 +130,12 @@
                             FB.ui({
                               method: 'share',
                               display: 'popup',
-                              href: 'http://test.columns.fr/article/{{ article.id }}',
+                              href: 'http://test.columns.fr/{{ article.url }}',
                             }, function(response){});
                           }
                           </script>
+
+                          
                 <a class="btn btn-info" href="{% url 'delete' article.id %}"><i class="fa fa-times" aria-hidden="true"></i></a>
 
                 <a class="blog-post-share pull-right" href="#">
