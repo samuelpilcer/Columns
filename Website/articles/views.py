@@ -17,9 +17,9 @@ def get_id(url):
     return url.split('-')[-1]
 
 def get_url(article):
-    url='/'
+    url=''
     url=url+article.auteur.username+'/'
-    url=url+article.titre.replace(' ','-')+'-'
+    url=url+article.titre.lower().replace(' ','-')+'-'
     url=url+str(article.id)
     return url
 
@@ -184,6 +184,16 @@ def search_page(request, phrase, nb):
 def read_by_tag_p0(request, id):
     return read_by_tag(request, id, 0)
 
+def get_article(request, user, article):
+    id=get_id(article)
+    try:
+        article = Article.objects.get(id=id)
+    except Article.DoesNotExist:
+        raise Http404
+    if article.auteur!=user:
+        raise Http404
+    else:
+        return lire(request,id)
 
 def lire(request, id):
     try:
