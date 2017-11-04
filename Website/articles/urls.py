@@ -15,5 +15,5 @@ urlpatterns = [
     url(r'^article/save/(\d+)$', views.save, name='save'),
     url(r'^article/new$', views.new, name='new'),
     url(r'^article/actualize_rank$', views.actualize_rank, name='actualize_rank'),
-    url(r'^(?P<user>\d+)/(?P<article>\d+)$', views.get_article, name='get_article'),
+    url(r'^/(?P<user>\d+)/(?P<article>\d+)$', views.get_article, name='get_article'),
 ]
