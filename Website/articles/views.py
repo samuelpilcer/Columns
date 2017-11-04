@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.db import connection, transaction
 from django.core.urlresolvers import reverse
 from process_ranking import *
+import unicodedata
 
 # Create your views here.
 
