@@ -19,7 +19,7 @@ def get_id(url):
 def get_url(article):
     url='user/'
     url=url+article.auteur.username+'/'
-    url=url+article.titre.lower().replace(' ','-')+'-'
+    url=url+unicodedata.normalize('NFKD',  article.titre.lower()).encode('ascii', 'ignore').replace(' ','-')+'-'
     url=url+str(article.id)
     return url
 
