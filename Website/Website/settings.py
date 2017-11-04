@@ -28,7 +28,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['.columns.fr']
+ALLOWED_HOSTS = ['*']
 
 LOGIN_URL = '/authenticate/connexion'
 SECURE_SSL_REDIRECT=True
