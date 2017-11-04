@@ -20,7 +20,7 @@ def get_url(article):
     url='/'
     url=url+article.auteur.username+'/'
     url=url+article.titre.replace(' ','-')+'-'
-    url=url+article.id
+    url=url+str(article.id)
     return url
 
 def homepage(request):
