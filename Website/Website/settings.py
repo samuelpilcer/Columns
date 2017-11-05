@@ -32,10 +32,10 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 LOGIN_URL = '/authenticate/connexion'
-#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-#SECURE_SSL_REDIRECT = True
-#SESSION_COOKIE_SECURE = True
-#CSRF_COOKIE_SECURE = True
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# SECURE_SSL_REDIRECT = True
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
 
 # Application definition
 
@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     'authenticate',
     'social_django',
     'mediumeditor',
-    'djangosecure',
 ]
 
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
