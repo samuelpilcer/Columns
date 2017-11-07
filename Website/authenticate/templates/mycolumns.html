@@ -32,7 +32,7 @@
                           <h2 class="blog-post-title">{{ article.titre }}</h2>
                         </a>
                         <p>{{ article.sous_titre|safe|truncatewords_html:80 }}</p>
-                        <a class="btn btn-info" href="{{ article.url }}">Lire</a>
+                        <a class="btn btn-info" href="/{{ article.url }}">Lire</a>
                           
                         <a class="blog-post-share " id="share_fb_{{ article.id }}" href="#">
                           <i class="fa fa-facebook"></i>
@@ -94,11 +94,11 @@
                 <p class="blog-post-date pull-right">{{ article.date|date:"DATE_FORMAT" }}</p>
             </div>
             <div class="blog-post-content">
-                <a href="{{ article.url }}">
+                <a href="/{{ article.url }}">
                   <h2 class="blog-post-title">{{ article.titre }}</h2>
                 </a>
                 <p>{{ article.sous_titre|safe|truncatewords_html:80 }}</p>
-                        <a class="btn btn-info" href="{{ article.url }}">Lire</a>
+                        <a class="btn btn-info" href="/{{ article.url }}">Lire</a>
                 <a class="blog-post-share " id="share_fb_{{ article.id }}" href="#">
                           <i class="fa fa-facebook"></i>
                           <!--<i class="material-icons">&#xE80D;</i>-->
