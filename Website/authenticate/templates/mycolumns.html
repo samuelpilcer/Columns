@@ -28,7 +28,7 @@
                         <p class="blog-post-date pull-right">{{ article.date|date:"DATE_FORMAT" }}</p>
                     </div>
                     <div class="blog-post-content">
-                        <a href="www.columns.fr/{{ article.url }}">
+                        <a href="{% url articles:home %}{{ article.url }}">
                           <h2 class="blog-post-title">{{ article.titre }}</h2>
                         </a>
                         <p>{{ article.sous_titre|safe|truncatewords_html:80 }}</p>
