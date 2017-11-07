@@ -185,8 +185,8 @@ def search_page(request, phrase, nb):
 def read_by_tag_p0(request, id):
     return read_by_tag(request, id, 0)
 
-def get_article(request, url_given):
-    id=get_id(url_given)
+def get_article(request, user, article_url):
+    id=get_id(article_url)
     try:
         article = Article.objects.get(id=id)
     except Article.DoesNotExist:
