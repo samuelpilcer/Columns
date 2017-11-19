@@ -33,8 +33,10 @@ def home(request):
 
     if len(articles)>10:
         n=5
+        bool_suiv=True
     else:
         n=int(len(articles)/2)
+        bool_suiv=False
 
     articles1=[]
     articles2=[]
