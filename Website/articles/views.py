@@ -48,7 +48,6 @@ def home(request):
         articles1.append(articles[len(articles)-1])
     
     bool_prec=False
-    bool_suiv=True
 
     return render(request, 'blog/accueil.html', {'derniers_articles_1': articles1,'derniers_articles_2': articles2, 'page_suiv':1, 'page_prec':0,'bool_suiv': bool_suiv, 'bool_prec': bool_prec})
 
