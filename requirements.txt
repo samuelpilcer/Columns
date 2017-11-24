@@ -1,0 +1,2 @@
+django==1.11.6
+social_django==1.2.0
