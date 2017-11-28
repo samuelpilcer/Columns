@@ -288,7 +288,7 @@ def metrics(request, id):
                 personal_report.append(report['reports'][0]['data']['rows'][i]['metrics'][0]['values'])
                 temps_moyen=temps_moyen+float(report['reports'][0]['data']['rows'][i]['metrics'][0]['values'][3])
 
-        temps_moyen=temps_moyen/len(personal_report)
+        temps_moyen=int(temps_moyen/len(personal_report))
         return render(request, 'blog/analytics.html', {'article': article, 'report':personal_report, 'vues':len(personal_report), 'temps_moyen':temps_moyen, 'report_dim': personal_report_dim, 'number_of_comments':nb_comments, 'number_of_likes':number_of_likes})
     else:
         return redirect(reverse(home))
