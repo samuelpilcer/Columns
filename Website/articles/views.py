@@ -8,7 +8,7 @@ from django.db import connection, transaction
 from django.core.urlresolvers import reverse
 from process_ranking import *
 import unicodedata
-
+from google_analytics import initialize_analyticsreporting, get_report
 # Create your views here.
 
 from articles.models import Article, Categorie, Comment, Like, Save, Signature
@@ -254,6 +254,42 @@ def lire(request, id):
 
 
     return render(request, 'blog/lire.html', {'article': article, 'form':form, 'comments': comments, 'has_liked':has_liked, 'number_of_likes':number_of_likes,'signature':signature, 'has_bio':has_bio, 'bio':bio})
+
+
+@login_required
+def metrics(request, id):
+    try:
+        article = Article.objects.get(id=id)
+    except Article.DoesNotExist:
+        raise Http404
+
+    if article.auteur==request.user:
+        try:
+            likes = Like.objects.all().filter(article=article)
+            number_of_likes=len(likes)
+        except:
+            number_of_likes=0
+        
+        try:
+            comments=Comment.objects.all().filter(article=article)
+            nb_comments=len(comments)
+        except:
+            comments=[]
+            nb_comments=0
+
+        analytics = initialize_analyticsreporting()
+        report=get_report(analytics)
+        personal_report_dim=[]
+        personal_report=[]
+        for i in range(len(report['reports'][0]['data']['rows'])):
+            if get_id(report['reports'][0]['data']['rows'][3]['dimensions'][1])==id:
+                personal_report_dim.append(report['reports'][0]['data']['rows'][3]['dimensions'])
+                personal_report.append(report['reports'][0]['data']['rows'][3]['metrics'][0]['values'])
+
+        return render(request, 'blog/analytics.html', {'article': article, 'report':personal_report, 'report_dim': personal_report_dim, 'number_of_comments':nb_comments, 'number_of_likes':number_of_likes})
+    else:
+        return redirect(reverse(home))
+
 
 @login_required
 def new(request):

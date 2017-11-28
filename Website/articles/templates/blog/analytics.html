@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} {{ article.titre }} - {{ block.super }} {% endblock %}
+
+{% block article %}
+
+<div class="col-sm-8 blog-main">
+
+          <section class="blog-post">
+            <div class="panel panel-default">
+              <img src="{{ article.photo.url }}" class="img-responsive" />
+              <div class="panel-body">
+                <div class="blog-post-meta">
+                  <span class="label label-light label-{{ article.categorie.colour }}">{{ article.categorie }}</span>
+                  <p class="blog-post-date pull-right">{{ article.date|date:"DATE_FORMAT" }}</p>
+                </div>
+                <div class="blog-post-content">
+                  <h1 class="blog-post-title">{{ article.titre }}</h1>
+                  'article': article, 'report':personal_report, 'report_dim': personal_report_dim, 'number_of_comments':nb_comments, 'number_of_likes':number_of_likes
+                  <p>Likes : {{ number_of_likes }}</p>
+                  <p>Comments : {{ number_of_comments }}</p>
+                  {% for report in personal_report %}
+                  <p>{{ report }}</p>
+                  {% empty %}
+                  <div>Aucun report analytics.</div>
+                  {% endfor %}
+                </div>
+
+                <script>
+                window.fbAsyncInit = function() {
+                  FB.init({
+                    appId            : '160658967855882',
+                    autoLogAppEvents : true,
+                    xfbml            : true,
+                    version          : 'v2.10'
+                  });
+                  FB.AppEvents.logPageView();
+                };
+
+                (function(d, s, id){
+                   var js, fjs = d.getElementsByTagName(s)[0];
+                   if (d.getElementById(id)) {return;}
+                   js = d.createElement(s); js.id = id;
+                   js.src = "//connect.facebook.net/en_US/sdk.js";
+                   fjs.parentNode.insertBefore(js, fjs);
+                 }(document, 'script', 'facebook-jssdk'));
+                document.getElementById('shareBtn').onclick = function() {
+                  FB.ui({
+                    method: 'share',
+                    display: 'popup',
+                    href: 'http://test.columns.fr/article/{{ article.id }}',
+                  }, function(response){});
+                }
+                </script>
+              </div>
+            </div>
+          </section><!-- /.blog-post -->
+          <style type="text/css">
+          .h1, h1 {
+                font-size: 24px;
+                color: #000;
+            }
+          .h2, h2 {
+                color: #000;
+                font-size: 18px;
+            }
+            .blog-post-content p {
+                color: #000;
+                margin: 18px auto;
+            }
+            body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4 {
+                font-family: 'Arial';
+            }
+            .blog-comments-title, .blog-post-title {
+                color: #000;
+            }
+          </style>
+
+
+          <section class="blog-comments">
+            
+
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <h2 class="blog-post-title">Feedback</h2>
+                </br></br>
+                <div id="disqus_thread">
+
+                {% for comment in comments %}
+                <div>
+                <div><strong>{{ comment.auteur.first_name }} {{ comment.auteur.last_name }}</strong></span> <!-- primary, warning, info, ...-->
+                        <p class="blog-post-date pull-right">{{ comment.date|date:"DATE_FORMAT" }}</p>
+                    
+                        <p>{{ comment.contenu }}</p>
+                        </br></br>
+                    </div>
+                {% empty %}
+          <div>Aucun commentaire.</div>
+          {% endfor %}
+          
+          </div>
+          {% if user.is_authenticated %}
+                <form class="form-horizontal style-form" action="#" method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                      <input type="submit" class="btn btn-theme" value="Publier" />
+                </form>
+          {% endif %}
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+{% endblock %}
+
