@@ -21,8 +21,8 @@
                   'article': article, 'report':personal_report, 'report_dim': personal_report_dim, 'number_of_comments':nb_comments, 'number_of_likes':number_of_likes
                   <p>Likes : {{ number_of_likes }}</p>
                   <p>Comments : {{ number_of_comments }}</p>
-                  {% for report in personal_report %}
-                  <p>{{ report }}</p>
+                  {% for report_row in report %}
+                  <p>{{ report_row }}</p>
                   {% empty %}
                   <div>Aucun report analytics.</div>
                   {% endfor %}
