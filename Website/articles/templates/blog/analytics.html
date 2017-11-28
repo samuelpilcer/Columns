@@ -20,6 +20,8 @@
                   <h1 class="blog-post-title">{{ article.titre }}</h1>
                   <p>Likes : {{ number_of_likes }}</p>
                   <p>Comments : {{ number_of_comments }}</p>
+                  <p>Vues : {{ vues }}</p>
+                  <p>Temps moyen passé sur l'article : {{ temps_moyen }}</p>
                   {% for report_row in report_dim %}
                   <p>{{ report_row }}</p>
                   {% empty %}
