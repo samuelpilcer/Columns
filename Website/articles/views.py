@@ -282,9 +282,9 @@ def metrics(request, id):
         personal_report_dim=[]
         personal_report=[]
         for i in range(len(report['reports'][0]['data']['rows'])):
-            #if get_id(report['reports'][0]['data']['rows'][3]['dimensions'][1])==id:
-            personal_report_dim.append(report['reports'][0]['data']['rows'][i]['dimensions'])
-            personal_report.append(report['reports'][0]['data']['rows'][i]['metrics'][0]['values'])
+            if get_id(report['reports'][0]['data']['rows'][i]['dimensions'][1])==id:
+                personal_report_dim.append(report['reports'][0]['data']['rows'][i]['dimensions'])
+                personal_report.append(report['reports'][0]['data']['rows'][i]['metrics'][0]['values'])
 
         return render(request, 'blog/analytics.html', {'article': article, 'report':personal_report, 'report_dim': personal_report_dim, 'number_of_comments':nb_comments, 'number_of_likes':number_of_likes})
     else:
