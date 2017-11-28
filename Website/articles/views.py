@@ -281,6 +281,7 @@ def metrics(request, id):
         report=get_report(analytics)
         personal_report_dim=[]
         personal_report=[]
+        temps_moyen=0
         for i in range(len(report['reports'][0]['data']['rows'])):
             if get_id(report['reports'][0]['data']['rows'][i]['dimensions'][1])==id:
                 personal_report_dim.append(report['reports'][0]['data']['rows'][i]['dimensions'])
