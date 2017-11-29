@@ -22,16 +22,25 @@
                   <p>Comments : {{ number_of_comments }}</p>
                   <p>Vues : {{ vues }}</p>
                   <p>Temps moyen passé sur l'article : {{ temps_moyen }} sec</p>
-                  {% for report_row in report_dim %}
-                  <p>{{ report_row }}</p>
-                  {% empty %}
-                  <div>Aucun report analytics.</div>
-                  {% endfor %}
-                  {% for report_row in report %}
-                  <p>{{ report_row }}</p>
-                  {% empty %}
-                  <div>Aucun report analytics.</div>
-                  {% endfor %}
+                  <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Likes</th>
+                  <th>Commentaires</th>
+                  <th>Vues</th>
+                  <th>Temps moyen</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{ number_of_likes }}</td>
+                  <td>{{ number_of_comments }}</td>
+                  <td>{{ vues }}</td>
+                  <td>{{ temps_moyen }} s.</td>
+                </tr>
+              </tbody>
+            </table></div>
                 </div>
 
                 <script>
