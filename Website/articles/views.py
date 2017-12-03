@@ -256,9 +256,9 @@ def lire(request, id):
     return render(request, 'blog/lire.html', {'article': article, 'form':form, 'comments': comments, 'has_liked':has_liked, 'number_of_likes':number_of_likes,'signature':signature, 'has_bio':has_bio, 'bio':bio})
 
 class table_row():
-    def __init__(v1,v2):
-        this.value1=v1
-        this.value2=v2
+    def __init__(self, v1,v2):
+        self.value1=v1
+        self.value2=v2
 
 @login_required
 def metrics(request, id):
