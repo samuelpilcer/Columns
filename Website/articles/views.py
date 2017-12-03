@@ -297,7 +297,7 @@ def metrics(request, id):
                 sources[report['reports'][0]['data']['rows'][i]['dimensions'][1]]=1
             else:
                 sources[report['reports'][0]['data']['rows'][i]['dimensions'][1]]=sources[report['reports'][0]['data']['rows'][i]['dimensions'][1]]+1
-            if report['reports'][0]['data']['rows'][i]['dimensions'][2] not in sources:
+            if report['reports'][0]['data']['rows'][i]['dimensions'][2] not in medium:
                 medium[report['reports'][0]['data']['rows'][i]['dimensions'][2]]=1
             else:
                 medium[report['reports'][0]['data']['rows'][i]['dimensions'][2]]=medium[report['reports'][0]['data']['rows'][i]['dimensions'][2]]+1
