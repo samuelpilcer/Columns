@@ -294,18 +294,18 @@ def metrics(request, id):
                 personal_report_dim.append(report['reports'][0]['data']['rows'][i]['dimensions'])
                 personal_report.append(report['reports'][0]['data']['rows'][i]['metrics'][0]['values'])
                 temps_moyen=temps_moyen+float(report['reports'][0]['data']['rows'][i]['metrics'][0]['values'][3])
-            if report['reports'][0]['data']['rows'][i]['dimensions'][1] not in sources:
-                sources[report['reports'][0]['data']['rows'][i]['dimensions'][1]]=1
-            else:
-                sources[report['reports'][0]['data']['rows'][i]['dimensions'][1]]=sources[report['reports'][0]['data']['rows'][i]['dimensions'][1]]+1
-            if report['reports'][0]['data']['rows'][i]['dimensions'][2] not in medium:
-                medium[report['reports'][0]['data']['rows'][i]['dimensions'][2]]=1
-            else:
-                medium[report['reports'][0]['data']['rows'][i]['dimensions'][2]]=medium[report['reports'][0]['data']['rows'][i]['dimensions'][2]]+1
-            if report['reports'][0]['data']['rows'][i]['dimensions'][4] not in cities:
-                cities[report['reports'][0]['data']['rows'][i]['dimensions'][4]]=1
-            else:
-                cities[report['reports'][0]['data']['rows'][i]['dimensions'][4]]=cities[report['reports'][0]['data']['rows'][i]['dimensions'][4]]+1
+                if report['reports'][0]['data']['rows'][i]['dimensions'][1] not in sources:
+                    sources[report['reports'][0]['data']['rows'][i]['dimensions'][1]]=1
+                else:
+                    sources[report['reports'][0]['data']['rows'][i]['dimensions'][1]]=sources[report['reports'][0]['data']['rows'][i]['dimensions'][1]]+1
+                if report['reports'][0]['data']['rows'][i]['dimensions'][2] not in medium:
+                    medium[report['reports'][0]['data']['rows'][i]['dimensions'][2]]=1
+                else:
+                    medium[report['reports'][0]['data']['rows'][i]['dimensions'][2]]=medium[report['reports'][0]['data']['rows'][i]['dimensions'][2]]+1
+                if report['reports'][0]['data']['rows'][i]['dimensions'][4] not in cities:
+                    cities[report['reports'][0]['data']['rows'][i]['dimensions'][4]]=1
+                else:
+                    cities[report['reports'][0]['data']['rows'][i]['dimensions'][4]]=cities[report['reports'][0]['data']['rows'][i]['dimensions'][4]]+1
         if (len(personal_report)>0):
             temps_moyen=int(temps_moyen/len(personal_report))
         else:
