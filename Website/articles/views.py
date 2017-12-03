@@ -282,16 +282,36 @@ def metrics(request, id):
         personal_report_dim=[]
         personal_report=[]
         temps_moyen=0
+        sources={}
+        medium={}
         for i in range(len(report['reports'][0]['data']['rows'])):
             if get_id(report['reports'][0]['data']['rows'][i]['dimensions'][1])==id:
                 personal_report_dim.append(report['reports'][0]['data']['rows'][i]['dimensions'])
                 personal_report.append(report['reports'][0]['data']['rows'][i]['metrics'][0]['values'])
                 temps_moyen=temps_moyen+float(report['reports'][0]['data']['rows'][i]['metrics'][0]['values'][3])
+            if report['reports'][0]['data']['rows'][i]['dimensions'][1] not in sources:
+                sources[report['reports'][0]['data']['rows'][i]['dimensions'][1]]=1
+            else:
+                sources[report['reports'][0]['data']['rows'][i]['dimensions'][1]]=sources[report['reports'][0]['data']['rows'][i]['dimensions'][1]]+1
+            if report['reports'][0]['data']['rows'][i]['dimensions'][2] not in sources:
+                medium[report['reports'][0]['data']['rows'][i]['dimensions'][2]]=1
+            else:
+                medium[report['reports'][0]['data']['rows'][i]['dimensions'][2]]=medium[report['reports'][0]['data']['rows'][i]['dimensions'][2]]+1
         if (len(personal_report)>0):
             temps_moyen=int(temps_moyen/len(personal_report))
         else:
             temps_moyen=0
-        return render(request, 'blog/analytics.html', {'article': article, 'report':personal_report, 'vues':len(personal_report), 'temps_moyen':temps_moyen, 'report_dim': personal_report_dim, 'number_of_comments':nb_comments, 'number_of_likes':number_of_likes})
+        table_sources=[]
+        table_sources_values=[]
+        for i in sources:
+            table_sources.append(i)
+            table_sources_values.append(sources[i])
+        table_medium=[]
+        table_medium_values=[]
+        for i in medium:
+            table_medium.append(i)
+            table_medium_values.append(medium[i])
+        return render(request, 'blog/analytics.html', {'article': article,'table_sources': table_medium, 'table_sources_values':table_medium_values, 'table_sources': table_sources, 'table_sources_values':table_sources_values, 'report':personal_report, 'vues':len(personal_report), 'temps_moyen':temps_moyen, 'report_dim': personal_report_dim, 'number_of_comments':nb_comments, 'number_of_likes':number_of_likes})
     else:
         return redirect(reverse(home))
 

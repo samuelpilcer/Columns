@@ -18,6 +18,7 @@
                 </div>
                 <div class="blog-post-content">
                   <h1 class="blog-post-title">{{ article.titre }}</h1>
+                  </br>
                   <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                       <thead>
@@ -37,6 +38,52 @@
                         </tr>
                       </tbody>
                     </table></div>
+                    </br>
+
+                    <div class="table-responsive">
+                      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                          <tr>
+                            <th>Media</th>
+                            <th>Nombre de vues</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <td>
+                            {% for media in table_medium %}
+                            <tr>{{ media }}</tr>
+                            {% empty %}
+                            {% endfor %}
+                          </td>
+                          <td>
+                            {% for media in table_medium_values %}
+                            <tr>{{ media }}</tr>
+                            {% empty %}
+                            {% endfor %}
+                          </td>
+                          
+                        </tbody>
+                      </table>
+                    </div>
+
+                  </br>
+
+                    <div class="table-responsive">
+                      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                          <tr>
+                            <th>Source</th>
+                            <th>Nombre de vues</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>{{ number_of_likes }}</td>
+                            <td>{{ number_of_comments }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                 </div>
 
                 <script>
