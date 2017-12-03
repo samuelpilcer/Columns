@@ -54,13 +54,13 @@
                           </tr>
                         </thead>
                         <tbody>
+                          {% for media in table_medium %}
                           <tr>
-                            {% for media in table_medium %}
                             <td>{{ media.value1 }}</td>
                             <td>{{ media.value2 }}</td>
-                            {% empty %}
-                            {% endfor %}
                           </tr>
+                          {% empty %}
+                          {% endfor %}
                         </tbody>
                       </table>
                     </div>
