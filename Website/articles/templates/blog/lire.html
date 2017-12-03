@@ -37,7 +37,7 @@
                 </a>
               {% endif %}
                 <div id="shareBtn" class="btn btn-primary">Facebook</div>
-                <a class="btn btn-primary" style="padding-left: 10px;"  href="https://twitter.com/share?url=https%3A%2F%2Fwww.columns.fr%2F{{ article.url }}?utm_source=twitter&related=twitterapi%2Ctwitter&hashtags=columns&text={{ article.titre }}">
+                <a class="btn btn-primary" style="padding-left: 10px;"  href="https://twitter.com/share?url=https%3A%2F%2Fwww.columns.fr%2F{{ article.url }}?utm_source=twitter&amp;utm_medium=sam&related=twitterapi%2Ctwitter&hashtags=columns&text={{ article.titre }}">
                           Twitter
                         </a>
                 <script>
@@ -63,9 +63,9 @@
                     method: 'share',
                     display: 'popup',
                     {% if user.is_authenticated %}
-                    href: 'http://www.columns.fr/article/{{ article.id }}?utm_source=twitter&utm_medium={{ user.username }}',
+                    href: 'http://www.columns.fr/article/{{ article.id }}?utm_source=facebook&utm_medium={{ user.username }}',
                     {% else %}
-                    href: 'http://www.columns.fr/article/{{ article.id }}?utm_source=twitter',
+                    href: 'http://www.columns.fr/article/{{ article.id }}?utm_source=facebook',
                     {% endif %}
                   }, function(response){});
                 }
