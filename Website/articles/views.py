@@ -290,7 +290,7 @@ def metrics(request, id):
         medium={}
         cities={}
         for i in range(len(report['reports'][0]['data']['rows'])):
-            if get_id(report['reports'][0]['data']['rows'][i]['dimensions'][1])==id:
+            if get_id(report['reports'][0]['data']['rows'][i]['dimensions'][5])==id:
                 personal_report_dim.append(report['reports'][0]['data']['rows'][i]['dimensions'])
                 personal_report.append(report['reports'][0]['data']['rows'][i]['metrics'][0]['values'])
                 temps_moyen=temps_moyen+float(report['reports'][0]['data']['rows'][i]['metrics'][0]['values'][3])
