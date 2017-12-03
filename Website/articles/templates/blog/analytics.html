@@ -40,6 +40,30 @@
                     </table></div>
                     </br>
 
+
+                    </br>
+
+                    <div class="table-responsive">
+                      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                          <tr>
+                            <th>Ville</th>
+                            <th>Nombre de vues</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for city in table_cities %}
+                          <tr>
+                            <td>{{ city.value1 }}</td>
+                            <td>{{ city.value2 }}</td>
+                          </tr>
+                          {% empty %}
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+
+
                     </br>
 
                     <div class="table-responsive">
