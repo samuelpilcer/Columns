@@ -311,7 +311,7 @@ def metrics(request, id):
         for i in medium:
             table_medium.append(i)
             table_medium_values.append(medium[i])
-        return render(request, 'blog/analytics.html', {'article': article,'table_sources': table_medium, 'table_sources_values':table_medium_values, 'table_sources': table_sources, 'table_sources_values':table_sources_values, 'report':personal_report, 'vues':len(personal_report), 'temps_moyen':temps_moyen, 'report_dim': personal_report_dim, 'number_of_comments':nb_comments, 'number_of_likes':number_of_likes})
+        return render(request, 'blog/analytics.html', {'article': article,'table_medium': table_medium, 'table_medium_values':table_medium_values, 'table_sources': table_sources, 'table_sources_values':table_sources_values, 'report':personal_report, 'vues':len(personal_report), 'temps_moyen':temps_moyen, 'report_dim': personal_report_dim, 'number_of_comments':nb_comments, 'number_of_likes':number_of_likes})
     else:
         return redirect(reverse(home))
 
