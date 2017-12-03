@@ -30,14 +30,17 @@
                 </div>
                 {% if user.is_authenticated %}
                 <a class="btn btn-primary" type="button" href="{% url 'like' article.id %}">
-                  J'aime <span class="badge">{{number_of_likes}}</span>
+                  Féliciter <span class="badge">{{number_of_likes}}</span>
                 </a>
                 <a class="btn btn-primary" type="button" href="{% url 'save' article.id %}">
                   Sauvegarder
                 </a>
               {% endif %}
-                <div id="shareBtn" class="btn btn-primary">Partager</div>
-
+                <div id="shareBtn" class="btn btn-primary">Facebook</div>
+                <div  class="btn btn-primary">Twitter</div>
+                <a class="btn btn-primary" style="padding-left: 10px;"  href="https://twitter.com/share?url=https%3A%2F%2Fwww.columns.fr%2F{{ article.url }}?utm_source=promo_test&utm_medium=test&related=twitterapi%2Ctwitter&hashtags=columns&text={{ article.titre }}">
+                          Twitter
+                        </a>
                 <script>
                 window.fbAsyncInit = function() {
                   FB.init({
