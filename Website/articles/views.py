@@ -255,6 +255,10 @@ def lire(request, id):
 
     return render(request, 'blog/lire.html', {'article': article, 'form':form, 'comments': comments, 'has_liked':has_liked, 'number_of_likes':number_of_likes,'signature':signature, 'has_bio':has_bio, 'bio':bio})
 
+class table_row():
+    def __init__(v1,v2):
+        this.value1=v1
+        this.value2=v2
 
 @login_required
 def metrics(request, id):
@@ -304,12 +308,12 @@ def metrics(request, id):
         table_sources=[]
         table_sources_values=[]
         for i in sources:
-            table_sources.append(i)
+            table_sources.append(table_row(i,sources[i]))
             table_sources_values.append(sources[i])
         table_medium=[]
         table_medium_values=[]
         for i in medium:
-            table_medium.append(i)
+            table_medium.append(table_row(i,medium[i]))
             table_medium_values.append(medium[i])
         return render(request, 'blog/analytics.html', {'article': article,'table_medium': table_medium, 'table_medium_values':table_medium_values, 'table_sources': table_sources, 'table_sources_values':table_sources_values, 'report':personal_report, 'vues':len(personal_report), 'temps_moyen':temps_moyen, 'report_dim': personal_report_dim, 'number_of_comments':nb_comments, 'number_of_likes':number_of_likes})
     else:
