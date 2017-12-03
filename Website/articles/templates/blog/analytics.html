@@ -76,10 +76,13 @@
                           </tr>
                         </thead>
                         <tbody>
+                          {% for media in table_sources %}
                           <tr>
-                            <td>{{ number_of_likes }}</td>
-                            <td>{{ number_of_comments }}</td>
+                            <td>{{ media.value1 }}</td>
+                            <td>{{ media.value2 }}</td>
                           </tr>
+                          {% empty %}
+                          {% endfor %}
                         </tbody>
                       </table>
                     </div>
