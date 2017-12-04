@@ -37,10 +37,9 @@
                 </a>
               {% endif %}
                 <div id="shareBtn" class="btn btn-primary">Facebook</div>
-                <a class="btn btn-primary" style="padding-left: 10px;"  href="https://twitter.com/share?url=https%3A%2F%2Fwww.columns.fr%2F{{ article.url }}?utm_source=twitter&related=twitterapi%2Ctwitter&hashtags=columns&text={{ article.titre }}">
+                <a class="btn btn-primary" style="padding-left: 10px;"  href="https://twitter.com/share?url=https%3A%2F%2Fwww.columns.fr%2F{{ article.url }}?utm_source=twitter&amp;utm_medium=sam&related=twitterapi%2Ctwitter&hashtags=columns&text={{ article.titre }}">
                           Twitter
                         </a>
-                <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="btn btn-primary" data-text="Test text !" data-url="http://www.columns.fr/article/{{ article.id }}?utm_source=twitter&amp;utm_medium=sam" data-hashtags="columns" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 <script>
                 window.fbAsyncInit = function() {
                   FB.init({
