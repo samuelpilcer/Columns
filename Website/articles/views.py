@@ -345,6 +345,7 @@ def new(request):
             new_article.photo = form.cleaned_data['photo']
             new_article.save()
             new_article.url = get_url(new_article)
+            new_article.time_to_read=int(float(len(new_article.contenu.split(' '))/200))+1
             new_article.save()
 
                 # Nous pourrions ici envoyer l'e-mail grâce aux données 
