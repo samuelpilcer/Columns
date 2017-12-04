@@ -37,9 +37,11 @@
                 </a>
               {% endif %}
                 <div id="shareBtn" class="btn btn-primary">Facebook</div>
-                <a class="btn btn-primary" style="padding-left: 10px;"  href="https://twitter.com/share?url=https%3A%2F%2Fwww.columns.fr%2F{{ article.url }}?utm_source=twitter%26utm_medium=sam&related=twitterapi%2Ctwitter&hashtags=columns&text={{ article.titre }}">
-                          Twitter
-                        </a>
+                {% if user.is_authenticated %}
+                <a class="btn btn-primary" style="padding-left: 10px;"  href="https://twitter.com/share?url=https%3A%2F%2Fwww.columns.fr%2F{{ article.url }}?utm_source=twitter%26utm_medium={{ user.username }}&related=twitterapi%2Ctwitter&hashtags=columns&text={{ article.titre }}">Twitter</a>
+                {% else %}
+                <a class="btn btn-primary" style="padding-left: 10px;"  href="https://twitter.com/share?url=https%3A%2F%2Fwww.columns.fr%2F{{ article.url }}?utm_source=twitter&related=twitterapi%2Ctwitter&hashtags=columns&text={{ article.titre }}">Twitter</a>
+                {% endif %}
                 <script>
                 window.fbAsyncInit = function() {
                   FB.init({
