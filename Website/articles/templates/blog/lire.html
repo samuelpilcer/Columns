@@ -19,13 +19,13 @@
                 <div class="blog-post-content">
                   <h1 class="blog-post-title" style="font-family: 'Times New Roman', Times, serif;">{{ article.titre }}</h1>
 
-                  <h2>{{ article.sous_titre }}</h2>
+                  <h2 style="font-family: 'Times New Roman', Times, serif;">{{ article.sous_titre }}</h2>
 
                   {{ article.contenu|safe|linebreaks }}
 
-                  <p> <strong> {{ signature }} </strong> </p>
+                  <p style="font-family: 'Times New Roman', Times, serif;"> <strong> {{ signature }} </strong> </p>
                   {% if has_bio %}
-                  <p> {{ bio }}</p>
+                  <p style="font-family: 'Times New Roman', Times, serif;"> {{ bio }}</p>
                   {% endif %}
                 </div>
                 {% if user.is_authenticated %}
