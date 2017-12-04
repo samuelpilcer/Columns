@@ -4,3 +4,4 @@ social-auth-app-django
 unipath
 django-mediumeditor
 numpy==1.13.3
+google-auth-oauthlib
