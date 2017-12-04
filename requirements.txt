@@ -3,3 +3,4 @@ google-api-python-client==1.6.4
 social-auth-app-django
 unipath
 django-mediumeditor
+numpy==1.13.3
