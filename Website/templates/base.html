@@ -87,12 +87,21 @@
 
     <div id="fh5co-offcanvass">
     <a href="#" class="fh5co-offcanvass-close js-fh5co-offcanvass-close">Menu <i class="icon-cross"></i> </a>
-    <h1 class="fh5co-logo"><a class="navbar-brand" href="/">Hydrogen</a></h1>
+    <h1 class="fh5co-logo"><a class="navbar-brand" href="/">Columns</a></h1>
     <ul>
       <li class="active"><a href="/accueil">Accueil</a></li>
       <li><a href="/article/tag/8">Politique</a></li>
       <li><a href="/article/tag/9">Economie</a></li>
       <li><a href="/article/tag/12">Business</a></li>
+      {% if user.is_authenticated %}
+      <li><a href="/article/new">Publier</a></li>
+      {% endif %}
+      {% if user.is_authenticated %}
+      <a href="/authenticate/user"><strong>{{ user.first_name }} {{ user.last_name }}</strong> - <i class="glyphicon glyphicon-user"></i></a></li>
+      {% else %}
+      <li><a href="{% url 'social:begin' 'facebook' %}"><i class="fa fa-facebook"></i></a></li>
+      <li><a href="/authenticate/connexion"><i class="glyphicon glyphicon-user"></i></a></li>
+      {% endif %}
     </ul>
     <h3 class="fh5co-lead">Write, share, assess</h3>
     <p class="fh5co-social-icons">
