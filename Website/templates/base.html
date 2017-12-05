@@ -66,6 +66,39 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
+    <div id="fh5co-offcanvass">
+    <a href="#" class="fh5co-offcanvass-close js-fh5co-offcanvass-close">Menu <i class="icon-cross"></i> </a>
+    <h1 class="fh5co-logo"><a class="navbar-brand" href="index.html">Hydrogen</a></h1>
+    <ul>
+      <li class="active"><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <h3 class="fh5co-lead">Connect with us</h3>
+    <p class="fh5co-social-icons">
+      <a href="#"><i class="icon-twitter"></i></a>
+      <a href="#"><i class="icon-facebook"></i></a>
+      <a href="#"><i class="icon-instagram"></i></a>
+      <a href="#"><i class="icon-dribbble"></i></a>
+      <a href="#"><i class="icon-youtube"></i></a>
+    </p>
+  </div>
+  <header id="fh5co-header" role="banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <a href="#" class="fh5co-menu-btn js-fh5co-menu-btn">Menu <i class="icon-menu"></i></a>
+          <a class="navbar-brand" href="index.html">Columns</a>   
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+
+    <!-- TEST TEST TEST
+
     <div class="navbar navbar-material-blog navbar-info navbar-absolute-top">
 
       <div class="navbar-image" style="background-image: url('/media/design/font_7.jpg');background-position: center 40%;"></div>
@@ -83,15 +116,6 @@
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
 
-              <!--
-                      <li class="active dropdown">
-                        <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Articles<b class="caret"></b></a>
-                      <ul class="dropdown-menu">
-                          <li><a href="/accueil">Derniers articles</a></li>
-                          <li><a href="/accueil">Articles de mes amis</a></li>
-                          <li><a href="/accueil">Articles enregistrés</a></li>
-                      </ul>
-                  </li> -->
               <li><a href="/accueil">Accueil</a></li>
 
               <li><a href="/article/tag/8">Politique</a></li>
@@ -100,41 +124,26 @@
 
               <li><a href="/article/tag/12">Business</a></li>
 
-              <!--<li><a href="/article/tag/10">Culture</a></li>-->
-
-              <!--<li><a href="/article/tag/11">Idées</a></li>-->
-           <!-- <li class="dropdown">
-                  <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Channels <b class="caret"></b></a>
-                  <ul class="dropdown-menu" >
-                    <li><a href="/article/tag/3">Politique</a></li>
-                      <li><a href="/article/tag/2">Economie</a></li>
-                      <li><a href="/article/tag/5">Culture</a></li>
-                      <li><a href="/article/tag/6">International</a></li>
-                      <li><a href="/article/tag/4">Société</a></li>
-                      <li><a href="/article/tag/7">Idées</a></li>
-                  </ul>
-              </li>-->
               {% if user.is_authenticated %}
               <li><a href="/article/new">Publier</a></li>
               {% endif %}
               
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <!-- http://fontawesome.io/icons/#accessibility Brand icons -->
                 {% if user.is_authenticated %}
                 
                 <li><a href="/authenticate/user"><strong>{{ user.first_name }} {{ user.last_name }}</strong> - <i class="glyphicon glyphicon-user"></i>  <span class="badge badge-default"></span></a></li>
-                <!--<span class="label label-light label-default pull-right">5</span>-->
                 {% else %}
                 <li><a href="{% url 'social:begin' 'facebook' %}"><i class="fa fa-facebook"></i></a></li>
 
-                <!--<li><a href="/authenticate/connexion"><i class="fa fa-black-tie"></i></a></li>-->
                 <li><a href="/authenticate/connexion"><i class="glyphicon glyphicon-user"></i></a></li>
                 {% endif %}
             </ul>
             </div>
         </div>
     </div>
+
+    -->
 
 
     <div class="container blog-content">
