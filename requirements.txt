@@ -6,6 +6,12 @@ django-mediumeditor
 numpy==1.13.3
 google-auth-oauthlib
 pyasn1==0.1.9
-pyasn1-modules==0.2.1
 google-cloud==0.30.0
 google-cloud-bigquery==0.28.0
+pyasn1_modules
+python-social-auth==0.3.6
+djangosecure==0.0.6
+middleware==1.2.3
+mod_wsgi
+mod_wsgi-httpd
+django-secure
