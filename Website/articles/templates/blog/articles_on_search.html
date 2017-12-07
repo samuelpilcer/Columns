@@ -129,13 +129,13 @@
           <nav>
             <ul class="pager">
               {% if bool_prec %}
-              <li><a class="withripple" href="/article/search/{{ phrase }}/{{ page_prec }}">Précédent</a></li>
+              <li><a class="withripple" href="/article/search/{{ search }}/{{ page_prec }}">Précédent</a></li>
               {% else %}
               <li><a class="withripple active" href="#">Précédent</a></li>
               {% endif %}
 
               {% if bool_suiv %}
-              <li><a class="withripple" href="/article/search/{{ phrase }}/{{ page_suiv }}">Suivant</a></li>
+              <li><a class="withripple" href="/article/search/{{ search }}/{{ page_suiv }}">Suivant</a></li>
               {% else %}
               <li><a class="withripple active" href="#">Suivant</a></li>
               {% endif %}
