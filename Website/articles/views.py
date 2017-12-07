@@ -180,7 +180,7 @@ def search_page(request, phrase, nb):
         bool_prec=False
     page_suiv=nb+1
 
-    return render(request, 'blog/articles_by_tag.html', {'search': phrase, 'derniers_articles_1': articles1,'derniers_articles_2': articles2, 'page_suiv':page_suiv, 'page_prec':page_prec, 'bool_suiv': bool_suiv, 'bool_prec': bool_prec})
+    return render(request, 'blog/articles_on_search.html', {'search': phrase, 'derniers_articles_1': articles1,'derniers_articles_2': articles2, 'page_suiv':page_suiv, 'page_prec':page_prec, 'bool_suiv': bool_suiv, 'bool_prec': bool_prec})
 
 
 def read_by_tag_p0(request, id):
