@@ -298,7 +298,7 @@ def tweets_analyze(request, hashtag):
         trends=(api.trends_place(23424819))
         data=[]
         text_data=[]
-        for status in tweepy.Cursor(api.search, q=hashtag).items(10):
+        for status in tweepy.Cursor(api.search, q=hashtag).items(50):
             # Process a single status
             data.append(status)
             text_data.append(status.text)
