@@ -12,7 +12,10 @@ from google_analytics import initialize_analyticsreporting, get_report
 # Create your views here.
 
 from articles.models import Article, Categorie, Comment, Like, Save, Signature
+import tweepy
+from tweepy import OAuthHandler
 
+from twitter_keys import *
 
 def get_id(url):
     return url.split('-')[-1]
@@ -263,6 +266,10 @@ class table_row():
 @login_required
 def tweets(request):
     try:
+        auth = OAuthHandler(consumer_key, consumer_secret)
+        auth.set_access_token(access_token, access_secret)
+         
+        api = tweepy.API(auth)
         return redirect(reverse(home))
     except:
         return redirect(reverse(home))
