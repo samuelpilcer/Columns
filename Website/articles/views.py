@@ -268,9 +268,13 @@ def tweets(request):
     try:
         auth = OAuthHandler(consumer_key, consumer_secret)
         auth.set_access_token(access_token, access_secret)
-         
         api = tweepy.API(auth)
-        return redirect(reverse(home))
+        trends=(api.trends_place(23424819))
+        trends=trends[0]['trends']
+        trends_list=[]
+        for i in trends:
+            trends_list.append(i['name'])
+        return render(request, 'blog/twitter.html', {'trends': trends_list})
     except:
         return redirect(reverse(home))
 
