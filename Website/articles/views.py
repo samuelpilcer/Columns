@@ -16,6 +16,40 @@ import tweepy
 from tweepy import OAuthHandler
 
 from twitter_keys import *
+import re
+ 
+emoticons_str = r"""
+    (?:
+        [:=;] # Eyes
+        [oO\-]? # Nose (optional)
+        [D\)\]\(\]/\\OpP] # Mouth
+    )"""
+ 
+regex_str = [
+    emoticons_str,
+    r'<[^>]+>', # HTML tags
+    r'(?:@[\w_]+)', # @-mentions
+    r"(?:\#+[\w_]+[\w\'_\-]*[\w_]+)", # hash-tags
+    r'http[s]?://(?:[a-z]|[0-9]|[$-_@.&amp;+]|[!*\(\),]|(?:%[0-9a-f][0-9a-f]))+', # URLs
+ 
+    r'(?:(?:\d+,?)+(?:\.?\d+)?)', # numbers
+    r"(?:[a-z][a-z'\-_]+[a-z])", # words with - and '
+    r'(?:[\w_]+)', # other words
+    r'(?:\S)' # anything else
+]
+    
+tokens_re = re.compile(r'('+'|'.join(regex_str)+')', re.VERBOSE | re.IGNORECASE)
+emoticon_re = re.compile(r'^'+emoticons_str+'$', re.VERBOSE | re.IGNORECASE)
+ 
+def tokenize(s):
+    return tokens_re.findall(s)
+ 
+def preprocess(s, lowercase=False):
+    tokens = tokenize(s)
+    if lowercase:
+        tokens = [token if emoticon_re.search(token) else token.lower() for token in tokens]
+    return tokens
+
 
 def get_id(url):
     return url.split('-')[-1]
@@ -302,7 +336,15 @@ def tweets_analyze(request, hashtag):
             # Process a single status
             data.append(status)
             text_data.append(status.text)
-        return render(request, 'blog/twitter_analyze.html', {'hashtag': hashtag, 'data': text_data})
+            text_data_preprocessed.append(preprocess(status.text))
+        frequencies={}
+        for i in text_data_preprocessed:
+            for j in i:
+                if j not in frequencies:
+                    frequencies[j]=1
+                else:
+                    frequencies[j]=frequencies[j]+1
+        return render(request, 'blog/twitter_analyze.html', {'hashtag': hashtag, 'data': text_data, 'frequencies':frequencies})
     except:
         return redirect(reverse(home))
 
