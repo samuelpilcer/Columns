@@ -296,15 +296,13 @@ def tweets_analyze(request, hashtag):
         auth.set_access_token(access_token, access_secret)
         api = tweepy.API(auth)
         trends=(api.trends_place(23424819))
-        trends=trends[0]['trends']
-        trends_list=[]
-        for i in trends:
-            if type(i['tweet_volume'])==int:
-                volume=str(i['tweet_volume'])
-            else:
-                volume=''
-            trends_list.append(twitter_trend(i['name'], i['url'], volume))
-        return render(request, 'blog/twitter_analyze.html', {'hashtag': hashtag, 'trends': trends_list})
+        data=[]
+        text_data=[]
+        for status in tweepy.Cursor(api.search, q=hashtag).items(50):
+            # Process a single status
+            data.append(status)
+            text_data.append(status.text)
+        return render(request, 'blog/twitter_analyze.html', {'hashtag': hashtag, 'data': text_data})
     except:
         return redirect(reverse(home))
 
