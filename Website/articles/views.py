@@ -263,6 +263,12 @@ class table_row():
         self.value1=v1
         self.value2=v2
 
+class twitter_trend():
+    def __init__(self, hashtag,link,volume):
+        self.hashtag=hashtag
+        self.link=link
+        self.volume=volume
+
 @login_required
 def tweets(request):
     try:
@@ -273,7 +279,7 @@ def tweets(request):
         trends=trends[0]['trends']
         trends_list=[]
         for i in trends:
-            trends_list.append(i['name'])
+            trends_list.append(twitter_trend(i['name'], i['url'], i['tweet_volume']))
         return render(request, 'blog/twitter.html', {'trends': trends_list})
     except:
         return redirect(reverse(home))
