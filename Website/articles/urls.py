@@ -17,5 +17,5 @@ urlpatterns = [
     url(r'^article/actualize_rank$', views.actualize_rank, name='actualize_rank'),
     url(r'^user/(?P<user>[\w\-]+)/(?P<article_url>[\w\-]+)$', views.get_article, name='get_article'),
     url(r'^analytics/(\d+)$', views.metrics, name='analytics'),
-    url(r'^twitter/(\d+)$', views.tweets, name='tweets'),
+    url(r'^twitter/$', views.tweets, name='tweets'),
 ]
