@@ -303,7 +303,7 @@ def tweets_analyze(request, hashtag):
             else:
                 volume=''
             trends_list.append(twitter_trend(i['name'], i['url'], volume))
-        return render(request, 'blog/twitter.html', {'trends': trends_list})
+        return render(request, 'blog/twitter_analyze.html', {'hashtag': hashtag, 'trends': trends_list})
     except:
         return redirect(reverse(home))
 

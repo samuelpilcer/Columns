@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} {{ article.titre }} - {{ block.super }} {% endblock %}
+
+{% block article %}
+
+<div class="col-sm-8 blog-main">
+
+          <section class="blog-post">
+            <div class="panel panel-default">
+              <img src="{{ article.photo.url }}" class="img-responsive" />
+              <div class="panel-body">
+                <div class="blog-post-content">
+                  <h1 class="blog-post-title">Tendances sur Twitter : {{ hashtag }}</h1>
+                  </br>
+                    {% for data in list %}
+                    {{ data }} </br>
+                    {% empty %}
+                    {% endfor %}
+                    </br>
+                </div>
+
+                <script>
+                window.fbAsyncInit = function() {
+                  FB.init({
+                    appId            : '160658967855882',
+                    autoLogAppEvents : true,
+                    xfbml            : true,
+                    version          : 'v2.10'
+                  });
+                  FB.AppEvents.logPageView();
+                };
+
+                (function(d, s, id){
+                   var js, fjs = d.getElementsByTagName(s)[0];
+                   if (d.getElementById(id)) {return;}
+                   js = d.createElement(s); js.id = id;
+                   js.src = "//connect.facebook.net/en_US/sdk.js";
+                   fjs.parentNode.insertBefore(js, fjs);
+                 }(document, 'script', 'facebook-jssdk'));
+                document.getElementById('shareBtn').onclick = function() {
+                  FB.ui({
+                    method: 'share',
+                    display: 'popup',
+                    href: 'http://test.columns.fr/article/{{ article.id }}',
+                  }, function(response){});
+                }
+                </script>
+              </div>
+            </div>
+          </section><!-- /.blog-post -->
+          <style type="text/css">
+          .h1, h1 {
+                font-size: 24px;
+                color: #000;
+            }
+          .h2, h2 {
+                color: #000;
+                font-size: 18px;
+            }
+            .blog-post-content p {
+                color: #000;
+                margin: 18px auto;
+            }
+            body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4 {
+                font-family: 'Arial';
+            }
+            .blog-comments-title, .blog-post-title {
+                color: #000;
+            }
+          </style>
+
+        </div>
+
+{% endblock %}
+
