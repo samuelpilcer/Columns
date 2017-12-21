@@ -261,6 +261,13 @@ class table_row():
         self.value2=v2
 
 @login_required
+def tweets(request):
+    try:
+        return redirect(reverse(home))
+    else:
+        return redirect(reverse(home))
+
+@login_required
 def metrics(request, id):
     try:
         article = Article.objects.get(id=id)
