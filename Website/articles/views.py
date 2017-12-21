@@ -333,7 +333,7 @@ def tweets_analyze(request, hashtag):
         data=[]
         text_data=[]
         text_data_preprocessed=[]
-        for status in tweepy.Cursor(api.search, q=hashtag).items(50):
+        for status in tweepy.Cursor(api.search, q=hashtag).items(10):
             # Process a single status
             data.append(status)
             text_data.append(status.text)
@@ -348,7 +348,7 @@ def tweets_analyze(request, hashtag):
         frequencies_table=[]
         for i in frequencies:
             frequencies_table.append(table_row(i,str(frequencies[i])))
-        return render(request, 'blog/twitter_analyze.html', {'hashtag': hashtag, 'data': text_data, 'frequencies':frequencies_table})
+        return render(request, 'blog/twitter_analyze.html', {'hashtag': hashtag, 'data': text_data, 'text_data_preprocessed':text_data_preprocessed, 'frequencies':frequencies_table})
     except:
         return redirect(reverse(home))
 
