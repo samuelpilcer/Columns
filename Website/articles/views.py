@@ -289,6 +289,25 @@ def tweets(request):
         return redirect(reverse(home))
 
 @login_required
+def tweets_analyze(request, hashtag):
+    try:
+        auth = OAuthHandler(consumer_key, consumer_secret)
+        auth.set_access_token(access_token, access_secret)
+        api = tweepy.API(auth)
+        trends=(api.trends_place(23424819))
+        trends=trends[0]['trends']
+        trends_list=[]
+        for i in trends:
+            if type(i['tweet_volume'])==int:
+                volume=str(i['tweet_volume'])
+            else:
+                volume=''
+            trends_list.append(twitter_trend(i['name'], i['url'], volume))
+        return render(request, 'blog/twitter.html', {'trends': trends_list})
+    except:
+        return redirect(reverse(home))
+
+@login_required
 def metrics(request, id):
     try:
         article = Article.objects.get(id=id)
