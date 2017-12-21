@@ -15,3 +15,4 @@ middleware==1.2.3
 mod_wsgi
 mod_wsgi-httpd
 django-secure
+tweepy==3.5.0
