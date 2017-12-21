@@ -16,7 +16,7 @@
                   <h1 class="blog-post-title">Tendances sur Twitter</h1>
                   </br>
                     {% for trend in trends %}
-                    <a href="{{ trend.link }}">{{ trend.hashtag }}</a></br>
+                    <a class="btn btn-default" href="{{ trend.link }}">{{ trend.hashtag }} <span>{{ trend.volume }}</span></a></br>
                     {% empty %}
                     {% endfor %}
                     </br>
