@@ -279,7 +279,11 @@ def tweets(request):
         trends=trends[0]['trends']
         trends_list=[]
         for i in trends:
-            trends_list.append(twitter_trend(i['name'], i['url'], i['tweet_volume']))
+            if type(i['tweet_volume'])==int:
+                volume=str(i['tweet_volume'])
+            else:
+                volume=''
+            trends_list.append(twitter_trend(i['name'], i['url'], volume))
         return render(request, 'blog/twitter.html', {'trends': trends_list})
     except:
         return redirect(reverse(home))
