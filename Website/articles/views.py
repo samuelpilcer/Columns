@@ -349,7 +349,7 @@ def tweets_analyze(request, hashtag):
         frequencies_table=[]
         for i in frequencies:
             frequencies_table.append(table_row(i,str(frequencies[i])))
-        return render(request, 'blog/twitter_analyze.html', {'hashtag': hashtag, 'data': text_data, 'text_data_preprocessed':text_data_preprocessed, 'frequencies':frequencies_table})
+        return render(request, 'blog/twitter_analyze.html', {'hashtag': hashtag, 'data': text_data, 'frequencies':frequencies_table})
     except:
         return redirect(reverse(home))
 
