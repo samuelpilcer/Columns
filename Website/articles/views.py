@@ -264,7 +264,7 @@ class table_row():
 def tweets(request):
     try:
         return redirect(reverse(home))
-    else:
+    except:
         return redirect(reverse(home))
 
 @login_required
