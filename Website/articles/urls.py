@@ -18,5 +18,5 @@ urlpatterns = [
     url(r'^user/(?P<user>[\w\-]+)/(?P<article_url>[\w\-]+)$', views.get_article, name='get_article'),
     url(r'^analytics/(\d+)$', views.metrics, name='analytics'),
     url(r'^twitter/$', views.tweets, name='tweets'),
-    url(r'^twitter/analyze/(?P<hashtag>[\w\-\#]+)$', views.tweets_analyze, name='tweets_analyze'),
+    url(r'^twitter/analyze/(?P<hashtag>[\w\s]+)$', views.tweets_analyze, name='tweets_analyze'),
 ]

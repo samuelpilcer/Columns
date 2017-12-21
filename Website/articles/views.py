@@ -268,6 +268,7 @@ class twitter_trend():
         self.hashtag=hashtag
         self.link=link
         self.volume=volume
+        self.clean_hashtag=hashtag.replace('#','')
 
 @login_required
 def tweets(request):
