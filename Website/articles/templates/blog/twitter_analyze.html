@@ -19,6 +19,11 @@
                     {{ row.v1 }} : {{ row.v2 }} </br>
                     {% empty %}
                     {% endfor %}
+                    {% for row in text_data_preprocessed %}
+                    {{ row }} </br>
+                    {% empty %}
+                    {% endfor %}
+                    text_data_preprocessed
 
                     {% for row in data %}
                     {{ row }} </br>
