@@ -16,7 +16,7 @@
                   <h1 class="blog-post-title">Tendances sur Twitter : {{ hashtag }}</h1>
                   </br>
                     {% for row in frequencies %}
-                    {{ row.v1 }} : {{ row.v2 }} </br>
+                    {{ row.value1 }} : {{ row.value2 }} </br>
                     {% empty %}
                     {% endfor %}
 
@@ -25,6 +25,7 @@
                     {{ row }} </br>
                     {% empty %}
                     {% endfor %}
+                    </br>
 
                     {% for row in data %}
                     {{ row }} </br>
