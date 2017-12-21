@@ -338,12 +338,6 @@ def tweets_analyze(request, hashtag):
             text_data.append(status.text)
             text_data_preprocessed.append(preprocess(status.text))
         frequencies={}
-        for i in text_data_preprocessed:
-            for j in i:
-                if j not in frequencies:
-                    frequencies[j]=1
-                else:
-                    frequencies[j]=frequencies[j]+1
         return render(request, 'blog/twitter_analyze.html', {'hashtag': hashtag, 'data': text_data, 'frequencies':frequencies})
     except:
         return redirect(reverse(home))
