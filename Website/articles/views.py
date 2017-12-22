@@ -17,6 +17,7 @@ from tweepy import OAuthHandler
 
 from twitter_keys import *
 import re
+import operator
  
 emoticons_str = r"""
     (?:
@@ -346,9 +347,13 @@ def tweets_analyze(request, hashtag):
                     frequencies[j]=1
                 else:
                     frequencies[j]=frequencies[j]+1
+
+        frequencies=sorted(frequencies.items(), key=operator.itemgetter(1))
+        frequencies.reverse()
+
         frequencies_table=[]
-        for i in frequencies:
-            frequencies_table.append(table_row(i,str(frequencies[i])))
+        for i in range(10):
+            frequencies_table.append(table_row(res[i][0],str(res[i][1])))
         return render(request, 'blog/twitter_analyze.html', {'hashtag': hashtag, 'data': text_data, 'frequencies':frequencies_table})
     except:
         return redirect(reverse(home))
