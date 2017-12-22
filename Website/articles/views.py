@@ -348,12 +348,12 @@ def tweets_analyze(request, hashtag):
                 else:
                     frequencies[j]=frequencies[j]+1
 
-        frequencies=sorted(frequencies.items(), key=operator.itemgetter(1))
-        frequencies.reverse()
+        frequencies_sorted=sorted(frequencies.items(), key=operator.itemgetter(1))
+        frequencies_sorted.reverse()
 
         frequencies_table=[]
         for i in range(10):
-            frequencies_table.append(table_row(res[i][0],str(res[i][1])))
+            frequencies_table.append(table_row(frequencies_sorted[i][0],str(frequencies_sorted[i][1])))
         return render(request, 'blog/twitter_analyze.html', {'hashtag': hashtag, 'data': text_data, 'frequencies':frequencies_table})
     except:
         return redirect(reverse(home))
