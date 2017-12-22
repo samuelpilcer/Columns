@@ -382,7 +382,7 @@ def tweets_analyze(request, hashtag):
         print('step2')
         links_frames=[]
         for i in links:
-            r = urllib.request.urlopen(i).read()
+            r = urllib.urlopen(i).read()
             print('step3')
             soup = BeautifulSoup(r)
             #soup.find_all("img")[0]['src']
