@@ -39,7 +39,7 @@ regex_str = [
     r'(?:\S)' # anything else
 ]
 
-stopwords_tweet=['…',',',';','.']
+stopwords_tweet=[r'…',r',',r';',r'.']
     
 tokens_re = re.compile(r'('+'|'.join(regex_str)+')', re.VERBOSE | re.IGNORECASE)
 emoticon_re = re.compile(r'^'+emoticons_str+'$', re.VERBOSE | re.IGNORECASE)
