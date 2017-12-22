@@ -337,7 +337,12 @@ def tweets_analyze(request, hashtag):
             # Process a single status
             data.append(status)
             text_data.append(status.text)
-            text_data_preprocessed.append(preprocess(status.text))
+            preprocess_text=preprocess(status.text)
+            preprocess_text_cleaned=[]
+            for i in preprocess_text:
+                if len(i)>2:
+                    preprocess_text_cleaned.append(i)
+            text_data_preprocessed.append(preprocess_text_cleaned)
 
         frequencies={}
         for i in text_data_preprocessed:
