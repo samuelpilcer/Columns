@@ -333,7 +333,7 @@ def tweets_analyze(request, hashtag):
         data=[]
         text_data=[]
         text_data_preprocessed=[]
-        for status in tweepy.Cursor(api.search, q=hashtag).items(100):
+        for status in tweepy.Cursor(api.search, q=hashtag).items(50):
             # Process a single status
             data.append(status)
             text_data.append(status.text)
