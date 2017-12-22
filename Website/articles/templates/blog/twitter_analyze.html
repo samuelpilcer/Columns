@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block title %} {{ article.titre }} - {{ block.super }} {% endblock %}
+{% block title %} {{ hashtag }} {% endblock %}
 
 {% block article %}
 
@@ -19,7 +19,7 @@
                     {{ row.value1 }} : {{ row.value2 }} </br>
                     {% empty %}
                     {% endfor %}
-                    
+
                     </br>
 
                     {% for row in data %}
