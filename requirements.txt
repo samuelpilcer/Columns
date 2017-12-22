@@ -16,3 +16,4 @@ mod_wsgi
 mod_wsgi-httpd
 django-secure
 tweepy==3.5.0
+bs4==0.0.1
