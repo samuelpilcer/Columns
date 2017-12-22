@@ -20,8 +20,8 @@
                     {% empty %}
                     {% endfor %}
 
-                    {% for row in links %}
-                    <a href='{{ row }}' >{{ row }}</a> </br>
+                    {% for row in links_w_title %}
+                    <a href='{{ row.value2 }}' >{{ row.value1 }}</a> </br>
                     {% empty %}
                     {% endfor %}
 

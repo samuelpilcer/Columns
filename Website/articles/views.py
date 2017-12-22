@@ -18,7 +18,10 @@ from tweepy import OAuthHandler
 from twitter_keys import *
 import re
 import operator
- 
+from bs4 import BeautifulSoup
+import urllib
+
+
 emoticons_str = r"""
     (?:
         [:=;] # Eyes
@@ -376,7 +379,15 @@ def tweets_analyze(request, hashtag):
         frequencies_table=[]
         for i in range(10):
             frequencies_table.append(table_row(frequencies_sorted[i][0],str(frequencies_sorted[i][1])))
-        return render(request, 'blog/twitter_analyze.html', {'hashtag': hashtag, 'data': text_data, 'frequencies':frequencies_table, 'links':links})
+
+        links_frames=[]
+        for i in links:
+            r = urllib.request.urlopen(i).read()
+            soup = BeautifulSoup(r)
+            #soup.find_all("img")[0]['src']
+            links_frames.append(table_row(re.sub('<[A-Za-z\/][^>]*>', '', soup.find_all("title")), i))
+
+        return render(request, 'blog/twitter_analyze.html', {'hashtag': hashtag, 'data': text_data, 'frequencies':frequencies_table, 'links':links, 'links_w_title': links_frames})
     except:
         return redirect(reverse(home))
 
