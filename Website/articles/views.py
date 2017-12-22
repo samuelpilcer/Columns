@@ -49,9 +49,7 @@ def preprocess(s, lowercase=False):
     tokens = tokenize(s)
     if lowercase:
         tokens = [token if emoticon_re.search(token) else token.lower() for token in tokens]
-        tokens = [token if len(token)>2 for token in tokens]
     return tokens
-
 
 def get_id(url):
     return url.split('-')[-1]
