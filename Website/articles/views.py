@@ -49,7 +49,7 @@ def preprocess(s, lowercase=False):
     tokens = tokenize(s)
     if lowercase:
         tokens = [token if emoticon_re.search(token) else token.lower() for token in tokens]
-    tokens = [token for token in tokens if len(token)>2]  
+        tokens = [token for token in tokens if len(token)>2]  
     return tokens
 
 
