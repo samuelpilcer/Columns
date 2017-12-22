@@ -379,14 +379,14 @@ def tweets_analyze(request, hashtag):
         frequencies_table=[]
         for i in range(10):
             frequencies_table.append(table_row(frequencies_sorted[i][0],str(frequencies_sorted[i][1])))
-
+        print('step2')
         links_frames=[]
         for i in links:
             r = urllib.request.urlopen(i).read()
             soup = BeautifulSoup(r)
             #soup.find_all("img")[0]['src']
             links_frames.append(table_row(re.sub('<[A-Za-z\/][^>]*>', '', soup.find_all("title")), i))
-
+        print('step1')
         return render(request, 'blog/twitter_analyze.html', {'hashtag': hashtag, 'data': text_data, 'frequencies':frequencies_table, 'links':links, 'links_w_title': links_frames})
     except:
         return redirect(reverse(home))
