@@ -38,6 +38,22 @@ regex_str = [
     r'(?:[\w_]+)', # other words
     r'(?:\S)' # anything else
 ]
+
+http_str = [
+    r'http[s]?://(?:[a-z]|[0-9]|[$-_@.&amp;+]|[!*\(\),]|(?:%[0-9a-f][0-9a-f]))+', # URLs
+]
+    
+tokens_http_re = re.compile(r'('+'|'.join(http_str)+')', re.VERBOSE | re.IGNORECASE)
+emoticon_re = re.compile(r'^'+emoticons_str+'$', re.VERBOSE | re.IGNORECASE)
+ 
+def tokenize_http(s):
+    return tokens_http_re.findall(s)
+ 
+def find_links(s, lowercase=False):
+    tokens = tokenize_http(s)
+    if lowercase:
+        tokens = [token if emoticon_re.search(token) else token.lower() for token in tokens]
+    return tokens
     
 tokens_re = re.compile(r'('+'|'.join(regex_str)+')', re.VERBOSE | re.IGNORECASE)
 emoticon_re = re.compile(r'^'+emoticons_str+'$', re.VERBOSE | re.IGNORECASE)
@@ -333,12 +349,14 @@ def tweets_analyze(request, hashtag):
         data=[]
         text_data=[]
         text_data_preprocessed=[]
+        links=[]
         for status in tweepy.Cursor(api.search, q=hashtag).items(50):
             # Process a single status
             data.append(status)
             text_data.append(status.text)
             preprocess_text=preprocess(status.text)
             preprocess_text_cleaned=[]
+            links=links+find_links(status.text)
             for i in preprocess_text:
                 if len(i)>2:
                     preprocess_text_cleaned.append(i.lower())
@@ -358,7 +376,7 @@ def tweets_analyze(request, hashtag):
         frequencies_table=[]
         for i in range(10):
             frequencies_table.append(table_row(frequencies_sorted[i][0],str(frequencies_sorted[i][1])))
-        return render(request, 'blog/twitter_analyze.html', {'hashtag': hashtag, 'data': text_data, 'frequencies':frequencies_table})
+        return render(request, 'blog/twitter_analyze.html', {'hashtag': hashtag, 'data': text_data, 'frequencies':frequencies_table, 'links':links})
     except:
         return redirect(reverse(home))
 

@@ -20,6 +20,11 @@
                     {% empty %}
                     {% endfor %}
 
+                    {% for row in links %}
+                    <a href='{{ row }}' >{{ row }}</a> </br>
+                    {% empty %}
+                    {% endfor %}
+
                     </br>
 
                     {% for row in data %}
