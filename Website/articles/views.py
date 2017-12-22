@@ -337,7 +337,7 @@ def tweets_analyze(request, hashtag):
             # Process a single status
             data.append(status)
             text_data.append(status.text)
-            preprocess_text=preprocess(status.text.replace('é','e').replace('à','a').replace('è','e').replace('ê','e').replace('é','e'))
+            preprocess_text=preprocess(status.text)
             preprocess_text_cleaned=[]
             for i in preprocess_text:
                 if len(i)>2:
