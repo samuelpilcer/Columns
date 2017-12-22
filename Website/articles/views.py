@@ -341,7 +341,7 @@ def tweets_analyze(request, hashtag):
             preprocess_text_cleaned=[]
             for i in preprocess_text:
                 if len(i)>2:
-                    preprocess_text_cleaned.append(i)
+                    preprocess_text_cleaned.append(i.lower())
             text_data_preprocessed.append(preprocess_text_cleaned)
 
         frequencies={}
