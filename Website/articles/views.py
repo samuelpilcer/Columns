@@ -38,6 +38,8 @@ regex_str = [
     r'(?:[\w_]+)', # other words
     r'(?:\S)' # anything else
 ]
+
+stopwords_tweet=['…',',',';','.']
     
 tokens_re = re.compile(r'('+'|'.join(regex_str)+')', re.VERBOSE | re.IGNORECASE)
 emoticon_re = re.compile(r'^'+emoticons_str+'$', re.VERBOSE | re.IGNORECASE)
@@ -48,7 +50,7 @@ def tokenize(s):
 def preprocess(s, lowercase=False):
     tokens = tokenize(s)
     if lowercase:
-        tokens = [token if emoticon_re.search(token) else token.lower() for token in tokens]
+        tokens = [token if emoticon_re.search(token) else token.lower() for token in tokens if token not in stopwords_tweet]
     return tokens
 
 
