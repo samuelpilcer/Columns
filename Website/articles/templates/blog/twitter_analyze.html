@@ -15,10 +15,14 @@
                 <div class="blog-post-content">
                   <h1 class="blog-post-title">Tendances sur Twitter : {{ hashtag }}</h1>
                   </br>
+
+                    <h1>Mots les plus fréquents</h1>
                     {% for row in frequencies %}
                     {{ row.value1 }} : {{ row.value2 }} </br>
                     {% empty %}
                     {% endfor %}
+
+                    <h1>Articles retweetés</h1>
 
                     </br>
                     {% for row in links %}

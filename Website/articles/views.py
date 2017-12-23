@@ -367,13 +367,17 @@ def tweets_analyze(request, hashtag):
             text_data[status.text]=status._json['retweet_count']
             preprocess_text=preprocess(status.text)
             preprocess_text_cleaned=[]
-            print('Begin')
-            if 'media' in status._json['entities']:
-                for i in status._json['entities']['media']:
+
+            if "urls" in status._json['entities']:
+                image_link=''
+                if 'media' in status._json['entities']:
+                    if len(status._json['entities']['media'])>0:
+                        image_link=status._json['entities']['media'][0]["media_url"]
+                for i in status._json['entities']["urls"]:
                     links[i["expanded_url"]]=status._json['retweet_count']
-                    links_media[i["expanded_url"]]=i["media_url"]
+                    links_media[i["expanded_url"]]=image_link
                     links_title[i["expanded_url"]]=status.text
-                    print("OK")
+
             for i in preprocess_text:
                 if len(i)>2:
                     preprocess_text_cleaned.append(i.lower())
@@ -387,7 +391,6 @@ def tweets_analyze(request, hashtag):
                 else:
                     frequencies[j]=frequencies[j]+1
 
-        print("Step 1")
         frequencies_sorted=sorted(frequencies.items(), key=operator.itemgetter(1))
         frequencies_sorted.reverse()
 
@@ -401,18 +404,8 @@ def tweets_analyze(request, hashtag):
         links_sorted=sorted(links.items(), key=operator.itemgetter(1))
         links_sorted.reverse()
 
-        print("Step 2")
         links_table=[]
         for i in links_sorted:
-            print(i[0])
-            print('Retweets')
-            print(i[1])
-            print('Title')
-            print(links_title[i[0]])
-            print('Media')
-            print(links_media[i[0]])
-            twitter_link(i[0], i[1], links_title[i[0]],links_media[i[0]])
-            print('link ok')
             links_table.append(twitter_link(i[0], i[1], links_title[i[0]],links_media[i[0]]))
 
         print("Step 3")
