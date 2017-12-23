@@ -368,6 +368,7 @@ def tweets_analyze(request, hashtag):
             preprocess_text=preprocess(status.text)
             preprocess_text_cleaned=[]
             print('Begin')
+            print(status._json)
             print(status._json['entities']['media'])
             for i in status._json['entities']['media']:
                 links[i["expanded_url"]]=status._json['retweet_count']
