@@ -30,7 +30,7 @@
                     <a class="alert alert-info" href='{{ row.link }}' ><h4>{{ row.retweets }} retweets </h4> - {{ row.title }}</a> </br>
                   </div>
 
-                  <blockquote class="twitter-tweet" data-lang="fr"><p lang="fr" dir="ltr"> {{ row.title }} <a href="{{ row.link }}">{{ row.link }}</a> <a href="{{ row.link }}">{{ row.link }}</a> <a href="{{ row.link }}">{{ hashtag }}</a> <a href="https://t.co/sM0GfqkDdU">pic.twitter.com/sM0GfqkDdU</a></p>&mdash; RMC Sport (@RMCsport) <a href="https://twitter.com/RMCsport/status/944567447146942465?ref_src=twsrc%5Etfw">23 décembre 2017</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+                  <blockquote class="twitter-tweet" data-lang="fr"><p lang="fr" dir="ltr"> {{ row.title }} <a href="{{ row.link }}">{{ row.link }}</a> <a href="{{ row.link }}">{{ row.link }}</a> <a href="{{ row.link }}">{{ hashtag }}</a> <a href="{{ row.media_link }}">pic.twitter.com/sM0GfqkDdU</a></p>&mdash; RMC Sport (@RMCsport) <a href="https://twitter.com/RMCsport/status/944567447146942465?ref_src=twsrc%5Etfw">23 décembre 2017</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
 
                     {% empty %}
                     {% endfor %}
