@@ -411,6 +411,8 @@ def tweets_analyze(request, hashtag):
             print(links_title[i[0]])
             print('Media')
             print(links_media[i[0]])
+            twitter_link(i[0], i[1], links_title[i[0]],links_media[i[0]])
+            print('link ok')
             links_table.append(twitter_link(i[0], i[1], links_title[i[0]],links_media[i[0]]))
 
         print("Step 3")
