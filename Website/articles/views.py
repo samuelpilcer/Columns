@@ -327,7 +327,9 @@ def tweets(request):
         auth = OAuthHandler(consumer_key, consumer_secret)
         auth.set_access_token(access_token, access_secret)
         api = tweepy.API(auth)
-        trends=(api.trends_place(23424819))
+        # France : 23424819
+        # Paris : 615702
+        trends=(api.trends_place(615702))
         trends=trends[0]['trends']
         trends_list=[]
         for i in trends:
