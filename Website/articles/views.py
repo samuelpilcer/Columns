@@ -348,13 +348,13 @@ def tweets_analyze(request, hashtag):
         api = tweepy.API(auth)
         trends=(api.trends_place(23424819))
         data=[]
-        text_data=[]
+        text_data={}
         text_data_preprocessed=[]
         links=[]
         for status in tweepy.Cursor(api.search, q=hashtag).items(50):
             # Process a single status
             data.append(status)
-            text_data.append([status.text, status._json['retweet_count']])
+            text_data[status.text]=status._json['retweet_count']
             preprocess_text=preprocess(status.text)
             preprocess_text_cleaned=[]
             links=links+find_links(status.text)
@@ -374,7 +374,7 @@ def tweets_analyze(request, hashtag):
         frequencies_sorted=sorted(frequencies.items(), key=operator.itemgetter(1))
         frequencies_sorted.reverse()
 
-        text_data_sorted=sorted(text_data.items(), key= lambda x: x[1])
+        text_data_sorted=sorted(text_data.items(), key=operator.itemgetter(1))
         tweets=[]
         for i in text_data_sorted:
             tweets.append(table_row(i[0],i[1]))
