@@ -23,7 +23,7 @@
                     </br>
                     {% for row in links %}
 
-                  <blockquote class="twitter-tweet" data-lang="fr"><p lang="fr" dir="ltr"> <h4>{{ row.retweets }} retweets </h4> - {{ row.title }} <a href="{{ row.link }}">{{ row.link }}</a> <a href="{{ row.link }}">{{ row.link }}</a> </p>
+                  <blockquote class="twitter-tweet" data-lang="fr"><p lang="fr" dir="ltr"> <h4>{{ row.retweets }} retweets </h4> - {{ row.title }} <a href="{{ row.link }}">{{ row.link }}</a> </p>
                   <img data-aria-label-part="" src="{{ row.media_link }}" alt="" style="width: 100%; top: -172px;">
                   </blockquote>
 
@@ -35,11 +35,12 @@
                   
 
                     </br>
-
-
+                    <h1> Tweets récents, par nombre de retweets </h1>
 
                     {% for row in data %}
-                    {{ row.value2 }} : {{ row.value1 }} </br>
+                    <blockquote class="twitter-tweet" data-lang="fr"><p lang="fr" dir="ltr"> <h4>{{ row.value2 }} retweets </h4> - {{ row.value1 }} </p>
+                    </blockquote>
+                    </br>
                     {% empty %}
                     {% endfor %}
                     </br>
