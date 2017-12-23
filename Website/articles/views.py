@@ -340,6 +340,14 @@ def tweets(request):
     except:
         return redirect(reverse(home))
 
+
+class twitter_link():
+    def __init__(self, link, retweets, title, media_link):
+        self.link=v1
+        self.retweets=retweets
+        self.title=v2
+        self.media_link=v2
+
 @login_required
 def tweets_analyze(request, hashtag):
     try:
@@ -351,14 +359,18 @@ def tweets_analyze(request, hashtag):
         text_data={}
         text_data_preprocessed=[]
         links={}
+        links_media={}
+        links_title={}
         for status in tweepy.Cursor(api.search, q=hashtag).items(50):
             # Process a single status
             data.append(status)
             text_data[status.text]=status._json['retweet_count']
             preprocess_text=preprocess(status.text)
             preprocess_text_cleaned=[]
-            for i in find_links(status.text):
-                links[i]=status._json['retweet_count']
+            for i in find_links(status.text_json['entities']['media']:
+                links[i["expanded_url"]]=status._json['retweet_count']
+                links_media[i["expanded_url"]]=i["media_url"]
+                links_title[i["expanded_url"]]=status.text
             for i in preprocess_text:
                 if len(i)>2:
                     preprocess_text_cleaned.append(i.lower())
@@ -387,7 +399,7 @@ def tweets_analyze(request, hashtag):
 
         links_table=[]
         for i in links_sorted:
-            links_table.append(table_row(i[0], i[1]))
+            links_table.append(twitter_link(i[0], i[1], links_media[i[0]], links_title[i[0]]))
 
         frequencies_table=[]
         for i in range(10):

@@ -20,8 +20,10 @@
                     {% empty %}
                     {% endfor %}
 
+                    </br>
                     {% for row in links %}
-                    <a href='{{ row.value1 }}' >{{ row.value1 }} - {{ row.value2 }} retweets</a> </br>
+                    <img src="{{ row.media_link }}" class="img-rounded">
+                    <a class="alert alert-info" href='{{ row.link }}' ><h4>{{ row.retweets }} retweets </h4> - {{ row.title }}</a> </br>
                     {% empty %}
                     {% endfor %}
 
