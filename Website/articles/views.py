@@ -384,6 +384,7 @@ def tweets_analyze(request, hashtag):
                 else:
                     frequencies[j]=frequencies[j]+1
 
+        print("Step 1")
         frequencies_sorted=sorted(frequencies.items(), key=operator.itemgetter(1))
         frequencies_sorted.reverse()
 
@@ -397,14 +398,17 @@ def tweets_analyze(request, hashtag):
         links_sorted=sorted(links.items(), key=operator.itemgetter(1))
         links_sorted.reverse()
 
+        print("Step 2")
         links_table=[]
         for i in links_sorted:
             links_table.append(twitter_link(i[0], i[1], links_media[i[0]], links_title[i[0]]))
 
+        print("Step 3")
         frequencies_table=[]
         for i in range(10):
             frequencies_table.append(table_row(frequencies_sorted[i][0],str(frequencies_sorted[i][1])))
         
+        print("Step 4")
         return render(request, 'blog/twitter_analyze.html', {'hashtag': hashtag, 'data': tweets, 'frequencies':frequencies_table, 'links':links_table})
     except:
         return redirect(reverse(home))
