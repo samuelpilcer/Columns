@@ -24,13 +24,11 @@
                     {% for row in links %}
                     <div class="EmbeddedTweet">
 
-                      <a class="MediaCard-borderOverlay" href="{{ row.media_link }}" role="presentation" tabindex="-1" title="View image on Twitter">
-                        <span class="u-hiddenVisually">View image on Twitter</span>
-                      </a>
+                      
                     <a class="alert alert-info" href='{{ row.link }}' ><h4>{{ row.retweets }} retweets </h4> - {{ row.title }}</a> </br>
                   </div>
 
-                  <blockquote class="twitter-tweet" data-lang="fr"><p lang="fr" dir="ltr"> {{ row.title }} <a href="{{ row.link }}">{{ row.link }}</a> <a href="{{ row.link }}">{{ row.link }}</a> <a href="{{ row.link }}">{{ hashtag }}</a> <a href="{{ row.media_link }}">{{ row.media_link }}</a></p><a href="{{ row.link }}">23 décembre 2017</a></blockquote>
+                  <blockquote class="twitter-tweet" data-lang="fr"><p lang="fr" dir="ltr"> {{ row.title }} <a href="{{ row.link }}">{{ row.link }}</a> <a href="{{ row.link }}">{{ row.link }}</a> <a href="{{ row.link }}">{{ hashtag }}</a> </p>/blockquote>
 
 
 
