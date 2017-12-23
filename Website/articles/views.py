@@ -387,7 +387,7 @@ def tweets_analyze(request, hashtag):
 
         links_table=[]
         for i in links_sorted:
-            links_table.append(table_row(i, links_sorted[i]))
+            links_table.append(table_row(i[0], i[1]))
 
         frequencies_table=[]
         for i in range(10):
