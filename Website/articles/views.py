@@ -369,12 +369,12 @@ def tweets_analyze(request, hashtag):
             preprocess_text_cleaned=[]
             print('Begin')
             print(status._json)
-            print(status._json['entities']['media'])
-            for i in status._json['entities']['media']:
-                links[i["expanded_url"]]=status._json['retweet_count']
-                links_media[i["expanded_url"]]=i["media_url"]
-                links_title[i["expanded_url"]]=status.text
-                print("OK")
+            if 'media' in status._json['entities']:
+                for i in status._json['entities']['media']:
+                    links[i["expanded_url"]]=status._json['retweet_count']
+                    links_media[i["expanded_url"]]=i["media_url"]
+                    links_title[i["expanded_url"]]=status.text
+                    print("OK")
             for i in preprocess_text:
                 if len(i)>2:
                     preprocess_text_cleaned.append(i.lower())
