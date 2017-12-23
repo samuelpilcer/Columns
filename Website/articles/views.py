@@ -350,14 +350,15 @@ def tweets_analyze(request, hashtag):
         data=[]
         text_data={}
         text_data_preprocessed=[]
-        links=[]
+        links={}
         for status in tweepy.Cursor(api.search, q=hashtag).items(50):
             # Process a single status
             data.append(status)
             text_data[status.text]=status._json['retweet_count']
             preprocess_text=preprocess(status.text)
             preprocess_text_cleaned=[]
-            links=links+find_links(status.text)
+            for i in find_links(status.text):
+                links[i]=status._json['retweet_count']
             for i in preprocess_text:
                 if len(i)>2:
                     preprocess_text_cleaned.append(i.lower())
@@ -376,15 +377,23 @@ def tweets_analyze(request, hashtag):
 
         text_data_sorted=sorted(text_data.items(), key=operator.itemgetter(1))
         text_data_sorted.reverse()
+
         tweets=[]
         for i in text_data_sorted:
             tweets.append(table_row(i[0],i[1]))
+
+        links_sorted=sorted(links.items(), key=operator.itemgetter(1))
+        links_sorted.reverse()
+
+        links=[]
+        for i in links_sorted:
+            links.append(table_row(i, links_sorted[i]))
 
         frequencies_table=[]
         for i in range(10):
             frequencies_table.append(table_row(frequencies_sorted[i][0],str(frequencies_sorted[i][1])))
         
-        return render(request, 'blog/twitter_analyze.html', {'hashtag': hashtag, 'data': tweets, 'frequencies':frequencies_table})
+        return render(request, 'blog/twitter_analyze.html', {'hashtag': hashtag, 'data': tweets, 'frequencies':frequencies_table, 'links':links})
     except:
         return redirect(reverse(home))
 
