@@ -343,10 +343,10 @@ def tweets(request):
 
 class twitter_link():
     def __init__(self, link, retweets, title, media_link):
-        self.link=v1
+        self.link=link
         self.retweets=retweets
-        self.title=v2
-        self.media_link=v2
+        self.title=title
+        self.media_link=media_link
 
 @login_required
 def tweets_analyze(request, hashtag):
