@@ -363,7 +363,7 @@ def tweets_analyze(request, hashtag):
         links={}
         links_media={}
         links_title={}
-        for status in tweepy.Cursor(api.search, q=hashtag).items(50):
+        for status in tweepy.Cursor(api.search, q=hashtag, lang='fr').items(50):
             # Process a single status
             data.append(status)
             text_data[status.text]=status._json['retweet_count']
