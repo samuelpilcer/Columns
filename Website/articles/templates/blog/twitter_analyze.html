@@ -22,17 +22,18 @@
 
                     </br>
                     {% for row in links %}
-                    <blockquote>
+                    <div class="EmbeddedTweet">
+
                       <a class="MediaCard-borderOverlay" href="{{ row.media_link }}" role="presentation" tabindex="-1" title="View image on Twitter">
                         <span class="u-hiddenVisually">View image on Twitter</span>
                       </a>
                     <a class="alert alert-info" href='{{ row.link }}' ><h4>{{ row.retweets }} retweets </h4> - {{ row.title }}</a> </br>
-                  </blockquote>
+                  </div>
                     {% empty %}
                     {% endfor %}
 
                     <style>
-                      blockquote.twitter-tweet {
+                      EmbeddedTweet {
                       display: inline-block;
                       font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
                       font-size: 12px;
@@ -48,21 +49,21 @@
                       max-width: 468px;
                     }
 
-                    blockquote.twitter-tweet p {
+                    EmbeddedTweet p {
                       font-size: 16px;
                       font-weight: normal;
                       line-height: 20px;
                     }
 
-                    blockquote.twitter-tweet a {
+                    EmbeddedTweet a {
                       color: inherit;
                       font-weight: normal;
                       text-decoration: none;
                       outline: 0 none;
                     }
 
-                    blockquote.twitter-tweet a:hover,
-                    blockquote.twitter-tweet a:focus {
+                    EmbeddedTweet a:hover,
+                    EmbeddedTweet a:focus {
                       text-decoration: underline;
                     }
                     </style>
