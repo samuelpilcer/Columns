@@ -354,7 +354,7 @@ def tweets_analyze(request, hashtag):
         for status in tweepy.Cursor(api.search, q=hashtag).items(50):
             # Process a single status
             data.append(status)
-            text_data.append(status.text)
+            text_data.append(table_row(status.text, status._json['retweet_count']))
             preprocess_text=preprocess(status.text)
             preprocess_text_cleaned=[]
             links=links+find_links(status.text)
