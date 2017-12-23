@@ -368,7 +368,6 @@ def tweets_analyze(request, hashtag):
             preprocess_text=preprocess(status.text)
             preprocess_text_cleaned=[]
             print('Begin')
-            print(status._json)
             if 'media' in status._json['entities']:
                 for i in status._json['entities']['media']:
                     links[i["expanded_url"]]=status._json['retweet_count']
@@ -405,7 +404,9 @@ def tweets_analyze(request, hashtag):
         print("Step 2")
         links_table=[]
         for i in links_sorted:
-            links_table.append(twitter_link(i[0], i[1], links_media[i[0]], links_title[i[0]]))
+            print(i[0])
+            print(i[1])
+            links_table.append(twitter_link(i[0], i[1], links_title[i[0]],links_media[i[0]]))
 
         print("Step 3")
         frequencies_table=[]
