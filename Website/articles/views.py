@@ -371,6 +371,7 @@ def tweets_analyze(request, hashtag):
                 links[i["expanded_url"]]=status._json['retweet_count']
                 links_media[i["expanded_url"]]=i["media_url"]
                 links_title[i["expanded_url"]]=status.text
+                print("OK")
             for i in preprocess_text:
                 if len(i)>2:
                     preprocess_text_cleaned.append(i.lower())
