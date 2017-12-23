@@ -373,7 +373,7 @@ def tweets_analyze(request, hashtag):
 
         frequencies_sorted=sorted(frequencies.items(), key=operator.itemgetter(1))
         frequencies_sorted.reverse()
-        text_data=sorted(frequencies.items(), key= lambda x: x.value2)
+        text_data=sorted(text_data.items(), key= lambda x: x.value2)
 
         frequencies_table=[]
         for i in range(10):
