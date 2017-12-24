@@ -33,74 +33,8 @@
                           <h2 class="blog-post-title">{{ article.titre }}</h2>
                         </a>
                         <p>{{ article.sous_titre|safe|truncatewords_html:80 }}</p>
+                        
                         <a class="btn btn-info" href="/{{ article.url }}">Lire</a>
-                        <a class="btn btn-info" href="/analytics/{{ article.id }}">Analytics</a> 
-                        <a class="blog-post-share " id="share_fb_{{ article.id }}" href="#">
-                          <i class="fa fa-facebook"></i>
-                          <!--<i class="material-icons">&#xE80D;</i>-->
-                        </a>
-
-                        <a class="blog-post-share " style="padding-left: 10px;"  href="https://twitter.com/share?url=https%3A%2F%2Fwww.columns.fr%2F{{ article.url }}&related=twitterapi%2Ctwitter&hashtags=columns&text={{ article.titre }}">
-                          <i class="fa fa-twitter"></i>
-                          <!--<i class="material-icons">&#xE80D;</i>-->
-                        </a>
-                          <script>
-                          window.fbAsyncInit = function() {
-                            FB.init({
-                              appId            : '160658967855882',
-                              autoLogAppEvents : true,
-                              xfbml            : true,
-                              version          : 'v2.10'
-                            });
-                            FB.AppEvents.logPageView();
-                          };
-
-                          (function(d, s, id){
-                             var js, fjs = d.getElementsByTagName(s)[0];
-                             if (d.getElementById(id)) {return;}
-                             js = d.createElement(s); js.id = id;
-                             js.src = "//connect.facebook.net/en_US/sdk.js";
-                             fjs.parentNode.insertBefore(js, fjs);
-                           }(document, 'script', 'facebook-jssdk'));
-                          document.getElementById("share_fb_{{ article.id }}").onclick = function() {
-                            FB.ui({
-                              method: 'share',
-                              display: 'popup',
-                              href: 'http://www.columns.fr/{{ article.url }}',
-                            }, function(response){});
-                          }
-                          </script>
-                        <a class="btn btn-info" href="{% url 'delete' article.id %}"><i class="fa fa-times" aria-hidden="true"></i></a>
-                        <a class="blog-post-share pull-right" href="#">
-                          <i class="material-icons">&#xE80D;</i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        {% empty %}
-          <p>Aucun article.</p>
-{% endfor %}
-</div>
-
-
-<div class="col-sm-6">
-{% for article in derniers_articles_2 %}
-<section class="blog-post">
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <img src="{{ article.photo.url }}" class="img-responsive" style="width: 100%;" />
-      <div class="blog-post-meta">
-        <span class="label label-light label-{{ article.categorie.colour }}">{{ article.categorie }}</span>
-                <p class="blog-post-date pull-right">{{ article.date|date:"DATE_FORMAT" }}</p>
-            </div>
-            <div class="blog-post-content">
-                <a href="/{{ article.url }}">
-                  <h2 class="blog-post-title">{{ article.titre }}</h2>
-                </a>
-                <p>{{ article.sous_titre|safe|truncatewords_html:80 }}</p>
-                        <a class="btn btn-info" href="/{{ article.url }}">Lire</a>
-                        <a class="btn btn-info" href="/analytics/{{ article.id }}">Analytics</a> 
                 <a class="blog-post-share " id="share_fb_{{ article.id }}" href="#">
                           <i class="fa fa-facebook"></i>
                           <!--<i class="material-icons">&#xE80D;</i>-->
@@ -136,13 +70,68 @@
                             }, function(response){});
                           }
                           </script>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% empty %}
+          <p>Aucun article.</p>
+{% endfor %}
+</div>
 
-                          
-                <a class="btn btn-info" href="{% url 'delete' article.id %}"><i class="fa fa-times" aria-hidden="true"></i></a>
 
-                <a class="blog-post-share pull-right" href="#">
-                  <i class="material-icons">&#xE80D;</i>
+<div class="col-sm-6">
+{% for article in derniers_articles_2 %}
+<section class="blog-post">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <img src="{{ article.photo.url }}" class="img-responsive" style="width: 100%;" />
+      <div class="blog-post-meta">
+        <span class="label label-light label-{{ article.categorie.colour }}">{{ article.categorie }}</span>
+                <p class="blog-post-date pull-right">{{ article.date|date:"DATE_FORMAT" }}</p>
+            </div>
+            <div class="blog-post-content">
+                <a href="/{{ article.url }}">
+                  <h2 class="blog-post-title">{{ article.titre }}</h2>
                 </a>
+                <p>{{ article.sous_titre|safe|truncatewords_html:80 }}</p>
+                        <a class="btn btn-info" href="/{{ article.url }}">Lire</a>
+                        <a class="btn btn-info" href="/{{ article.url }}">Lire</a>
+                <a class="blog-post-share " id="share_fb_{{ article.id }}" href="#">
+                          <i class="fa fa-facebook"></i>
+                          <!--<i class="material-icons">&#xE80D;</i>-->
+                        </a>
+
+                        <a class="blog-post-share " style="padding-left: 10px;"  href="https://twitter.com/share?url=https%3A%2F%2Fwww.columns.fr%2F{{ article.url }}&related=twitterapi%2Ctwitter&hashtags=columns&text={{ article.titre }}">
+                          <i class="fa fa-twitter"></i>
+                          <!--<i class="material-icons">&#xE80D;</i>-->
+                        </a>
+                          <script>
+                          window.fbAsyncInit = function() {
+                            FB.init({
+                              appId            : '160658967855882',
+                              autoLogAppEvents : true,
+                              xfbml            : true,
+                              version          : 'v2.10'
+                            });
+                            FB.AppEvents.logPageView();
+                          };
+
+                          (function(d, s, id){
+                             var js, fjs = d.getElementsByTagName(s)[0];
+                             if (d.getElementById(id)) {return;}
+                             js = d.createElement(s); js.id = id;
+                             js.src = "//connect.facebook.net/en_US/sdk.js";
+                             fjs.parentNode.insertBefore(js, fjs);
+                           }(document, 'script', 'facebook-jssdk'));
+                          document.getElementById("share_fb_{{ article.id }}").onclick = function() {
+                            FB.ui({
+                              method: 'share',
+                              display: 'popup',
+                              href: 'http://www.columns.fr/{{ article.url }}',
+                            }, function(response){});
+                          }
+                          </script>
             </div>
         </div>
     </div>
