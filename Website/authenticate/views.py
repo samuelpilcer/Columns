@@ -158,6 +158,20 @@ def hiscolumns(request, userurl, nb):
         bool_prec=False
     page_suiv=nb+1
 
+    try:
+        signature_object=Signature.objects.get(user=user)
+        signature = signature_object.signature
+        bio=signature_object.bio
+        has_bio=True
+        if len(bio)==0:
+            has_bio=False
+        if len(signature)<=5:
+            signature = user.first_name+" "+user.last_name
+    except:
+        signature = user.first_name+" "+user.last_name
+        has_bio=False
+        bio=''
+
     return render(request, 'hiscolumns.html', {'user_search': user, 'derniers_articles_1': articles1,'derniers_articles_2': articles2, 'page_suiv':page_suiv, 'page_prec':page_prec, 'bool_suiv': bool_suiv, 'bool_prec': bool_prec})
 
 
