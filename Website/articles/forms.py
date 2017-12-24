@@ -1,7 +1,7 @@
 # coding: utf-8
 from django import forms
 from mediumeditor_fork.widgets import MediumEditorTextarea
-from .models import Article, Comment
+from .models import Article, Comment, Fil
 
 
 class ContactForm(forms.Form):
