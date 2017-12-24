@@ -11,7 +11,7 @@ import unicodedata
 from google_analytics import initialize_analyticsreporting, get_report
 # Create your views here.
 
-from articles.models import Article, Categorie, Comment, Like, Save, Signature, Fil
+from articles.models import Article, Categorie, Comment, Like, Save, Signature, Fil, InFil
 import tweepy
 from tweepy import OAuthHandler
 
