@@ -116,12 +116,12 @@ def userarticles(request, nb):
 def unroll_user_url(url):
     return url.split('-')[-1]
 
-def hiscolumns_p0(request, user_url):
-    return hiscolumns(request,user_url,0)
+def hiscolumns_p0(request, userurl):
+    return hiscolumns(request,userurl,0)
 
-def hiscolumns(request, user_url, nb):
+def hiscolumns(request, userurl, nb):
     try:
-        identifiant=unroll_user_url(user_url)
+        identifiant=unroll_user_url(userurl)
         user = User.objects.get(id=identifiant)
     except:
         redirect('/accueil')
