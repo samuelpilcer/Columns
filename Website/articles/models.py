@@ -25,6 +25,20 @@ class Article(models.Model):
         """
         return self.titre
 
+
+class UserData(models.Model):
+    user = models.ForeignKey(User)
+    ranking = models.FloatField(default=0)
+    number_articles = models.IntegerField(default=0)
+    number_likes = models.IntegerField(default=0)
+    number_saved = models.IntegerField(default=0)
+    number_articles_he_liked = models.IntegerField(default=0)
+    number_comments = models.IntegerField(default=0)
+    number_articles_he_commented = models.IntegerField(default=0)
+    def __str__(self):
+        return self.user
+
+
 class Categorie(models.Model):
     nom = models.CharField(max_length=30)
     colour = models.CharField(max_length=30)
