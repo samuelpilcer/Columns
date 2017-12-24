@@ -30,6 +30,7 @@ class UserData(models.Model):
     user = models.ForeignKey(User)
     ranking = models.FloatField(default=0)
     number_articles = models.IntegerField(default=0)
+    number_logs = models.IntegerField(default=0)
     number_likes = models.IntegerField(default=0)
     number_saved = models.IntegerField(default=0)
     number_articles_he_liked = models.IntegerField(default=0)
