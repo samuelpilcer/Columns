@@ -43,6 +43,7 @@ class Fil(models.Model):
         return self.nom
 
 class InFil(models.Model):
+    id = models.AutoField(primary_key=True)
     article = models.ForeignKey('Article')
     fil = models.ForeignKey('Fil')
 
