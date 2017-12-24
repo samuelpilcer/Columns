@@ -45,13 +45,6 @@ class Fil(models.Model):
 class InFil(models.Model):
     article = models.ForeignKey('Article')
     fil = models.ForeignKey('Fil')
-    def __str__(self):
-        """ 
-        Cette méthode que nous définirons dans tous les modèles
-        nous permettra de reconnaître facilement les différents objets que 
-        nous traiterons plus tard et dans l'administration
-        """
-        return self.article
 
 class Comment(models.Model):
     auteur = models.ForeignKey(User)
