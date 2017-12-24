@@ -559,7 +559,12 @@ def new(request):
             new_article.url = get_url(new_article)
             new_article.time_to_read=int(float(len(new_article.contenu.split(' '))/200))+1
             new_article.save()
-
+            try:
+                user_data=UserData.objects.all().filter(user=request.user)[0]
+                user_data.number_articles=user_data.number_articles+1
+                user_data.save()
+            except:
+                UserData(request.user).save()
                 # Nous pourrions ici envoyer l'e-mail grâce aux données 
                 # que nous venons de récupérer
             envoi = True
