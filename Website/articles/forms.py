@@ -40,3 +40,15 @@ class CommentForm(forms.ModelForm):
             'contenu': forms.Textarea(attrs={'class': 'form-control', 'rows': '5'}),
         }
         #fields = '__all__'
+
+class FilForm(forms.ModelForm):
+    class Meta:
+        model = Fil
+        fields=('photo','nom','description',)
+        widgets = {
+            'nom': forms.TextInput(attrs={'placeholder':'Titre','class': 'form-control'}),
+            'description':  MediumEditorTextarea(),
+            'photo': forms.FileInput(attrs={"class":"btn btn-primary btn-file"}),
+
+        }
+        #fields = '__all__'
