@@ -8,6 +8,10 @@
                   <div class="panel-body">
                     <div class="blog-post-content">
                       <h2 class="blog-post-title">{{ user_search.first_name }} {{ user_search.last_name }} - {{ user_search.username }}</h2>
+                      <p style="margin-top: 40px;"> <strong> {{ signature }} </strong> </p>
+                  {% if has_bio %}
+                  <p> {{ bio }}</p>
+                  {% endif %}
                     </br>
                     </div>
                   </div>
