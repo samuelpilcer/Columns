@@ -5,28 +5,7 @@
 <div class="col-sm-8 blog-main">
           <h1>Fils de publication les plus pertinents</h1>
 
-{% for article in derniers_articles_1 %}
-          <section class="blog-post">
-            <div class="panel panel-default">
-              <img src="{{ article.photo.url }}" class="img-responsive" style="width: 100%;" />
-              <div class="panel-body">
-                <div class="blog-post-meta">
-                  <span class="label label-light label-{{ article.categorie.colour }}">{{ article.categorie }}</span>
-                  <p class="blog-post-date pull-right">{{ article.date|date:"DATE_FORMAT" }}</p>
-                </div>
-                <div class="blog-post-content">
-                  <h1 class="blog-post-title" style="font-weight: bold;">{{ article.nom }}</h1>
-
-                  {{ article.description|safe|linebreaks }}
-
-                </div>
-              </div>
-            </div>
-          </section>
-{% empty %}
-          <p>Aucun fil.</p>
-{% endfor %}
-{% for article in derniers_articles_2 %}
+{% for article in fils %}
           <section class="blog-post">
             <div class="panel panel-default">
               <img src="{{ article.photo.url }}" class="img-responsive" style="width: 100%;" />
