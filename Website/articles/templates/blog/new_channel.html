@@ -22,7 +22,7 @@
                     <div class="blog-post-content">
                       <h2 class="blog-post-title">Créer un nouveau fil de publications</h2>
                   	</br>
-                      <form class="form-horizontal style-form" enctype="multipart/form-data" action="{% url "new" %}" method="post">
+                      <form class="form-horizontal style-form" enctype="multipart/form-data" action="{% url "new_channel" %}" method="post">
 
                       	{% csrf_token %}
                         {% for field in form.visible_fields %}
