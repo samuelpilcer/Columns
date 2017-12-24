@@ -12,7 +12,7 @@ from google_analytics import initialize_analyticsreporting, get_report
 from django.contrib.auth.models import User
 # Create your views here.
 
-from articles.models import Article, Categorie, Comment, Like, Save, Signature, Fil, InFil
+from articles.models import Article, Categorie, Comment, Like, Save, Signature, Fil, InFil, UserData
 import tweepy
 from tweepy import OAuthHandler
 
@@ -322,7 +322,7 @@ class user_with_bio():
 def list_users(request, page):
     page=int(page)
 
-    users=User.objects.all()
+    users=UserData.objects.order_by("-ranking")
 
     if len(users)>10+10*page:
         bool_suiv=True
@@ -332,7 +332,8 @@ def list_users(request, page):
         return redirect('/accueil')
 
     table_users=[]
-    for user in users[10*page:10*page+10]:
+    for user_data in users[10*page:10*page+10]:
+        user=user_data.user
         try:
             signature_object=Signature.objects.get(user=user)
             signature = signature_object.signature
