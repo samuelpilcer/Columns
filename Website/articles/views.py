@@ -571,6 +571,12 @@ def save(request, id):
     return redirect('/article/'+id)
 
 
+def get_url_channel(channel):
+    url=''
+    url=url+unicodedata.normalize('NFKD',  channel.nom.lower()).encode('ascii', 'ignore').replace(',','').replace('?','').replace('!','').replace('(','').replace(')','').replace('$','').replace('#','').replace('@','').replace('%','').replace('#','').replace('(','').replace(')','').replace(';','').replace('/','').replace(':','').replace("'",'-').replace("\"",'').replace(' ','-')+'-'
+    url=url+str(channel.id)
+    return url
+
 @login_required
 def new_channel(request):
     # Construire le formulaire, soit avec les données postées,
@@ -588,9 +594,9 @@ def new_channel(request):
             new_channel.nom = form.cleaned_data.get('nom')
             new_channel.description = form.cleaned_data.get('description')
             new_channel.photo = form.cleaned_data['photo']
-            new_article.save()
-            new_article.url = get_url(new_article)
-            new_article.save()
+            new_channel.save()
+            new_channel.url = get_url_channel(new_channel)
+            new_channel.save()
 
                 # Nous pourrions ici envoyer l'e-mail grâce aux données 
                 # que nous venons de récupérer
