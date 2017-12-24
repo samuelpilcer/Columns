@@ -314,7 +314,7 @@ def list_users_p0(request):
 class user_with_bio():
     def __init__(self, user, has_bio, bio, signature):
         self.user=user
-        self.has_bio=
+        self.has_bio=has_bio
         self.bio=bio
         self.signature=signature
 
