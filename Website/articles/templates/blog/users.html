@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+
+{% block articles %}
+<div class="col-sm-8 blog-main">
+        <section class="blog-post">
+          <h1>Utilisateurs de Columns</h1>
+          </br>
+        </section>
+        
+
+{% for user_row in table_users %}
+          <section class="blog-post">
+            <div class="panel panel-default">
+              <div class="panel-body">
+               <div class="blog-post-content">
+                  <h1 class="blog-post-title" style="font-weight: bold;"><a style="color: black;" href="channels/{{ article.url }}">{{ user_row.signature }}</a></h1>
+                  {% if user_row.has_bio %}
+                  {{ user_row.bio|safe|linebreaks }}
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </section>
+{% empty %}
+          <p>Aucun fil.</p>
+{% endfor %}
+
+
+          
+          <nav>
+            <ul class="pager">
+              {% if bool_prec %}
+              <li><a class="withripple" href="{% url 'list_articles' page_prec %}">Précédent</a></li>
+              {% else %}
+              <li><a class="withripple active" href="#">Précédent</a></li>
+              {% endif %}
+
+              {% if bool_suiv %}
+              <li><a class="withripple" href="{% url 'list_articles' page_suiv %}">Suivant</a></li>
+              {% else %}
+              <li><a class="withripple active" href="#">Suivant</a></li>
+              {% endif %}
+            </ul>
+          </nav>
+
+        </div>
+{% endblock %}

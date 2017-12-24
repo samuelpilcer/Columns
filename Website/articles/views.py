@@ -306,8 +306,58 @@ def lire(request, id):
     if len(signature)<=5:
         signature = article.auteur.username
 
-
     return render(request, 'blog/lire.html', {'article': article, 'form':form, 'comments': comments, 'has_liked':has_liked, 'number_of_likes':number_of_likes,'signature':signature, 'has_bio':has_bio, 'bio':bio})
+
+def list_users_p0(request):
+    return list_users(request, 0)
+
+class user_with_bio():
+    def __init__(self, user, has_bio, bio, signature):
+        self.user=user
+        self.has_bio=
+        self.bio=bio
+        self.signature=signature
+
+def list_users(request, page):
+    page=int(page)
+
+    users=User.object.all()
+
+    if len(users)>10+10*page:
+        bool_suiv=True
+    elif (len(users)<=10+10*page) and (len(users)>=10*page):
+        bool_suiv=False
+    else:
+        return redirect('/accueil')
+
+    table_users=[]
+    for user in users[10*page:10*page+10]:
+        try:
+            signature_object=Signature.objects.get(user=user)
+            signature = signature_object.signature
+            bio=signature_object.bio
+            has_bio=True
+            if len(bio)==0:
+                has_bio=False
+            if len(signature)<=5:
+                signature = user.first_name+" "+user.last_name
+        except:
+            signature = user.first_name+" "+user.last_name
+            has_bio=False
+            bio=''
+        table_users.append(user, has_bio, bio, signature)
+
+    if page>0:
+        page_prec=page-1
+        bool_prec=True
+    else:
+        page_prec=0
+        bool_prec=False
+    page_suiv=page+1
+
+    return render(request, 'blog/accueil_users.html', {'table_users': table_users, 'page_suiv':page_suiv, 'page_prec':page_prec, 'bool_suiv': bool_suiv, 'bool_prec': bool_prec})
+
+
 
 class table_row():
     def __init__(self, v1,v2):
