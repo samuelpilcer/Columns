@@ -594,16 +594,12 @@ def like(request, id):
             user_data=UserData.objects.all().filter(user=request.user)[0]
             user_data.number_articles_he_liked=user_data.number_articles_he_liked-1
             user_data.save()
-            number_likes
-            number_articles_he_liked
         except:
             UserData(request.user).save()
         try:
             user_data=UserData.objects.all().filter(user=article.auteur)[0]
             user_data.number_likes=user_data.number_likes-1
             user_data.save()
-            number_likes
-            number_articles_he_liked
         except:
             UserData(article.auteur).save()
         process_ranking(id)
@@ -619,16 +615,12 @@ def like(request, id):
             user_data=UserData.objects.all().filter(user=request.user)[0]
             user_data.number_articles_he_liked=user_data.number_articles_he_liked+1
             user_data.save()
-            number_likes
-            number_articles_he_liked
         except:
             UserData(request.user).save()
         try:
             user_data=UserData.objects.all().filter(user=article.auteur)[0]
             user_data.number_likes=user_data.number_likes+1
             user_data.save()
-            number_likes
-            number_articles_he_liked
         except:
             UserData(article.auteur).save()
     return redirect('/article/'+id)
