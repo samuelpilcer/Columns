@@ -14,7 +14,7 @@
             <div class="panel panel-default">
               <div class="panel-body">
                <div class="blog-post-content">
-                  <h1 class="blog-post-title" style="font-weight: bold;"><a style="color: black;" href="channels/{{ article.url }}">{{ user_row.signature }}</a></h1>
+                  <h1 class="blog-post-title" style="font-weight: bold;"><a style="color: black;" href="authenticate/user/{{ user_row.user.username }}-{{ user_row.user.id }}">{{ user_row.signature }}</a></h1>
                   {% if user_row.has_bio %}
                   {{ user_row.bio|safe|linebreaks }}
                   {% endif %}
@@ -31,13 +31,13 @@
           <nav>
             <ul class="pager">
               {% if bool_prec %}
-              <li><a class="withripple" href="users/{{ page_prec }}">Précédent</a></li>
+              <li><a class="withripple" href="http://www.columns.fr/users/{{ page_prec }}">Précédent</a></li>
               {% else %}
               <li><a class="withripple active" href="#">Précédent</a></li>
               {% endif %}
 
               {% if bool_suiv %}
-              <li><a class="withripple" href="users/{{ page_suiv }}">Suivant</a></li>
+              <li><a class="withripple" href="http://www.columns.fr/users/{{ page_suiv }}">Suivant</a></li>
               {% else %}
               <li><a class="withripple active" href="#">Suivant</a></li>
               {% endif %}
