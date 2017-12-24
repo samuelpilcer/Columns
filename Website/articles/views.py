@@ -612,24 +612,14 @@ def list_channels(request):
     fils = Fil.objects.order_by('-ranking') # Nous sélectionnons tous nos articles
 
     if len(fils)>10:
-        n=5
         bool_suiv=True
     else:
-        n=int(len(fils)/2)
         bool_suiv=False
 
-    fil1=[]
-    fil2=[]
-    for i in range(n):
-        fil1.append(fils[2*i])
-        fil2.append(fils[2*i+1])
-
-    if len(fils)<10 and 2*int(len(fils)/2) != len(fils):
-        fil1.append(fils[len(fils)-1])
-    
+    fil=fils[:10]
     bool_prec=False
 
-    return render(request, 'blog/accueil_fils.html', {'derniers_articles_1': fil1,'derniers_articles_2': fil2, 'page_suiv':1, 'page_prec':0,'bool_suiv': bool_suiv, 'bool_prec': bool_prec})
+    return render(request, 'blog/accueil_fils.html', {'fils': fil, 'page_suiv':1, 'page_prec':0,'bool_suiv': bool_suiv, 'bool_prec': bool_prec})
 
 
 def list_channels_page(request, nb):
