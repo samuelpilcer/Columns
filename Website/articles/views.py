@@ -2,7 +2,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
 from django.shortcuts import redirect
-from .forms import ArticleForm, CommentForm
+from .forms import ArticleForm, CommentForm, FilForm
 from django.contrib.auth.decorators import login_required
 from django.db import connection, transaction
 from django.core.urlresolvers import reverse
