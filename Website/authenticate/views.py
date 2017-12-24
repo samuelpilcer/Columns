@@ -158,7 +158,7 @@ def hiscolumns(request, userurl, nb):
         bool_prec=False
     page_suiv=nb+1
 
-    return render(request, 'hiscolumns.html', {'username': user.username, 'derniers_articles_1': articles1,'derniers_articles_2': articles2, 'page_suiv':page_suiv, 'page_prec':page_prec, 'bool_suiv': bool_suiv, 'bool_prec': bool_prec})
+    return render(request, 'hiscolumns.html', {'user_search': user, 'derniers_articles_1': articles1,'derniers_articles_2': articles2, 'page_suiv':page_suiv, 'page_prec':page_prec, 'bool_suiv': bool_suiv, 'bool_prec': bool_prec})
 
 
 @login_required
