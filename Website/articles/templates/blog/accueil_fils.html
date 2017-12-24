@@ -15,7 +15,7 @@
               <img src="{{ article.photo.url }}" class="img-responsive" style="width: 100%;" />
               <div class="panel-body">
                <div class="blog-post-content">
-                  <h1 class="blog-post-title" style="font-weight: bold;"><a href="{{ article.url }}">{{ article.nom }}</a></h1>
+                  <h1 class="blog-post-title" style="font-weight: bold;"><a style="color: black;" href="{{ article.url }}">{{ article.nom }}</a></h1>
 
                   {{ article.description|safe|linebreaks }}
 
