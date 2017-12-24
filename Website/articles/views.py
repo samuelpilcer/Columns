@@ -569,3 +569,35 @@ def save(request, id):
         new_like.article = article
         new_like.save()
     return redirect('/article/'+id)
+
+
+@login_required
+def new_channel(request):
+    # Construire le formulaire, soit avec les données postées,
+    # soit vide si l'utilisateur accède pour la première fois
+    # à la page.
+    if request.method=="POST":
+        form = FilForm(request.POST, request.FILES)
+            # Nous vérifions que les données envoyées sont valides
+            # Cette méthode renvoie False s'il n'y a pas de données 
+            # dans le formulaire ou qu'il contient des erreurs.
+        if form.is_valid(): 
+                # Ici nous pouvons traiter les données du formulaire
+            new_channel=Fil()
+            new_channel.admin=request.user
+            new_channel.nom = form.cleaned_data.get('nom')
+            new_channel.description = form.cleaned_data.get('description')
+            new_channel.photo = form.cleaned_data['photo']
+            new_article.save()
+            new_article.url = get_url(new_article)
+            new_article.save()
+
+                # Nous pourrions ici envoyer l'e-mail grâce aux données 
+                # que nous venons de récupérer
+            envoi = True
+            process_ranking_all()
+    else:
+        form = FilForm(None)
+    # Quoiqu'il arrive, on affiche la page du formulaire.
+    return render(request, 'blog/new_channel.html', locals())
+
