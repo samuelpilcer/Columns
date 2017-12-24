@@ -116,7 +116,7 @@ def userarticles(request, nb):
 def unroll_user_url(url):
     return url.split('-')[-1]
 
-def hiscolumns_po(request, user_url):
+def hiscolumns_p0(request, user_url):
     return hiscolumns(request,user_url,0)
 
 def hiscolumns(request, user_url, nb):
