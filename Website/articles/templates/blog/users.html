@@ -14,7 +14,7 @@
             <div class="panel panel-default">
               <div class="panel-body">
                <div class="blog-post-content">
-                  <h1 class="blog-post-title" style="font-weight: bold;"><a style="color: black;" href="authenticate/user/{{ user_row.user.username }}-{{ user_row.user.id }}">{{ user_row.signature }}</a></h1>
+                  <h1 class="blog-post-title" style="font-weight: bold;"><a style="color: black;" href="http://www.columns.fr/authenticate/user/{{ user_row.user.username }}-{{ user_row.user.id }}">{{ user_row.signature }}</a></h1>
                   {% if user_row.has_bio %}
                   {{ user_row.bio|safe|linebreaks }}
                   {% endif %}
