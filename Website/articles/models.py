@@ -27,6 +27,7 @@ class Article(models.Model):
 
 
 class UserData(models.Model):
+    id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User)
     ranking = models.FloatField(default=0)
     number_articles = models.IntegerField(default=0)
