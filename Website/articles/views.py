@@ -322,7 +322,7 @@ class user_with_bio():
 def list_users(request, page):
     page=int(page)
 
-    users=User.object.all()
+    users=User.objects.all()
 
     if len(users)>10+10*page:
         bool_suiv=True
