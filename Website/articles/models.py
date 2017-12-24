@@ -31,6 +31,28 @@ class Categorie(models.Model):
     def __str__(self):
         return self.nom
 
+class Fil(models.Model):
+    nom = models.CharField(max_length=30)
+    photo = models.ImageField(upload_to='photos_articles', default = 'photos_articles/default.jpg')
+    description = models.TextField(null=True)
+    admin = models.ForeignKey(User)
+    date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date de creation")
+    ranking = models.FloatField(default=0)
+    url = models.CharField(max_length=500, default = '/')
+    def __str__(self):
+        return self.nom
+
+class InFil(models.Model):
+    article = models.ForeignKey('Article')
+    fil = models.ForeignKey('Fil')
+    def __str__(self):
+        """ 
+        Cette méthode que nous définirons dans tous les modèles
+        nous permettra de reconnaître facilement les différents objets que 
+        nous traiterons plus tard et dans l'administration
+        """
+        return self.article
+
 class Comment(models.Model):
     auteur = models.ForeignKey(User)
     contenu = models.TextField(null=True)
