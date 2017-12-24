@@ -356,7 +356,7 @@ def list_users(request, page):
         bool_prec=False
     page_suiv=page+1
 
-    return render(request, 'blog/accueil_users.html', {'table_users': table_users, 'page_suiv':page_suiv, 'page_prec':page_prec, 'bool_suiv': bool_suiv, 'bool_prec': bool_prec})
+    return render(request, 'blog/users.html', {'table_users': table_users, 'page_suiv':page_suiv, 'page_prec':page_prec, 'bool_suiv': bool_suiv, 'bool_prec': bool_prec})
 
 
 
