@@ -636,7 +636,7 @@ def list_channels_page(request, nb):
     """ Exemple de page HTML, non valide pour que l'exemple soit concis """
     fils = Fil.objects.order_by('-ranking') # Nous sélectionnons tous nos articles
     nb=int(nb)
-   if len(fils)>10+10*nb:
+    if len(fils)>10+10*nb:
         n=5
         bool_suiv=True
     elif (len(fils)<=10+10*nb) and (len(fils)>=10*nb):
