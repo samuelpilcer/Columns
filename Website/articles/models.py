@@ -37,8 +37,6 @@ class UserData(models.Model):
     number_articles_he_liked = models.IntegerField(default=0)
     number_comments = models.IntegerField(default=0)
     number_articles_he_commented = models.IntegerField(default=0)
-    def __str__(self):
-        return self.user
 
 
 class Categorie(models.Model):
