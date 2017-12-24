@@ -645,3 +645,59 @@ def list_channels_page(request, nb):
     page_suiv=nb+1
 
     return render(request, 'blog/accueil_fils.html', {'fils': fil, 'page_suiv':page_suiv, 'page_prec':page_prec, 'bool_suiv': bool_suiv, 'bool_prec': bool_prec})
+
+
+def channel_articles(request, channel_url):
+    id=get_id(channel_url)
+    try:
+        fil = Fil.objects.get(id=id)
+        articles = InFil.objects.filter(fil=fil)
+
+        if len(articles)>10:
+            n=5
+            bool_suiv=True
+        else:
+            n=int(len(articles)/2)
+            bool_suiv=False
+
+        articles1=[]
+        articles2=[]
+        for i in range(n):
+            articles1.append(articles[2*i].article)
+            articles2.append(articles[2*i+1].article)
+
+        if len(articles)<10 and 2*int(len(articles)/2) != len(articles):
+            articles1.append(articles[len(articles)-1].article)
+        
+        bool_prec=False
+
+        return render(request, 'blog/accueil.html', {'derniers_articles_1': articles1,'derniers_articles_2': articles2, 'page_suiv':1, 'page_prec':0,'bool_suiv': bool_suiv, 'bool_prec': bool_prec})
+    except Article.DoesNotExist:
+        raise Http404
+
+
+def home(request):
+    """ Exemple de page HTML, non valide pour que l'exemple soit concis """
+    articles = Article.objects.order_by('-ranking') # Nous sélectionnons tous nos articles
+
+    if len(articles)>10:
+        n=5
+        bool_suiv=True
+    else:
+        n=int(len(articles)/2)
+        bool_suiv=False
+
+    articles1=[]
+    articles2=[]
+    for i in range(n):
+        articles1.append(articles[2*i])
+        articles2.append(articles[2*i+1])
+
+    if len(articles)<10 and 2*int(len(articles)/2) != len(articles):
+        articles1.append(articles[len(articles)-1])
+    
+    bool_prec=False
+
+    return render(request, 'blog/accueil.html', {'derniers_articles_1': articles1,'derniers_articles_2': articles2, 'page_suiv':1, 'page_prec':0,'bool_suiv': bool_suiv, 'bool_prec': bool_prec})
+
+
