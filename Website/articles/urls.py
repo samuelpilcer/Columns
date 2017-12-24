@@ -20,4 +20,5 @@ urlpatterns = [
     url(r'^twitter/$', views.tweets, name='tweets'),
     url(r'^twitter/analyze/(?P<hashtag>[\w\s]+)$', views.tweets_analyze, name='tweets_analyze'),
     url(r'^new_channel$', views.new_channel, name='new_channel'),
+    url(r'^channels$', views.list_channels, name='list_channels'),
 ]
