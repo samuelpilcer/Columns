@@ -346,7 +346,7 @@ def list_users(request, page):
             signature = user.first_name+" "+user.last_name
             has_bio=False
             bio=''
-        table_users.append(user, has_bio, bio, signature)
+        table_users.append(user_with_bio(user, has_bio, bio, signature))
 
     if page>0:
         page_prec=page-1
