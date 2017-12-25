@@ -29,7 +29,7 @@
 
                         {% csrf_token %}
                         
-                          <div>{{ fil_form }}</div>
+                          <div>{{ fil_form.as_p }}</div>
               
                          <input type="submit" class="btn btn-theme" value="Publier" />
                   </form>
