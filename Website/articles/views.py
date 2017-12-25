@@ -678,9 +678,11 @@ def add_to_channel(request, id):
         if form.is_valid():
             try:
                 id_channel=form.cleaned_data.get('id')
+                print('1')
                 channel=Fil.objects.get(id=id_channel)
+                print('2')
                 InFil(article,channel).save()
-                
+                print('3')
             except:
                 return redirect('/article/'+id)
     return redirect('/article/'+id)
