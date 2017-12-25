@@ -671,11 +671,17 @@ def save(request, id):
 def add_to_channel(request, id):
     if request.method=="POST":
         form = AddToFilForm(request.POST or None)
-        article=Article.objects.get(id=id)
-        if form.is_valid(): 
-            id_channel=form.cleaned_data.get('id')
-            channel=Fil.objects.get(id=id)
-            InFil(article,fil).save()
+        try:
+            article=Article.objects.get(id=id)
+        except:
+            return redirect('/article/'+id)
+        if form.is_valid():
+            try:
+                id_channel=form.cleaned_data.get('id')
+                channel=Fil.objects.get(id=id_channel)
+                InFil(article,fil).save()
+            except:
+                return redirect('/article/'+id)
     return redirect('/article/'+id)
 
 def get_url_channel(channel):
