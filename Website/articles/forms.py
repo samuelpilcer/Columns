@@ -44,7 +44,7 @@ class CommentForm(forms.ModelForm):
 class AddToFilForm(forms.ModelForm):
     class Meta:
         model = InFil
-        fields=('id','nom',)
+        fields=('article',)
         #widgets = {
         #    'id': forms.IntegerField(label='Identifiant'),
         #}
