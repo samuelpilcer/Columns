@@ -685,6 +685,7 @@ def add_to_channel(request, id):
                 print(in_fil)
                 in_fil.fil_id=id_channel
                 in_fil.articles_id=article.id
+                print(in_fil.fil_id)
                 print(in_fil.articles_id)
                 in_fil.save()
                 print('3')
