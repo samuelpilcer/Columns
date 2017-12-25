@@ -783,6 +783,7 @@ def channel_articles(request, channel_url):
         articles2=[]
         for i in range(n):
             print(1)
+            print(articles[2*i])
             art_1=Article.objects.get(id=articles[2*i].article_id)
             print(1)
             articles1.append(art_1)
