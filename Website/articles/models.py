@@ -57,7 +57,7 @@ class Fil(models.Model):
         return self.nom
 
 class InFil(models.Model):
-    message = models.CharField(max_length=30)
+    message = models.CharField(max_length=30,default = '')
     article = models.ForeignKey('Article')
     date = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Date de parution")
     fil = models.ForeignKey('Fil')
