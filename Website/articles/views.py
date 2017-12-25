@@ -280,7 +280,18 @@ def lire(request, id):
         new_comment.contenu = form.cleaned_data.get('contenu')
         new_comment.article = article
         new_comment.save()
-
+        try:
+            user_data=UserData.objects.all().filter(user=request.user)[0]
+            user_data.number_articles_he_commented=user_data.number_articles_he_commented+1
+            user_data.save()
+        except:
+            UserData(request.user).save()
+        try:
+            user_data=UserData.objects.all().filter(user=article.auteur)[0]
+            user_data.number_comments=user_data.number_comments+1
+            user_data.save()
+        except:
+            UserData(article.auteur).save()
         # Nous pourrions ici envoyer l'e-mail grâce aux données 
         # que nous venons de récupérer
         envoi = True
