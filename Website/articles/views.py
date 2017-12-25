@@ -676,22 +676,15 @@ def add_to_channel(request, id):
         except:
             return redirect('/article/'+id)
         if form.is_valid():
-            #try:
-            id_channel=form.cleaned_data.get('id')
-            print('1')
-            channel=Fil.objects.get(id=id_channel)
-            print('2')
-            in_fil=InFil()
-            print(in_fil)
-            in_fil.fil=channel
-            in_fil.article=article
-            print(in_fil.fil)
-            print(in_fil.article)
-            print(in_fil.article.id)
-            in_fil.save()
-            print('3')
-            #except:
-            #    return redirect('/article/'+id)
+            try:
+                id_channel=form.cleaned_data.get('id')
+                channel=Fil.objects.get(id=id_channel)
+                in_fil=InFil()
+                in_fil.fil=channel
+                in_fil.article=article
+                in_fil.save()
+            except:
+                return redirect('/article/'+id)
     return redirect('/article/'+id)
 
 def get_url_channel(channel):
@@ -774,6 +767,9 @@ def channel_articles(request, channel_url):
     id=get_id(channel_url)
     try:
         fil = Fil.objects.get(id=id)
+        bio=fil.description
+        has_bio=True
+        signature=fil.nom
 
         articles = InFil.objects.filter(fil_id=fil.id)
 
@@ -798,7 +794,7 @@ def channel_articles(request, channel_url):
         
         bool_prec=False
 
-        return render(request, 'blog/accueil.html', {'derniers_articles_1': articles1,'derniers_articles_2': articles2, 'page_suiv':1, 'page_prec':0,'bool_suiv': bool_suiv, 'bool_prec': bool_prec})
+        return render(request, 'blog/channel.html', {'signature':signature,'has_bio':has_bio,'bio':bio,'photo':fil.photo, 'derniers_articles_1': articles1,'derniers_articles_2': articles2, 'page_suiv':1, 'page_prec':0,'bool_suiv': bool_suiv, 'bool_prec': bool_prec})
     except Article.DoesNotExist:
         raise Http404
 
