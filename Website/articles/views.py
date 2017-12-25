@@ -681,7 +681,10 @@ def add_to_channel(request, id):
                 print('1')
                 channel=Fil.objects.get(id=id_channel)
                 print('2')
-                InFil(id,id_channel).save()
+                in_fil=InFil()
+                in_fil.fil_id=id_channel
+                in_fil.articles_id=id
+                in_fil.save()
                 print('3')
             except:
                 return redirect('/article/'+id)
