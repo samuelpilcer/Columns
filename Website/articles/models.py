@@ -60,6 +60,8 @@ class InFil(models.Model):
     id = models.AutoField(primary_key=True)
     article = models.ForeignKey('Article')
     fil = models.ForeignKey('Fil')
+    def __str__(self):
+        return self.id
 
 class Comment(models.Model):
     auteur = models.ForeignKey(User)
