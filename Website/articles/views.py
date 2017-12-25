@@ -771,7 +771,7 @@ def channel_articles(request, channel_url):
         articles = InFil.objects.filter(fil_id=fil.id)
         print(1)
         print(len(articles))
-        print(articles)
+        print(articles[0])
 
         if len(articles)>10:
             n=5
