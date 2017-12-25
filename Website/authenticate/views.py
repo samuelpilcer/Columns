@@ -66,6 +66,7 @@ def inscription(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
+            UserData(user).save()
             return redirect('connexion')
     else:
         form = InscriptionForm()
