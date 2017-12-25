@@ -28,7 +28,12 @@ def connexion(request):
             if user:  # Si l'objet renvoyé n'est pas None
                 login(request, user)  # nous connectons l'utilisateur
                 next_url = request.GET.get('next')
-
+                try:
+                    user_data=UserData.objects.all().filter(user=user)[0]
+                    user_data.number_logs=user_data.number_logs+1
+                    user_data.save()
+                except:
+                    UserData(user).save()
                 if next_url:
                     return redirect(next_url)
             else: # sinon une erreur sera affichée
