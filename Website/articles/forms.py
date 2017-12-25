@@ -45,9 +45,9 @@ class AddToFilForm(forms.ModelForm):
     class Meta:
         model = InFil
         fields=('id',)
-        widgets = {
-            'id': forms.IntegerField(label='Identifiant'),
-        }
+        #widgets = {
+        #    'id': forms.IntegerField(label='Identifiant'),
+        #}
         #fields = '__all__'
 
 class FilForm(forms.ModelForm):
