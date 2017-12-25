@@ -795,6 +795,7 @@ def channel_articles(request, channel_url):
 
         if len(articles)<10 and 2*int(len(articles)/2) != len(articles):
             print(1)
+            print('Article')
             print(articles[len(articles)-1])
             print('ID')
             print(articles[len(articles)-1].article_id)
