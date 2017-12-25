@@ -794,7 +794,7 @@ def channel_articles(request, channel_url):
         
         bool_prec=False
 
-        return render(request, 'blog/channel.html', {'signature':signature,'has_bio':has_bio,'bio':bio,'photo':fil.photo, 'derniers_articles_1': articles1,'derniers_articles_2': articles2, 'page_suiv':1, 'page_prec':0,'bool_suiv': bool_suiv, 'bool_prec': bool_prec})
+        return render(request, 'blog/channel.html', {'signature':signature,'has_bio':has_bio,'bio':bio,'photo':fil.photo.url, 'derniers_articles_1': articles1,'derniers_articles_2': articles2, 'page_suiv':1, 'page_prec':0,'bool_suiv': bool_suiv, 'bool_prec': bool_prec})
     except Article.DoesNotExist:
         raise Http404
 
