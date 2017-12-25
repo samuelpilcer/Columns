@@ -215,6 +215,13 @@ def delete(request, id):
 
     if article.auteur==request.user:
         article.delete()
+        try:
+            user_data=UserData.objects.all().filter(user=request.user)[0]
+            user_data.number_articles=user_data.number_articles-1
+            user_data.save()
+        except:
+            UserData(request.user).save()
+
 
     return redirect(reverse(userarticles_p0))
 
