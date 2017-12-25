@@ -25,7 +25,7 @@
                   {% endfor %}
                   <h2>Ajouter à une nouvelle série (par identifiant) :</h2>
                   
-                  <form class="form-horizontal style-form" enctype="multipart/form-data" action="{% url "add_to_channel" %}" method="post">
+                  <form class="form-horizontal style-form" enctype="multipart/form-data" action="http://www.columns.fr/add_to_channel/{{ article.url }}" method="post">
 
                         {% csrf_token %}
                         {% for field in fil_form.visible_fields %}
