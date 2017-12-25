@@ -770,7 +770,7 @@ def channel_articles(request, channel_url):
         bio=fil.description
         has_bio=True
         signature=fil.nom
-        identifiant=fil.id
+        identifiant=id
         articles = InFil.objects.filter(fil_id=fil.id)
 
         if len(articles)>10:
