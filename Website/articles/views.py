@@ -300,6 +300,7 @@ def lire(request, id):
         comments=Comment.objects.all().filter(article=article)
     except:
         comments=[]
+
     try:
         signature_object=Signature.objects.get(user=article.auteur)
         signature = signature_object.signature
@@ -541,7 +542,11 @@ def metrics(request, id):
         table_cities=[]
         for i in cities:
             table_cities.append(table_row(i,cities[i]))
-        return render(request, 'blog/analytics.html', {'article': article,'table_medium': table_medium, 'table_cities':table_cities, 'table_sources': table_sources, 'report':personal_report, 'vues':len(personal_report), 'temps_moyen':temps_moyen, 'report_dim': personal_report_dim, 'number_of_comments':nb_comments, 'number_of_likes':number_of_likes})
+        fils=InFil.objects.all().filter(article=article)
+        in_fils=[]
+        for i in fils:
+            in_fils.append(i.fil)
+        return render(request, 'blog/analytics.html', {'article': article,'series':in_fils,'table_medium': table_medium, 'table_cities':table_cities, 'table_sources': table_sources, 'report':personal_report, 'vues':len(personal_report), 'temps_moyen':temps_moyen, 'report_dim': personal_report_dim, 'number_of_comments':nb_comments, 'number_of_likes':number_of_likes})
     else:
         return redirect(reverse(home))
 
