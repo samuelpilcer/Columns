@@ -767,7 +767,8 @@ def channel_articles(request, channel_url):
     id=get_id(channel_url)
     try:
         fil = Fil.objects.get(id=id)
-        articles = InFil.objects.filter(fil=fil)
+
+        articles = InFil.objects.filter(fil_id=fil.id)
 
         if len(articles)>10:
             n=5
@@ -779,11 +780,14 @@ def channel_articles(request, channel_url):
         articles1=[]
         articles2=[]
         for i in range(n):
-            articles1.append(articles[2*i].article)
-            articles2.append(articles[2*i+1].article)
+            art_1=Article.objects.get(id=articles[2*i])
+            articles1.append(art_1)
+            art_2=Article.objects.get(id=articles[2*i+1])
+            articles2.append(art_2)
 
         if len(articles)<10 and 2*int(len(articles)/2) != len(articles):
-            articles1.append(articles[len(articles)-1].article)
+            art_2=Article.objects.get(id=articles[len(articles)-1])
+            articles1.append(art2)
         
         bool_prec=False
 
