@@ -679,7 +679,8 @@ def add_to_channel(request, id):
             try:
                 id_channel=form.cleaned_data.get('id')
                 channel=Fil.objects.get(id=id_channel)
-                InFil(article,fil).save()
+                InFil(article,channel).save()
+                
             except:
                 return redirect('/article/'+id)
     return redirect('/article/'+id)
