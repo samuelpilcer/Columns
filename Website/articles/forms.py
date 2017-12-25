@@ -46,7 +46,7 @@ class AddToFilForm(forms.ModelForm):
         model = InFil
         fields=('id',)
         widgets = {
-            'id': forms.IntegerField(),
+            'id': forms.IntegerField(label='Identifiant'),
         }
         #fields = '__all__'
 
