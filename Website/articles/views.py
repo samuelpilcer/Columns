@@ -795,8 +795,8 @@ def channel_articles(request, channel_url):
 
         if len(articles)<10 and 2*int(len(articles)/2) != len(articles):
             print(1)
-            print(articles[2*i])
-            print(articles[2*i].articles_id)
+            print(articles[len(articles)-1])
+            print(articles[len(articles)-1].articles_id)
             art_2=Article.objects.get(id=articles[len(articles)-1].article_id)
             articles1.append(art2)
         
