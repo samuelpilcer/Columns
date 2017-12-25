@@ -41,7 +41,7 @@ class CommentForm(forms.ModelForm):
         }
         #fields = '__all__'
 
-class AddToFilForm(forms.ModelForm):
+class AddToFilForm(forms.Form):
     id=forms.IntegerField()
 
 class FilForm(forms.ModelForm):
