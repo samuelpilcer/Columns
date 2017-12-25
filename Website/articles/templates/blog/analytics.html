@@ -23,6 +23,22 @@
                   {% for serie in series %}
                   <a class="btn btn-default" href="http://www.columns.fr/channels/{{ serie.url }}">{{ serie.nom }}</a> </br>
                   {% endfor %}
+                  <h2>Ajouter à une nouvelle série (par identifiant) :</h2>
+                  
+                  <form class="form-horizontal style-form" enctype="multipart/form-data" action="{% url "add_to_channel" %}" method="post">
+
+                        {% csrf_token %}
+                        {% for field in fil_form.visible_fields %}
+                          {{ field.errors }}
+                          
+                           <!-- <h3>{{ field.label }}</h3> -->
+                         </br>
+
+                          <div>{{ field }}</div>
+                          {% endfor %}
+              
+                         <input type="submit" class="btn btn-theme" value="Publier" />
+                  </form>
                   <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                       <thead>
