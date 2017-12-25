@@ -1,7 +1,7 @@
 # coding: utf-8
 from django import forms
 from mediumeditor_fork.widgets import MediumEditorTextarea
-from .models import Article, Comment, Fil
+from .models import Article, Comment, Fil, InFil
 
 
 class ContactForm(forms.Form):
@@ -43,7 +43,7 @@ class CommentForm(forms.ModelForm):
 
 class AddToFilForm(forms.ModelForm):
     class Meta:
-        model = Fil
+        model = InFil
         fields=('id',)
         widgets = {
             'id': forms.IntegerField(attrs={'class': 'form-control'}),
