@@ -780,13 +780,13 @@ def channel_articles(request, channel_url):
         articles1=[]
         articles2=[]
         for i in range(n):
-            art_1=Article.objects.get(id=articles[2*i])
+            art_1=Article.objects.get(id=articles[2*i].article_id)
             articles1.append(art_1)
-            art_2=Article.objects.get(id=articles[2*i+1])
+            art_2=Article.objects.get(id=articles[2*i+1].article_id)
             articles2.append(art_2)
 
         if len(articles)<10 and 2*int(len(articles)/2) != len(articles):
-            art_2=Article.objects.get(id=articles[len(articles)-1])
+            art_2=Article.objects.get(id=articles[len(articles)-1].article_id)
             articles1.append(art2)
         
         bool_prec=False
