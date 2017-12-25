@@ -2,7 +2,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
 from django.shortcuts import redirect
-from .forms import ArticleForm, CommentForm, FilForm
+from .forms import ArticleForm, CommentForm, FilForm, AddToFilForm
 from django.contrib.auth.decorators import login_required
 from django.db import connection, transaction
 from django.core.urlresolvers import reverse
@@ -546,7 +546,8 @@ def metrics(request, id):
         in_fils=[]
         for i in fils:
             in_fils.append(i.fil)
-        return render(request, 'blog/analytics.html', {'article': article,'series':in_fils,'table_medium': table_medium, 'table_cities':table_cities, 'table_sources': table_sources, 'report':personal_report, 'vues':len(personal_report), 'temps_moyen':temps_moyen, 'report_dim': personal_report_dim, 'number_of_comments':nb_comments, 'number_of_likes':number_of_likes})
+            form=AddToFilForm()
+        return render(request, 'blog/analytics.html', {'article': article,'series':in_fils,'fil_form':form,'table_medium': table_medium, 'table_cities':table_cities, 'table_sources': table_sources, 'report':personal_report, 'vues':len(personal_report), 'temps_moyen':temps_moyen, 'report_dim': personal_report_dim, 'number_of_comments':nb_comments, 'number_of_likes':number_of_likes})
     else:
         return redirect(reverse(home))
 

@@ -41,6 +41,15 @@ class CommentForm(forms.ModelForm):
         }
         #fields = '__all__'
 
+class AddToFilForm(forms.ModelForm):
+    class Meta:
+        model = Fil
+        fields=('id',)
+        widgets = {
+            'id': forms.IntegerField(attrs={'class': 'form-control'}),
+        }
+        #fields = '__all__'
+
 class FilForm(forms.ModelForm):
     class Meta:
         model = Fil
