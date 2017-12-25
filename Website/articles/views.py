@@ -667,6 +667,15 @@ def save(request, id):
         new_like.save()
     return redirect('/article/'+id)
 
+@login_required
+def add_to_channel(request, id):
+    article=Article.objects.get(id=id)
+    if form.is_valid(): 
+        id_channel=form.cleaned_data.get('id')
+        channel=Fil.objects.get(id=id)
+        InFil(article,fil).save()
+    return redirect('/article/'+id)
+
 
 def get_url_channel(channel):
     url=''

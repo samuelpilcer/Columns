@@ -24,5 +24,5 @@ urlpatterns = [
     url(r'^channels/(?P<channel_url>[\w\-]+)$', views.channel_articles, name='list_channels'),
     url(r'^users/(?P<page>\d+)$', views.list_users, name='list_users'),
     url(r'^users$', views.list_users_p0, name='list_users_p0'),
-    url(r'^add_to_channel/(?P<article_url>[\w\-]+)/(?P<id>(\d+))$', views.like, name='add_to_channel'),
+    url(r'^add_to_channel/(\d+)$', views.add_to_channel, name='add_to_channel'),
 ]
