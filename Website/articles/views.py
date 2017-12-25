@@ -300,7 +300,6 @@ def lire(request, id):
         comments=Comment.objects.all().filter(article=article)
     except:
         comments=[]
-
     try:
         signature_object=Signature.objects.get(user=article.auteur)
         signature = signature_object.signature

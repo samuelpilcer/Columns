@@ -12,6 +12,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
+from articles.models import UserData
 #from django.core.mail import EmailMessage
 #from .tokens import account_activation_token
 
@@ -27,6 +28,7 @@ def connexion(request):
             if user:  # Si l'objet renvoyé n'est pas None
                 login(request, user)  # nous connectons l'utilisateur
                 next_url = request.GET.get('next')
+
                 if next_url:
                     return redirect(next_url)
             else: # sinon une erreur sera affichée
