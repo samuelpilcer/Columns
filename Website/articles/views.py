@@ -683,10 +683,10 @@ def add_to_channel(request, id):
             print('2')
             in_fil=InFil()
             print(in_fil)
-            in_fil.fil_id=id_channel
-            in_fil.articles_id=article.id
-            print(in_fil.fil_id)
-            print(in_fil.articles_id)
+            in_fil.fil=channel
+            in_fil.articles=article
+            print(in_fil.fil)
+            print(in_fil.articles)
             in_fil.save()
             print('3')
             #except:
