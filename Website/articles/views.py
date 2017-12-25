@@ -676,21 +676,21 @@ def add_to_channel(request, id):
         except:
             return redirect('/article/'+id)
         if form.is_valid():
-            try:
-                id_channel=form.cleaned_data.get('id')
-                print('1')
-                channel=Fil.objects.get(id=id_channel)
-                print('2')
-                in_fil=InFil()
-                print(in_fil)
-                in_fil.fil_id=id_channel
-                in_fil.articles_id=article.id
-                print(in_fil.fil_id)
-                print(in_fil.articles_id)
-                in_fil.save()
-                print('3')
-            except:
-                return redirect('/article/'+id)
+            #try:
+            id_channel=form.cleaned_data.get('id')
+            print('1')
+            channel=Fil.objects.get(id=id_channel)
+            print('2')
+            in_fil=InFil()
+            print(in_fil)
+            in_fil.fil_id=id_channel
+            in_fil.articles_id=article.id
+            print(in_fil.fil_id)
+            print(in_fil.articles_id)
+            in_fil.save()
+            print('3')
+            #except:
+            #    return redirect('/article/'+id)
     return redirect('/article/'+id)
 
 def get_url_channel(channel):
