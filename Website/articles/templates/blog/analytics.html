@@ -25,14 +25,12 @@
                   {% endfor %}
                   <h2>Ajouter à une nouvelle série (par identifiant) :</h2>
                   
-                  <form class="form-horizontal style-form" enctype="multipart/form-data" action="http://www.columns.fr/add_to_channel/{{ article.id }}" method="post">
-
+                  
+                  <form class="form-horizontal style-form" action="http://www.columns.fr/add_to_channel/{{ article.id }}" method="post">
                         {% csrf_token %}
-                        
-                          <div>{{ fil_form.as_p }}</div>
-              
-                         <input type="submit" class="btn btn-theme" value="Publier" />
-                  </form>
+                        {{ fil_form.as_p }}
+                      <input type="submit" class="btn btn-theme" value="Publier" />
+                </form>
                   <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                       <thead>
