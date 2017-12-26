@@ -762,6 +762,10 @@ def list_channels_page(request, nb):
 
     return render(request, 'blog/accueil_fils.html', {'fils': fil, 'page_suiv':page_suiv, 'page_prec':page_prec, 'bool_suiv': bool_suiv, 'bool_prec': bool_prec})
 
+class article_in_fil():
+    def __init__(self, article, can_delete):
+        self.articles=article
+        self.can_delete=can_delete
 
 def channel_articles(request, channel_url):
     id=get_id(channel_url)
@@ -783,13 +787,19 @@ def channel_articles(request, channel_url):
         articles1=[]
         articles2=[]
         for i in range(n):
-            art_1=Article.objects.get(id=articles[2*i].article_id)
+            art_1=article_in_fil(Article.objects.get(id=articles[2*i].article_id), False)
+            if request.user==art_1.auteur or request.user==fil.admin:
+                art_1.can_delete=True
             articles1.append(art_1)
-            art_2=Article.objects.get(id=articles[2*i+1].article_id)
+            art_2=article_in_fil(Article.objects.get(id=articles[2*i+1].article_id), False)
+            if request.user==art_2.auteur or request.user==fil.admin:
+                art_2.can_delete=True
             articles2.append(art_2)
 
         if len(articles)<10 and 2*int(len(articles)/2) != len(articles):
-            art_2=Article.objects.get(id=articles[len(articles)-1].article_id)
+            art_2=article_in_fil(Article.objects.get(id=articles[len(articles)-1].article_id), False)
+            if request.user==art_2.auteur or request.user==fil.admin:
+                art_2.can_delete=True
             articles1.append(art_2)
         
         bool_prec=False
