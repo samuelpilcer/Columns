@@ -828,7 +828,7 @@ def delete_from_fil(request, id_article, id_fil):
             i.delete()
 
     try:
-        return redirect(reverse(channel_articles(request, fil.url)))
+        return redirect('channel_articles', channel_url=fil.url)
     except:
         return redirect(reverse(home))
 
