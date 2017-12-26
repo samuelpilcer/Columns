@@ -683,7 +683,6 @@ def add_to_channel(request, id):
                 in_fil.fil=channel
                 in_fil.article=article
                 in_fil.save()
-                print("Done")
             except:
                 return redirect('/analytics/'+id)
     return redirect('/analytics/'+id)
@@ -829,7 +828,7 @@ def delete_from_fil(request, id_article, id_fil):
             i.delete()
 
     try:
-        return channel_articles(request, fil.url)
+        return redirect(reverse(channel_articles(request, fil.url)))
     except:
         return redirect(reverse(home))
 
