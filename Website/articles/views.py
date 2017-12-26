@@ -798,3 +798,24 @@ def channel_articles(request, channel_url):
     except Article.DoesNotExist:
         raise Http404
 
+@login_required
+def delete_from_fil(request, id_article, id_fil):
+    try:
+        article=Article.objects.get(id=id_article)
+    except Article.DoesNotExist:
+        raise Http404
+    try:
+        fil=Fil.objects.get(id=id_fil)
+    except Fil.DoesNotExist:
+        raise Http404
+    try:
+        in_fil=InFil.objects.filter(article=article).filter(fil=fil)
+    except Fil.DoesNotExist:
+        raise Http404
+
+    if (article.auteur==request.user or fil.admin==request.user):
+        for i in in_fil:
+            i.delete()
+
+    return redirect(reverse(home))
+

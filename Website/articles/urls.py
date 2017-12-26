@@ -25,4 +25,5 @@ urlpatterns = [
     url(r'^users/(?P<page>\d+)$', views.list_users, name='list_users'),
     url(r'^users$', views.list_users_p0, name='list_users_p0'),
     url(r'^add_to_channel/(\d+)$', views.add_to_channel, name='add_to_channel'),
+    url(r'^remove_from_channel/(?P<id_article>\d+)/(?P<id_fil>\d+)$', views.delete_from_fil, name='delete'),
 ]
