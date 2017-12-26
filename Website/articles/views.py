@@ -788,17 +788,17 @@ def channel_articles(request, channel_url):
         articles2=[]
         for i in range(n):
             art_1=article_in_fil(Article.objects.get(id=articles[2*i].article_id), False)
-            if request.user==art_1.auteur or request.user==fil.admin:
+            if request.user==art_1.article.auteur or request.user==fil.admin:
                 art_1.can_delete=True
             articles1.append(art_1)
             art_2=article_in_fil(Article.objects.get(id=articles[2*i+1].article_id), False)
-            if request.user==art_2.auteur or request.user==fil.admin:
+            if request.user==art_2.article.auteur or request.user==fil.admin:
                 art_2.can_delete=True
             articles2.append(art_2)
 
         if len(articles)<10 and 2*int(len(articles)/2) != len(articles):
             art_2=article_in_fil(Article.objects.get(id=articles[len(articles)-1].article_id), False)
-            if request.user==art_2.auteur or request.user==fil.admin:
+            if request.user==art_2.article.auteur or request.user==fil.admin:
                 art_2.can_delete=True
             articles1.append(art_2)
         
