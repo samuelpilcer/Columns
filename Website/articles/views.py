@@ -683,6 +683,7 @@ def add_to_channel(request, id):
                 in_fil.fil=channel
                 in_fil.article=article
                 in_fil.save()
+                print("Done")
             except:
                 return redirect('/analytics/'+id)
     return redirect('/analytics/'+id)
