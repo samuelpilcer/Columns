@@ -764,7 +764,7 @@ def list_channels_page(request, nb):
 
 class article_in_fil():
     def __init__(self, article, can_delete):
-        self.articles=article
+        self.article=article
         self.can_delete=can_delete
 
 def channel_articles(request, channel_url):
