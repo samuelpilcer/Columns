@@ -47,7 +47,9 @@
                           <i class="fa fa-twitter"></i>
                           <!--<i class="material-icons">&#xE80D;</i>-->
                         </a>
+                        {% if article.can_delete %}
                         <a class="btn btn-info" href="http://www.columns.fr/remove_from_channel/{{ article.article.id }}/{{ identifiant }}"><i class="fa fa-times" aria-hidden="true"></i></a>
+                        {% endif %}
                           <script>
                           window.fbAsyncInit = function() {
                             FB.init({
@@ -109,6 +111,9 @@
                           <i class="fa fa-twitter"></i>
                           <!--<i class="material-icons">&#xE80D;</i>-->
                         </a>
+                        {% if article.can_delete %}
+                        <a class="btn btn-info" href="http://www.columns.fr/remove_from_channel/{{ article.article.id }}/{{ identifiant }}"><i class="fa fa-times" aria-hidden="true"></i></a>
+                        {% endif %}
                           <script>
                           window.fbAsyncInit = function() {
                             FB.init({
