@@ -102,7 +102,7 @@
       {% if user.is_authenticated %}
       <li><a href="/authenticate/user"><strong>{{ user.first_name }} {{ user.last_name }}</strong> - <i class="glyphicon glyphicon-user"></i></a></li>
       {% else %}
-      <li><a href="{% url 'social:begin' 'facebook' %}"><i class="fa fa-facebook"></i></a></li>
+      <!-- <li><a href="{% url 'social:begin' 'facebook' %}"><i class="fa fa-facebook"></i></a></li> -->
       <li><a href="/authenticate/connexion"><i class="glyphicon glyphicon-user"></i></a></li>
       {% endif %}
     </ul>
