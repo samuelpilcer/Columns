@@ -23,7 +23,7 @@
         <section class="blog-post">
           <div class="panel panel-default">
             <div class="panel-body">
-              <img src="{{ article.photo.url }}" class="img-responsive" style="width: 100%;" />
+              <a href="/{{ article.url }}"><img src="{{ article.photo.url }}" class="img-responsive" style="width: 100%;" /></a>
               <div class="blog-post-meta">
                 <span class="label label-light label-{{ article.categorie.colour }}">{{ article.categorie }}</span> <!-- primary, warning, info, ...-->
                         <p class="blog-post-date pull-right">{{ article.date|date:"DATE_FORMAT" }}</p>
@@ -85,7 +85,7 @@
 <section class="blog-post">
   <div class="panel panel-default">
     <div class="panel-body">
-      <img src="{{ article.photo.url }}" class="img-responsive" style="width: 100%;" />
+      <a href="/{{ article.url }}"><img src="{{ article.photo.url }}" class="img-responsive" style="width: 100%;" /></a>
       <div class="blog-post-meta">
         <span class="label label-light label-{{ article.categorie.colour }}">{{ article.categorie }}</span>
                 <p class="blog-post-date pull-right">{{ article.date|date:"DATE_FORMAT" }}</p>
