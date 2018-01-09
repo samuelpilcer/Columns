@@ -4,6 +4,15 @@
 
 {% block title %} {{ article.titre }} - {{ block.super }} {% endblock %}
 
+{% block headers %} 
+<meta property="og:url"                content="/{{ article.url }}" />
+<meta property="og:type"               content="article" />
+<meta property="og:title"              content="{{ article.titre }} - Columns" />
+<meta property="og:description"        content="{{ article.sous_titre }}" />
+<meta property="og:image"              content="{{ article.photo.url }}" />
+{{ block.super }} 
+{% endblock %}
+
 {% block article %}
 
 <div class="col-sm-8 blog-main">
