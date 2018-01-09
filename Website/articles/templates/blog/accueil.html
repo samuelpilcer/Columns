@@ -1,6 +1,13 @@
 {% extends 'base.html' %}
 
-{% block headers %} <!-- TEST -->{{ block.super }} {% endblock %}
+{% block headers %} 
+<meta property="og:url"                content="http://www.columns.fr/" />
+<meta property="og:type"               content="article" />
+<meta property="og:title"              content="Columns" />
+<meta property="og:description"        content="Columns est un média collaboratif. Nous vous permettons de publier du contenu et vous aidons à promouvoir. Nous vous proposons une liste de courts articles écrits par vos amis et par des experts, sur vos centres d'intérêt." />
+<meta property="og:image"              content="http://www.columns.fr/static/logo/columns_grey.png" />
+{{ block.super }} 
+{% endblock %}
 
 {% block articles %}
 <div class="col-sm-8 blog-main">
