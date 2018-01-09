@@ -9,12 +9,13 @@
 
     <meta name="description" content="">
     <meta name="author" content="">
+    {% block headers %}{% endblock %}
     <link rel="shortcut icon" href="{% static 'icons/logo.ico' %}">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 
     <title>{% block title %}Columns{% endblock %}</title>
-    {% block headers %}{% endblock %}
+    
     <!-- Loading animation 
     <script src="{% static 'js/pace.min.js' %}"></script>
     -->
