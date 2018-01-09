@@ -9,7 +9,7 @@
 <meta property="og:type"               content="article" />
 <meta property="og:title"              content="{{ article.titre }} - Columns" />
 <meta property="og:description"        content="{{ article.sous_titre }}" />
-<meta property="og:image"              content="http://www.columns.fr/{{ article.photo.url }}" />
+<meta property="og:image"              content="http://www.columns.fr{{ article.photo.url }}" />
 {{ block.super }} 
 {% endblock %}
 
