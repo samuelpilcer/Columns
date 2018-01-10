@@ -494,7 +494,6 @@ def daterange(date1, date2):
     table=[]
     for n in range(int((date2 - date1).days)+2):
         table.append(date1 + timedelta(n))
-        print(date1 + timedelta(n))
     return table
 
 @login_required
