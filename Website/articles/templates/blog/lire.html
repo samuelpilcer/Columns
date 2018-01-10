@@ -125,7 +125,7 @@
                 <div><strong>{{ comment.auteur.first_name }} {{ comment.auteur.last_name }}</strong></span> <!-- primary, warning, info, ...-->
                         <p class="blog-post-date pull-right">{{ comment.date|date:"DATE_FORMAT" }}</p>
                     
-                        <p>{{ comment.contenu }}</p>
+                        <div>{{ comment.contenu }}</div>
                         </br></br>
                     </div>
                 {% empty %}
