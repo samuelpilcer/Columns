@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'authenticate',
     'social_django',
     'mediumeditor',
+    'chartit',
 ]
 
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
