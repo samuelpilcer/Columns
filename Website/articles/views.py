@@ -491,11 +491,18 @@ def metrics(request, id):
         raise Http404
 
     if article.auteur==request.user:
+        likes_par_date={}
         try:
             likes = Like.objects.all().filter(article=article)
             number_of_likes=len(likes)
+            for i in likes:
+                if i.date in likes_par_date:
+                    likes_par_date[i.date]=likes_par_date[i.date]+1
+                else:
+                    likes_par_date[i.date]=1
         except:
             number_of_likes=0
+        print(likes_par_date)
         
         try:
             comments=Comment.objects.all().filter(article=article)
