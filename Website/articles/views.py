@@ -522,8 +522,8 @@ def metrics(request, id):
         except:
             number_of_likes=0
         
-        #if not no_likes:
-            #print(daterange(min_date, max_date))
+        if not no_likes:
+            print(daterange(min_date, max_date))
         
         try:
             comments=Comment.objects.all().filter(article=article)
