@@ -486,7 +486,7 @@ def tweets_analyze(request, hashtag):
 
 class chart_point():
     def __init__(date,value):
-        this.date=str(date)
+        this.date=str(date.day)+"-"+str(date.month)+"-"+str(date.year)
         this.value=value
 
 def daterange(date1, date2):
@@ -524,6 +524,12 @@ def metrics(request, id):
         
         if not no_likes:
             print(daterange(min_date, max_date))
+            date_table=[]
+            for i in daterange(min_date, max_date):
+                if i in likes_par_date:
+                    date_table.append(chart_point(i,likes_par_date[i]))
+                else:
+                    date_table.append(chart_point(i,0))
         
         try:
             comments=Comment.objects.all().filter(article=article)
