@@ -525,13 +525,13 @@ def metrics(request, id):
 
         if not no_likes:
             date_table=[]
-            for i in daterange(article.date, max_date):
+            for i in daterange(min_date, max_date):
                 print(i)
                 if str(i.day)+"-"+str(i.month)+"-"+str(i.year) in likes_par_date:
                     date_table.append(chart_point(str(i.day)+"-"+str(i.month)+"-"+str(i.year),likes_par_date[str(i.day)+"-"+str(i.month)+"-"+str(i.year)]))
                 else:
                     date_table.append(chart_point(str(i.day)+"-"+str(i.month)+"-"+str(i.year),0))
-            print(date_table)
+           
             dates_like_table="["
             for i in date_table:
                 dates_like_table=dates_like_table+"'"+i.date+"',"
@@ -617,7 +617,7 @@ def metrics(request, id):
         if not no_vues:
             date_table=[]
             for i in daterange(article.date, max_date):
-                print(i)
+                
                 if str(i.day)+"-"+str(i.month)+"-"+str(i.year) in vues_par_date:
                     date_table.append(chart_point(str(i.day)+"-"+str(i.month)+"-"+str(i.year),vues_par_date[str(i.day)+"-"+str(i.month)+"-"+str(i.year)]))
                 else:
