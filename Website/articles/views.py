@@ -538,9 +538,17 @@ def metrics(request, id):
             for i in date_table:
                 like_table=like_table+""+str(i.value)+","
             like_table=like_table[:-1]+"]"
+            like_table_params="backgroundColor: ["
+            for i in range(len(date_table)):
+                like_table_params=like_table_params+"'rgba(54, 162, 235, 0.2)',"
+            like_table_params=like_table_params[:-1]+"],borderColor: ["
+            for i in range(len(date_table)):
+                like_table_params=like_table_params+"'rgba(153, 102, 255, 1)',"
+            like_table_params=like_table_params[:-1]+"],"
         else:
             dates_like_table=''
             like_table=''
+            like_table_params=''
 
         try:
             comments=Comment.objects.all().filter(article=article)
@@ -592,7 +600,7 @@ def metrics(request, id):
         for i in fils:
             in_fils.append(i.fil)
         form=AddToFilForm(None)
-        return render(request, 'blog/analytics.html', {'no_likes':no_likes,'dates_like_table':dates_like_table,'like_table':like_table,'article': article,'series':in_fils,'fil_form':form,'table_medium': table_medium, 'table_cities':table_cities, 'table_sources': table_sources, 'report':personal_report, 'vues':len(personal_report), 'temps_moyen':temps_moyen, 'report_dim': personal_report_dim, 'number_of_comments':nb_comments, 'number_of_likes':number_of_likes})
+        return render(request, 'blog/analytics.html', {'no_likes':no_likes,'dates_like_table':dates_like_table,'like_table':like_table,"like_table_params":like_table_params,'article': article,'series':in_fils,'fil_form':form,'table_medium': table_medium, 'table_cities':table_cities, 'table_sources': table_sources, 'report':personal_report, 'vues':len(personal_report), 'temps_moyen':temps_moyen, 'report_dim': personal_report_dim, 'number_of_comments':nb_comments, 'number_of_likes':number_of_likes})
     else:
         return redirect(reverse(home))
 
