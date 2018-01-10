@@ -485,7 +485,7 @@ def tweets_analyze(request, hashtag):
         return redirect(reverse(home))
 
 class chart_point():
-    def __init__(date,value):
+    def __init__(self, date,value):
         this.date=str(date.day)+"-"+str(date.month)+"-"+str(date.year)
         this.value=value
 
