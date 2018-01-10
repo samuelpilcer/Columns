@@ -483,6 +483,11 @@ def tweets_analyze(request, hashtag):
     except:
         return redirect(reverse(home))
 
+class chart_point():
+    def __init__(date,value):
+        this.date=str(date)
+        this.value=value
+
 @login_required
 def metrics(request, id):
     try:
@@ -502,7 +507,8 @@ def metrics(request, id):
                     likes_par_date[i.date]=1
         except:
             number_of_likes=0
-        print(likes_par_date)
+        for i in likes_par_date:
+            print(i.month)
         
         try:
             comments=Comment.objects.all().filter(article=article)
