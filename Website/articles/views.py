@@ -503,7 +503,7 @@ def metrics(request, id):
         article = Article.objects.get(id=id)
     except Article.DoesNotExist:
         raise Http404
-
+    date_init=article.date
     if article.auteur==request.user:
         likes_par_date={}
         no_likes=True
