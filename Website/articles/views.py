@@ -520,7 +520,6 @@ def metrics(request, id):
                 else:
                     likes_par_date[str(i.date.day)+"-"+str(i.date.month)+"-"+str(i.date.year)]=1
             max_date=datetime.now(pytz.utc)
-            print(likes_par_date)
         except:
             number_of_likes=0
 
@@ -568,6 +567,7 @@ def metrics(request, id):
         cities={}
         for i in range(len(report['reports'][0]['data']['rows'])):
             if get_id(report['reports'][0]['data']['rows'][i]['dimensions'][5])==id:
+                print(report['reports'][0]['data']['rows'][i])
                 personal_report_dim.append(report['reports'][0]['data']['rows'][i]['dimensions'])
                 personal_report.append(report['reports'][0]['data']['rows'][i]['metrics'][0]['values'])
                 temps_moyen=temps_moyen+float(report['reports'][0]['data']['rows'][i]['metrics'][0]['values'][3])
