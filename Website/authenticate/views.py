@@ -13,6 +13,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from articles.models import UserData
+from chartit import DataPool, Chart
 #from django.core.mail import EmailMessage
 #from .tokens import account_activation_token
 
