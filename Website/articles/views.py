@@ -526,6 +526,7 @@ def metrics(request, id):
         if not no_likes:
             date_table=[]
             for i in daterange(article.date, max_date):
+                print(i)
                 if str(i.day)+"-"+str(i.month)+"-"+str(i.year) in likes_par_date:
                     date_table.append(chart_point(str(i.day)+"-"+str(i.month)+"-"+str(i.year),likes_par_date[str(i.day)+"-"+str(i.month)+"-"+str(i.year)]))
                 else:
