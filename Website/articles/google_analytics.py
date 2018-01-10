@@ -37,7 +37,7 @@ def get_report(analytics):
         'reportRequests': [
         {
           'viewId': VIEW_ID,
-          'dateRanges': [{'startDate': '7daysAgo', 'endDate': 'today'}],
+          'dateRanges': [{'startDate': '2017-08-01', 'endDate': 'today'}],
           'metrics': [{'expression': 'ga:sessions'},{'expression': 'ga:pageviews'},{'expression': 'ga:sessionDuration'},{'expression': 'ga:timeOnPage'},{'expression': 'ga:avgTimeOnPage'}],
           'dimensions': [{'name': 'ga:country'},{'name': 'ga:source'},{'name': 'ga:medium'},{'name': 'ga:date'},{'name': 'ga:city'},{'name': 'ga:pagePath'},{'name': 'ga:exitPagePath'},{'name': 'ga:previousPagePath'}]
         }]
