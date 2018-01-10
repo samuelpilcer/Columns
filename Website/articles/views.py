@@ -536,7 +536,7 @@ def metrics(request, id):
             dates_like_table=dates_like_table[:-1]+"]"
             like_table="["
             for i in date_table:
-                like_table=like_table+"'"+i.value+"',"
+                like_table=like_table+""+str(i.value)+","
             like_table=like_table[:-1]+"]"
         try:
             comments=Comment.objects.all().filter(article=article)
