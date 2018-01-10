@@ -565,12 +565,17 @@ def metrics(request, id):
         sources={}
         medium={}
         cities={}
+        vues_par_date={}
         for i in range(len(report['reports'][0]['data']['rows'])):
             if get_id(report['reports'][0]['data']['rows'][i]['dimensions'][5])==id:
-                print(report['reports'][0]['data']['rows'][i])
                 personal_report_dim.append(report['reports'][0]['data']['rows'][i]['dimensions'])
                 personal_report.append(report['reports'][0]['data']['rows'][i]['metrics'][0]['values'])
                 temps_moyen=temps_moyen+float(report['reports'][0]['data']['rows'][i]['metrics'][0]['values'][3])
+                date_vue=report['reports'][0]['data']['rows'][i]['dimensions'][3]
+                if date_vue not in vues_par_date:
+                    vues_par_date[date_vue]=1
+                else:
+                    vues_par_date[date_vue]=vues_par_date[date_vue]+1
                 if report['reports'][0]['data']['rows'][i]['dimensions'][1] not in sources:
                     sources[report['reports'][0]['data']['rows'][i]['dimensions'][1]]=1
                 else:
