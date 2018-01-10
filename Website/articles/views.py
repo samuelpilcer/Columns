@@ -511,7 +511,7 @@ def metrics(request, id):
             likes = Like.objects.all().filter(article=article).order_by("date")
             number_of_likes=len(likes)
             if number_of_likes>0:
-                min_date=likes[0].date
+                min_date=article.date
                 no_likes=False
 
             for i in likes:
@@ -573,7 +573,6 @@ def metrics(request, id):
                 temps_moyen=temps_moyen+float(report['reports'][0]['data']['rows'][i]['metrics'][0]['values'][3])
                 date_vue_brute=report['reports'][0]['data']['rows'][i]['dimensions'][3]
                 date_vue=str(date_vue_brute[6:8])+"-"+str(date_vue_brute[4:6])+"-"+str(date_vue_brute[:4])
-                print(article.date)
                 if date_vue not in vues_par_date:
                     vues_par_date[date_vue]=1
                 else:
