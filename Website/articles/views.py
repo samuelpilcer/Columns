@@ -522,7 +522,7 @@ def metrics(request, id):
         except:
             number_of_likes=0
         
-        if not no_likes:
+        #if not no_likes:
             #print(daterange(min_date, max_date))
         
         try:
