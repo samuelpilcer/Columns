@@ -121,6 +121,48 @@ def userarticles(request, nb):
 
     return render(request, 'mycolumns.html', {'is_my_columns':True,'derniers_articles_1': articles1,'derniers_articles_2': articles2, 'page_suiv':page_suiv, 'page_prec':page_prec, 'bool_suiv': bool_suiv, 'bool_prec': bool_prec})
 
+@login_required
+def promote_p0(request):
+    return promote(request,0)
+
+@login_required
+def promote(request, nb):
+
+    try:
+        articles = Article.objects.all().filter(auteur=request.user).order_by('-date') # Nous sélectionnons tous nos articles
+    except:
+        articles=[]
+
+    nb=int(nb)
+    if len(articles)>10+10*nb:
+        n=5
+        bool_suiv=True
+    elif (len(articles)<=10+10*nb) and (len(articles)>=10*nb):
+        n=int((len(articles)-10*nb)/2)
+        bool_suiv=False
+    else:
+        return redirect('/accueil')
+
+    articles1=[]
+    articles2=[]
+    for i in range(n):
+        articles1.append(articles[2*i+10*nb])
+        articles2.append(articles[2*i+1+10*nb])
+
+    if len(articles)<=10+10*nb and 2*int((len(articles)-10*nb)/2)+10*nb != len(articles):
+        articles1.append(articles[len(articles)-1])
+
+    if nb>0:
+        page_prec=nb-1
+        bool_prec=True
+    else:
+        page_prec=0
+        bool_prec=False
+    page_suiv=nb+1
+
+    return render(request, 'mycolumns.html', {'is_my_columns':False,'derniers_articles_1': articles1,'derniers_articles_2': articles2, 'page_suiv':page_suiv, 'page_prec':page_prec, 'bool_suiv': bool_suiv, 'bool_prec': bool_prec})
+
+
 def unroll_user_url(url):
     return url.split('-')[-1]
 
