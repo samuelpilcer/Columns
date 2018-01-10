@@ -67,10 +67,10 @@
                     var myChart = new Chart(ctx, {
                         type: 'bar',
                         data: {
-                            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                            labels: {{ dates_like_table }},
                             datasets: [{
                                 label: 'Nombre de vues',
-                                data: [12, 19, 3, 5, 2, 3],
+                                data: {{ like_table }},
                                 backgroundColor: [
                                     'rgba(54, 162, 235, 0.2)',
                                     'rgba(54, 162, 235, 0.2)',
