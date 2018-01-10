@@ -129,10 +129,10 @@
                         </br></br>
                     </div>
                 {% empty %}
-          <div>Aucun commentaire.</div>
-          {% endfor %}
+                <div>Aucun commentaire.</div>
+                {% endfor %}
           
-          </div>
+                </div>
           {% if user.is_authenticated %}
                 <form class="form-horizontal style-form" action="#" method="post">
                         {% csrf_token %}
