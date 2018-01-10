@@ -511,9 +511,9 @@ def metrics(request, id):
             number_of_likes=len(likes)
             if number_of_likes>0:
                 min_date=likes[0].date
-                max_date=likes[-1].date
+                #max_date=likes[-1].date
                 no_likes=False
-                
+
             for i in likes:
                 if i.date in likes_par_date:
                     likes_par_date[i.date]=likes_par_date[i.date]+1
