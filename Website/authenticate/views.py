@@ -124,7 +124,7 @@ def userarticles(request, nb):
 
 @login_required
 def promote_list_p0(request):
-    return promote(request,0)
+    return promote_list(request,0)
 
 @login_required
 def promote_list(request, nb):
