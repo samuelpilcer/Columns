@@ -530,7 +530,7 @@ def metrics(request, id):
                 if str(i.day)+"-"+str(i.month)+"-"+str(i.year) in likes_par_date:
                     date_table.append(chart_point(str(i.day)+"-"+str(i.month)+"-"+str(i.year),likes_par_date[str(i.day)+"-"+str(i.month)+"-"+str(i.year)]))
                 else:
-                    date_table.append(chart_point(i,0))
+                    date_table.append(chart_point(str(i.day)+"-"+str(i.month)+"-"+str(i.year),0))
             dates_like_table="["
             for i in date_table:
                 dates_like_table=dates_like_table+"'"+i.date+"',"
