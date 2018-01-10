@@ -490,8 +490,10 @@ class chart_point():
         this.value=value
 
 def daterange(date1, date2):
-    for n in range(int ((date2 - date1).days)+1):
-        yield date1 + timedelta(n)
+    table=[]
+    for n in range(int((date2 - date1).days)+1):
+        table.append(date1 + timedelta(n))
+    return table
 
 @login_required
 def metrics(request, id):
