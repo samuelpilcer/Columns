@@ -508,7 +508,7 @@ def metrics(request, id):
         likes_par_date={}
         no_likes=True
         try:
-            likes = Like.objects.all().filter(article=article)
+            likes = Like.objects.all().filter(article=article).order_by("date")
             number_of_likes=len(likes)
             if number_of_likes>0:
                 min_date=likes[0].date
