@@ -119,7 +119,7 @@ def userarticles(request, nb):
         bool_prec=False
     page_suiv=nb+1
 
-    return render(request, 'mycolumns.html', {'derniers_articles_1': articles1,'derniers_articles_2': articles2, 'page_suiv':page_suiv, 'page_prec':page_prec, 'bool_suiv': bool_suiv, 'bool_prec': bool_prec})
+    return render(request, 'mycolumns.html', {'is_my_columns':True,'derniers_articles_1': articles1,'derniers_articles_2': articles2, 'page_suiv':page_suiv, 'page_prec':page_prec, 'bool_suiv': bool_suiv, 'bool_prec': bool_prec})
 
 def unroll_user_url(url):
     return url.split('-')[-1]
