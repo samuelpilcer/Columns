@@ -55,6 +55,7 @@
                     {% else %}
                     </br>
                     </br>
+
                     <canvas id="myChart" width="400" height="400"></canvas>
 
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script> 
@@ -64,7 +65,7 @@
 
                     <script>
 
-                    
+
                     var ctx = document.getElementById("myChart").getContext('2d');
                     var myChart = new Chart(ctx, {
                         type: 'bar',
@@ -74,6 +75,47 @@
                                 label: 'Nombre de vues',
                                 data: {{ like_table|safe }},
                                 {{ like_table_params|safe }}
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero:true
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                    </script>
+                    {% endif %}
+
+
+                    {% if no_vues %}
+                    {% else %}
+                    </br>
+                    </br>
+
+                    <canvas id="myChart" width="400" height="400"></canvas>
+
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script> 
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js"></script> 
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script> 
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script> 
+
+                    <script>
+
+
+                    var ctx = document.getElementById("myChart").getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: {{ dates_vues_table|safe }},
+                            datasets: [{
+                                label: 'Nombre de vues',
+                                data: {{ vues_table|safe }},
+                                {{ vues_table_params|safe }}
                                 borderWidth: 1
                             }]
                         },
