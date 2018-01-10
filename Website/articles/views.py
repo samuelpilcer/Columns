@@ -710,7 +710,7 @@ def promote(request, id):
         for i in fils:
             in_fils.append(i.fil)
         form=AddToFilForm(None)
-        return render(request, 'blog/analytics.html', {'article': article,'series':in_fils,'fil_form':form,'table_medium': table_medium, 'table_cities':table_cities, 'table_sources': table_sources, 'report':personal_report, 'vues':len(personal_report), 'temps_moyen':temps_moyen, 'report_dim': personal_report_dim, 'number_of_comments':nb_comments, 'number_of_likes':number_of_likes})
+        return render(request, 'blog/promote.html', {'article': article,'series':in_fils,'fil_form':form,'table_medium': table_medium, 'table_cities':table_cities, 'table_sources': table_sources, 'report':personal_report, 'vues':len(personal_report), 'temps_moyen':temps_moyen, 'report_dim': personal_report_dim, 'number_of_comments':nb_comments, 'number_of_likes':number_of_likes})
     else:
         return redirect(reverse(home))
 

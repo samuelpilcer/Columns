@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} {{ article.titre }} - {{ block.super }} {% endblock %}
+
+{% block article %}
+
+<div class="col-sm-8 blog-main">
+
+          <section class="blog-post">
+            <div class="panel panel-default">
+              <img src="{{ article.photo.url }}" class="img-responsive" />
+              <div class="panel-body">
+                <div class="blog-post-meta">
+                  <span class="label label-light label-{{ article.categorie.colour }}">{{ article.categorie }}</span>
+                  <p class="blog-post-date pull-right">{{ article.date|date:"DATE_FORMAT" }}</p>
+                </div>
+                <div class="blog-post-content">
+                  <h1 class="blog-post-title">{{ article.titre }}</h1>
+                  </br>
+                  <!-- <h2>Cet article est référencé dans les séries suivantes :</h2>
+                  {% for serie in series %}
+                  <a class="btn btn-default" href="http://www.columns.fr/channels/{{ serie.url }}">{{ serie.nom }}</a> </br>
+                  {% endfor %}
+                  <h2>Ajouter à une nouvelle série (par identifiant) :</h2>
+                  
+                  
+                  <form class="form-horizontal style-form" action="http://www.columns.fr/add_to_channel/{{ article.id }}" method="post">
+                        {% csrf_token %}
+                        {{ fil_form.as_p }}
+                      <input type="submit" class="btn btn-theme" value="Publier" />
+                </form>
+              -->
+                  <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                      <thead>
+                        <tr>
+                          <th>Likes</th>
+                          <th>Commentaires</th>
+                          <th>Vues</th>
+                          <th>Temps moyen</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>{{ number_of_likes }}</td>
+                          <td>{{ number_of_comments }}</td>
+                          <td>{{ vues }}</td>
+                          <td>{{ temps_moyen }} s.</td>
+                        </tr>
+                      </tbody>
+                    </table></div>
+                    
+                    </br>
+                    </br>
+                    <div class="table-responsive">
+                      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                          <tr>
+                            <th>Ville</th>
+                            <th>Nombre de vues</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for city in table_cities %}
+                          <tr>
+                            <td>{{ city.value1 }}</td>
+                            <td>{{ city.value2 }}</td>
+                          </tr>
+                          {% empty %}
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+
+
+                    </br>
+
+                    <div class="table-responsive">
+                      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                          <tr>
+                            <th>Utilisateur ayant recommandé l'article</th>
+                            <th>Nombre de vues</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for media in table_medium %}
+                          <tr>
+                            <td>{{ media.value1 }}</td>
+                            <td>{{ media.value2 }}</td>
+                          </tr>
+                          {% empty %}
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+
+                  </br>
+
+                    <div class="table-responsive">
+                      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                          <tr>
+                            <th>Source</th>
+                            <th>Nombre de vues</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for media in table_sources %}
+                          <tr>
+                            <td>{{ media.value1 }}</td>
+                            <td>{{ media.value2 }}</td>
+                          </tr>
+                          {% empty %}
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                </div>
+
+                <script>
+                window.fbAsyncInit = function() {
+                  FB.init({
+                    appId            : '160658967855882',
+                    autoLogAppEvents : true,
+                    xfbml            : true,
+                    version          : 'v2.10'
+                  });
+                  FB.AppEvents.logPageView();
+                };
+
+                (function(d, s, id){
+                   var js, fjs = d.getElementsByTagName(s)[0];
+                   if (d.getElementById(id)) {return;}
+                   js = d.createElement(s); js.id = id;
+                   js.src = "//connect.facebook.net/en_US/sdk.js";
+                   fjs.parentNode.insertBefore(js, fjs);
+                 }(document, 'script', 'facebook-jssdk'));
+                document.getElementById('shareBtn').onclick = function() {
+                  FB.ui({
+                    method: 'share',
+                    display: 'popup',
+                    href: 'http://test.columns.fr/article/{{ article.id }}',
+                  }, function(response){});
+                }
+                </script>
+              </div>
+            </div>
+          </section><!-- /.blog-post -->
+          <style type="text/css">
+          .h1, h1 {
+                font-size: 24px;
+                color: #000;
+            }
+          .h2, h2 {
+                color: #000;
+                font-size: 18px;
+            }
+            .blog-post-content p {
+                color: #000;
+                margin: 18px auto;
+            }
+            body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4 {
+                font-family: 'Arial';
+            }
+            .blog-comments-title, .blog-post-title {
+                color: #000;
+            }
+          </style>
+
+        </div>
+
+{% endblock %}
+
