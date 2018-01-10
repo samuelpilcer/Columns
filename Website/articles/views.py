@@ -503,7 +503,6 @@ def metrics(request, id):
         article = Article.objects.get(id=id)
     except Article.DoesNotExist:
         raise Http404
-    date_init=article.date
 
     if article.auteur==request.user:
         likes_par_date={}
@@ -512,7 +511,7 @@ def metrics(request, id):
             likes = Like.objects.all().filter(article=article).order_by("date")
             number_of_likes=len(likes)
             if number_of_likes>0:
-                min_date=date_init
+                min_date=likes[0].date
                 no_likes=False
 
             for i in likes:
@@ -567,8 +566,10 @@ def metrics(request, id):
         medium={}
         cities={}
         vues_par_date={}
+        no_vues=True
         for i in range(len(report['reports'][0]['data']['rows'])):
             if get_id(report['reports'][0]['data']['rows'][i]['dimensions'][5])==id:
+                no_vues=False
                 personal_report_dim.append(report['reports'][0]['data']['rows'][i]['dimensions'])
                 personal_report.append(report['reports'][0]['data']['rows'][i]['metrics'][0]['values'])
                 temps_moyen=temps_moyen+float(report['reports'][0]['data']['rows'][i]['metrics'][0]['values'][3])
@@ -609,8 +610,37 @@ def metrics(request, id):
         for i in fils:
             in_fils.append(i.fil)
         form=AddToFilForm(None)
-        
-        return render(request, 'blog/analytics.html', {'no_likes':no_likes,'dates_like_table':dates_like_table,'like_table':like_table,"like_table_params":like_table_params,'article': article,'series':in_fils,'fil_form':form,'table_medium': table_medium, 'table_cities':table_cities, 'table_sources': table_sources, 'report':personal_report, 'vues':len(personal_report), 'temps_moyen':temps_moyen, 'report_dim': personal_report_dim, 'number_of_comments':nb_comments, 'number_of_likes':number_of_likes})
+
+
+        if not no_vues:
+            date_table=[]
+            for i in daterange(article.date, max_date):
+                if str(i.day)+"-"+str(i.month)+"-"+str(i.year) in likes_par_date:
+                    date_table.append(chart_point(str(i.day)+"-"+str(i.month)+"-"+str(i.year),likes_par_date[str(i.day)+"-"+str(i.month)+"-"+str(i.year)]))
+                else:
+                    date_table.append(chart_point(str(i.day)+"-"+str(i.month)+"-"+str(i.year),0))
+            dates_like_table="["
+            for i in date_table:
+                dates_like_table=dates_like_table+"'"+i.date+"',"
+            dates_like_table=dates_like_table[:-1]+"]"
+
+            vues_table="["
+            for i in date_table:
+                vues_table=vues_table+""+str(i.value)+","
+            vues_table=vues_table[:-1]+"]"
+            vues_table_params="backgroundColor: ["
+            for i in range(len(date_table)):
+                vues_table_params=vues_table_params+"'rgba(54, 162, 235, 0.2)',"
+            vues_table_params=vues_table_params[:-1]+"],borderColor: ["
+            for i in range(len(date_table)):
+                vues_table_params=vues_table_params+"'rgba(153, 102, 255, 1)',"
+            vues_table_params=vues_table_params[:-1]+"],"
+        else:
+            dates_like_table=''
+            vues_table=''
+            vues_table_params=''
+
+        return render(request, 'blog/analytics.html', {'no_vues':no_vues, 'dates_like_table':dates_like_table,'vues_table':vues_table,'vues_table_params':vues_table_params,'no_likes':no_likes,'dates_like_table':dates_like_table,'like_table':like_table,"like_table_params":like_table_params,'article': article,'series':in_fils,'fil_form':form,'table_medium': table_medium, 'table_cities':table_cities, 'table_sources': table_sources, 'report':personal_report, 'vues':len(personal_report), 'temps_moyen':temps_moyen, 'report_dim': personal_report_dim, 'number_of_comments':nb_comments, 'number_of_likes':number_of_likes})
     else:
         return redirect(reverse(home))
 
