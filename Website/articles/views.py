@@ -523,7 +523,6 @@ def metrics(request, id):
             number_of_likes=0
 
         if not no_likes:
-            print(daterange(min_date, max_date))
             date_table=[]
             for i in daterange(min_date, max_date):
                 if i in likes_par_date:
