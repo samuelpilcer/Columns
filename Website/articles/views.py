@@ -513,6 +513,7 @@ def metrics(request, id):
                 min_date=likes[0].date
                 max_date=likes[-1].date
                 no_likes=False
+                print(daterange(min_date, max_date))
             for i in likes:
                 if i.date in likes_par_date:
                     likes_par_date[i.date]=likes_par_date[i.date]+1
