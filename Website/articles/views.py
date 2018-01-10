@@ -619,10 +619,10 @@ def metrics(request, id):
                     date_table.append(chart_point(str(i.day)+"-"+str(i.month)+"-"+str(i.year),likes_par_date[str(i.day)+"-"+str(i.month)+"-"+str(i.year)]))
                 else:
                     date_table.append(chart_point(str(i.day)+"-"+str(i.month)+"-"+str(i.year),0))
-            dates_like_table="["
+            dates_vues_table="["
             for i in date_table:
-                dates_like_table=dates_like_table+"'"+i.date+"',"
-            dates_like_table=dates_like_table[:-1]+"]"
+                dates_vues_table=dates_vues_table+"'"+i.date+"',"
+            dates_vues_table=dates_vues_table[:-1]+"]"
 
             vues_table="["
             for i in date_table:
@@ -636,11 +636,11 @@ def metrics(request, id):
                 vues_table_params=vues_table_params+"'rgba(153, 102, 255, 1)',"
             vues_table_params=vues_table_params[:-1]+"],"
         else:
-            dates_like_table=''
+            dates_vues_table=''
             vues_table=''
             vues_table_params=''
 
-        return render(request, 'blog/analytics.html', {'no_vues':no_vues, 'dates_like_table':dates_like_table,'vues_table':vues_table,'vues_table_params':vues_table_params,'no_likes':no_likes,'dates_like_table':dates_like_table,'like_table':like_table,"like_table_params":like_table_params,'article': article,'series':in_fils,'fil_form':form,'table_medium': table_medium, 'table_cities':table_cities, 'table_sources': table_sources, 'report':personal_report, 'vues':len(personal_report), 'temps_moyen':temps_moyen, 'report_dim': personal_report_dim, 'number_of_comments':nb_comments, 'number_of_likes':number_of_likes})
+        return render(request, 'blog/analytics.html', {'no_vues':no_vues, 'dates_vues_table':dates_vues_table,'vues_table':vues_table,'vues_table_params':vues_table_params,'no_likes':no_likes,'dates_like_table':dates_like_table,'like_table':like_table,"like_table_params":like_table_params,'article': article,'series':in_fils,'fil_form':form,'table_medium': table_medium, 'table_cities':table_cities, 'table_sources': table_sources, 'report':personal_report, 'vues':len(personal_report), 'temps_moyen':temps_moyen, 'report_dim': personal_report_dim, 'number_of_comments':nb_comments, 'number_of_likes':number_of_likes})
     else:
         return redirect(reverse(home))
 
