@@ -521,7 +521,7 @@ def metrics(request, id):
                 max_date=i.date
         except:
             number_of_likes=0
-        
+
         if not no_likes:
             print(daterange(min_date, max_date))
             date_table=[]
@@ -538,6 +538,10 @@ def metrics(request, id):
             for i in date_table:
                 like_table=like_table+""+str(i.value)+","
             like_table=like_table[:-1]+"]"
+        else:
+            dates_like_table=''
+            like_table=''
+
         try:
             comments=Comment.objects.all().filter(article=article)
             nb_comments=len(comments)
