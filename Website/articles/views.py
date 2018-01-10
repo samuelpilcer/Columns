@@ -509,6 +509,8 @@ def metrics(request, id):
             number_of_likes=0
         for i in likes_par_date:
             print(i.month)
+            print(i.year)
+            print(i.day)
         
         try:
             comments=Comment.objects.all().filter(article=article)
