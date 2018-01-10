@@ -11,6 +11,7 @@ import unicodedata
 from google_analytics import initialize_analyticsreporting, get_report
 from django.contrib.auth.models import User
 # Create your views here.
+from datetime import timedelta, date
 
 from articles.models import Article, Categorie, Comment, Like, Save, Signature, Fil, InFil, UserData
 import tweepy
@@ -488,6 +489,10 @@ class chart_point():
         this.date=str(date)
         this.value=value
 
+def daterange(date1, date2):
+    for n in range(int ((date2 - date1).days)+1):
+        yield date1 + timedelta(n)
+
 @login_required
 def metrics(request, id):
     try:
@@ -497,9 +502,14 @@ def metrics(request, id):
 
     if article.auteur==request.user:
         likes_par_date={}
+        no_likes=True
         try:
             likes = Like.objects.all().filter(article=article)
             number_of_likes=len(likes)
+            if number_of_likes>0:
+                min_date=likes[0].date
+                max_date=likes[-1].date
+                no_likes=False
             for i in likes:
                 if i.date in likes_par_date:
                     likes_par_date[i.date]=likes_par_date[i.date]+1
@@ -507,10 +517,9 @@ def metrics(request, id):
                     likes_par_date[i.date]=1
         except:
             number_of_likes=0
-        for i in likes_par_date:
-            print(i.month)
-            print(i.year)
-            print(i.day)
+        
+        if not no_likes:
+            print(daterange(min_date, max_date))
         
         try:
             comments=Comment.objects.all().filter(article=article)
