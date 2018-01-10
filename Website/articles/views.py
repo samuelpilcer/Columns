@@ -11,7 +11,7 @@ import unicodedata
 from google_analytics import initialize_analyticsreporting, get_report
 from django.contrib.auth.models import User
 # Create your views here.
-from datetime import timedelta, date
+from datetime import timedelta, date, datetime
 
 from articles.models import Article, Categorie, Comment, Like, Save, Signature, Fil, InFil, UserData
 import tweepy
@@ -518,7 +518,7 @@ def metrics(request, id):
                     likes_par_date[i.date]=likes_par_date[i.date]+1
                 else:
                     likes_par_date[i.date]=1
-            max_date=date.today()
+            max_date=datetime.now()
             print(likes_par_date)
         except:
             number_of_likes=0
