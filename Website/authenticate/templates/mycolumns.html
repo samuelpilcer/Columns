@@ -32,7 +32,7 @@
                           <h2 class="blog-post-title">{{ article.titre }}</h2>
                         </a>
                         <p>{{ article.sous_titre|safe|truncatewords_html:80 }}</p>
-                        <a class="btn btn-info" href="/{{ article.url }}">Lire</a>
+
                         {% if is_my_columns %}
                         <a class="btn btn-info" href="/analytics/{{ article.id }}">Dashboard</a> 
                         {% else %}
@@ -100,7 +100,6 @@
                   <h2 class="blog-post-title">{{ article.titre }}</h2>
                 </a>
                 <p>{{ article.sous_titre|safe|truncatewords_html:80 }}</p>
-                        <a class="btn btn-info" href="/{{ article.url }}">Lire</a>
                         {% if is_my_columns %}
                         <a class="btn btn-info" href="/analytics/{{ article.id }}">Dashboard</a> 
                         {% else %}
