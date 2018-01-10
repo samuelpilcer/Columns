@@ -519,6 +519,7 @@ def metrics(request, id):
                 else:
                     likes_par_date[i.date]=1
             max_date=date.today()
+            print(likes_par_date)
         except:
             number_of_likes=0
 
