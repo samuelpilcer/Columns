@@ -64,16 +64,16 @@
 
                     <script>
 
-                      
+                    
                     var ctx = document.getElementById("myChart").getContext('2d');
                     var myChart = new Chart(ctx, {
                         type: 'bar',
                         data: {
-                            labels: {{ dates_like_table }},
+                            labels: {{ dates_like_table|safe }},
                             datasets: [{
                                 label: 'Nombre de vues',
-                                data: {{ like_table }},
-                                {{ like_table_params }}
+                                data: {{ like_table|safe }},
+                                {{ like_table_params|safe }}
                                 borderWidth: 1
                             }]
                         },
