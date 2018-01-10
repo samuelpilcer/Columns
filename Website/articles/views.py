@@ -588,6 +588,7 @@ def metrics(request, id):
                     cities[report['reports'][0]['data']['rows'][i]['dimensions'][4]]=1
                 else:
                     cities[report['reports'][0]['data']['rows'][i]['dimensions'][4]]=cities[report['reports'][0]['data']['rows'][i]['dimensions'][4]]+1
+        print(vues_par_date)
         if (len(personal_report)>0):
             temps_moyen=int(temps_moyen/len(personal_report))
         else:
