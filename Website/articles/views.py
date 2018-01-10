@@ -620,6 +620,7 @@ def metrics(request, id):
                 else:
                     date_table.append(chart_point(str(i.day)+"-"+str(i.month)+"-"+str(i.year),0))
             dates_vues_table="["
+            print(dates_vues_table)
             for i in date_table:
                 dates_vues_table=dates_vues_table+"'"+i.date+"',"
             dates_vues_table=dates_vues_table[:-1]+"]"
