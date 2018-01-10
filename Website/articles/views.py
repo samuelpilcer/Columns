@@ -710,6 +710,77 @@ def promote(request, id):
         for i in fils:
             in_fils.append(i.fil)
         form=AddToFilForm(None)
+
+
+        try:
+            auth = OAuthHandler(consumer_key, consumer_secret)
+            auth.set_access_token(access_token, access_secret)
+            api = tweepy.API(auth)
+            trends=(api.trends_place(23424819))
+            data=[]
+            text_data={}
+            text_data_preprocessed=[]
+            links={}
+            links_media={}
+            links_title={}
+            for status in tweepy.Cursor(api.search, q=hashtag, lang='fr').items(50):
+                # Process a single status
+                data.append(status)
+                text_data[status.text]=status._json['retweet_count']
+                preprocess_text=preprocess(status.text)
+                preprocess_text_cleaned=[]
+
+                if "urls" in status._json['entities']:
+                    image_link=''
+                    if 'media' in status._json['entities']:
+                        if len(status._json['entities']['media'])>0:
+                            image_link=status._json['entities']['media'][0]["media_url"]
+                    for i in status._json['entities']["urls"]:
+                        links[i["expanded_url"]]=status._json['retweet_count']
+                        links_media[i["expanded_url"]]=image_link
+                        links_title[i["expanded_url"]]=status.text
+
+                for i in preprocess_text:
+                    if len(i)>2:
+                        preprocess_text_cleaned.append(i.lower())
+                text_data_preprocessed.append(preprocess_text_cleaned)
+
+            frequencies={}
+            for i in text_data_preprocessed:
+                for j in i:
+                    if j not in frequencies:
+                        frequencies[j]=1
+                    else:
+                        frequencies[j]=frequencies[j]+1
+
+            frequencies_sorted=sorted(frequencies.items(), key=operator.itemgetter(1))
+            frequencies_sorted.reverse()
+
+            text_data_sorted=sorted(text_data.items(), key=operator.itemgetter(1))
+            text_data_sorted.reverse()
+
+            tweets=[]
+            for i in text_data_sorted:
+                tweets.append(table_row(i[0],i[1]))
+
+            links_sorted=sorted(links.items(), key=operator.itemgetter(1))
+            links_sorted.reverse()
+
+            links_table=[]
+            for i in links_sorted:
+                links_table.append(twitter_link(i[0], i[1], links_title[i[0]],links_media[i[0]]))
+
+            
+            frequencies_table=[]
+            for i in range(10):
+                frequencies_table.append(table_row(frequencies_sorted[i][0],str(frequencies_sorted[i][1])))
+            
+    except:
+        return redirect(reverse(home))
+
+
+
+
         return render(request, 'blog/promote.html', {'article': article,'series':in_fils,'fil_form':form,'table_medium': table_medium, 'table_cities':table_cities, 'table_sources': table_sources, 'report':personal_report, 'vues':len(personal_report), 'temps_moyen':temps_moyen, 'report_dim': personal_report_dim, 'number_of_comments':nb_comments, 'number_of_likes':number_of_likes})
     else:
         return redirect(reverse(home))
