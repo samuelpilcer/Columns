@@ -17,3 +17,4 @@ mod_wsgi-httpd
 django-secure
 tweepy==3.5.0
 bs4==0.0.1
+django-chartit==0.2.9
