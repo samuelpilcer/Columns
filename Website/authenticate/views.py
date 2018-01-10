@@ -122,11 +122,11 @@ def userarticles(request, nb):
     return render(request, 'mycolumns.html', {'is_my_columns':True,'derniers_articles_1': articles1,'derniers_articles_2': articles2, 'page_suiv':page_suiv, 'page_prec':page_prec, 'bool_suiv': bool_suiv, 'bool_prec': bool_prec})
 
 @login_required
-def promote_p0(request):
+def promote_list_p0(request):
     return promote(request,0)
 
 @login_required
-def promote(request, nb):
+def promote_list(request, nb):
 
     try:
         articles = Article.objects.all().filter(auteur=request.user).order_by('-date') # Nous sélectionnons tous nos articles
