@@ -571,7 +571,9 @@ def metrics(request, id):
                 personal_report_dim.append(report['reports'][0]['data']['rows'][i]['dimensions'])
                 personal_report.append(report['reports'][0]['data']['rows'][i]['metrics'][0]['values'])
                 temps_moyen=temps_moyen+float(report['reports'][0]['data']['rows'][i]['metrics'][0]['values'][3])
-                date_vue=report['reports'][0]['data']['rows'][i]['dimensions'][3]
+                date_vue_brute=report['reports'][0]['data']['rows'][i]['dimensions'][3]
+                #date_vue=date_vue_brute[5:7]
+                print(date_vue_brute[5:7])
                 if date_vue not in vues_par_date:
                     vues_par_date[date_vue]=1
                 else:
