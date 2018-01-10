@@ -616,12 +616,12 @@ def metrics(request, id):
         if not no_vues:
             date_table=[]
             for i in daterange(article.date, max_date):
+                print(i)
                 if str(i.day)+"-"+str(i.month)+"-"+str(i.year) in vues_par_date:
                     date_table.append(chart_point(str(i.day)+"-"+str(i.month)+"-"+str(i.year),vues_par_date[str(i.day)+"-"+str(i.month)+"-"+str(i.year)]))
                 else:
                     date_table.append(chart_point(str(i.day)+"-"+str(i.month)+"-"+str(i.year),0))
             dates_vues_table="["
-            print(date_table[-1].date)
             for i in date_table:
                 dates_vues_table=dates_vues_table+"'"+i.date+"',"
             dates_vues_table=dates_vues_table[:-1]+"]"
