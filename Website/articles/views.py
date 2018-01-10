@@ -645,9 +645,6 @@ def metrics(request, id):
     else:
         return redirect(reverse(home))
 
-@login_required
-def promote_p0(request):
-    return promote(request,0)
 
 @login_required
 def promote(request, id):
