@@ -85,7 +85,7 @@ class Like(models.Model):
         nous permettra de reconnaître facilement les différents objets que 
         nous traiterons plus tard et dans l'administration
         """
-        return self.auteur
+        return unicode(self.auteur)
 
 class Save(models.Model):
     auteur = models.ForeignKey(User)
