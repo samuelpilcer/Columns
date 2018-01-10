@@ -487,7 +487,7 @@ def tweets_analyze(request, hashtag):
 
 class chart_point():
     def __init__(self,date,value):
-        self.date=str(date.day)+"-"+str(date.month)+"-"+str(date.year)
+        self.date=date
         self.value=value
 
 def daterange(date1, date2):
@@ -515,10 +515,10 @@ def metrics(request, id):
                 no_likes=False
 
             for i in likes:
-                if i.date in likes_par_date:
-                    likes_par_date[i.date]=likes_par_date[i.date]+1
+                if str(i.date.day)+"-"+str(i.date.month)+"-"+str(i.date.year) in likes_par_date:
+                    likes_par_date[str(i.date.day)+"-"+str(i.date.month)+"-"+str(i.date.year)]=likes_par_date[str(i.date.day)+"-"+str(i.date.month)+"-"+str(i.date.year)]+1
                 else:
-                    likes_par_date[i.date]=1
+                    likes_par_date[str(i.date.day)+"-"+str(i.date.month)+"-"+str(i.date.year)]=1
             max_date=datetime.now(pytz.utc)
             print(likes_par_date)
         except:
