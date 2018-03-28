@@ -10,4 +10,9 @@ Nous proposons aux auteurs une vision précise de leur audience et des outils po
 
 [![Demo CountPages alpha](https://github.com/samuelpilcer/Columns/blob/master/Website/static/metrics-1.png)](https://github.com/samuelpilcer/Columns/blob/master/Website/static/metrics-1.png)
 
-###
+### Une vision précise des 
+
+[![Demo CountPages alpha](https://github.com/samuelpilcer/Columns/blob/master/Website/static/metrics-2.png)](https://github.com/samuelpilcer/Columns/blob/master/Website/static/metrics-2.png)
+
+
+[![Demo CountPages alpha](https://github.com/samuelpilcer/Columns/blob/master/Website/static/metrics-3.png)](https://github.com/samuelpilcer/Columns/blob/master/Website/static/metrics-3.png)
