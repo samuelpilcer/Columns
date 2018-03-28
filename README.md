@@ -6,6 +6,8 @@ Columns est un média collaboratif. Nous vous permettons de publier du contenu e
 
 Nous proposons aux auteurs une vision précise de leur audience et des outils pour l'optimiser.
 
-	Des analyses agrégées
+### Des analyses agrégées
 
-[![Demo CountPages alpha](https://github.com/samuelpilcer/Columns/blob/master/experiment/Website/)]()
+[![Demo CountPages alpha](https://github.com/samuelpilcer/Columns/blob/master/Website/static/metrics-1.png)](https://github.com/samuelpilcer/Columns/blob/master/Website/static/metrics-1.png)
+
+###
